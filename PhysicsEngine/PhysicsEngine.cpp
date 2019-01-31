@@ -28,32 +28,10 @@ void PhysicsEngine::Update(PxReal delta_time)
 
 	if (isLoaded == true)
 	{
-		PxRigidStatic* doorFrame = physics->createRigidStatic(PxTransform(PxVec3(0, 4, 0)));
-		doorFrame->createShape(PxBoxGeometry(0.5f, 3.0f, 0.5f), *default_material);
-		scene->addActor(*doorFrame);
-
-
-
-		PxRigidDynamic* door = AddCube(PxVec3(5.0f, 0.0f, 0.0f), PxBoxGeometry(4.0f, 3.0f, 0.5f));
-		
-		
-		PxRevoluteJoint* joint = PxRevoluteJointCreate(*physics, doorFrame, PxTransform(PxVec3(4.5f, 3.0f, 0.5f)), door, PxTransform(PxVec3(0.0f, 3.0f, 0.5f)));
-		joint->setLimit(PxJointAngularLimitPair(-PxPi / 4, PxPi / 4, 0.01f));
-		
-
-
-		PxRigidDynamic* sp = AddSphere(PxVec3(7.0f, 2.0f, 10.0f), 1.0f);
-
-
 		while (!GetAsyncKeyState(VK_ESCAPE))
 		{
-			sp->addForce(PxVec3(10.0f, 0.0f, -150.0f));
 			scene->simulate(delta_time);
 			scene->fetchResults(true);
-			
-			
-
-			
 			Sleep(100);
 		}
 		
