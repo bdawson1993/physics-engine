@@ -64,6 +64,15 @@ void PhysicsEngine::AddSphere(PxVec3 loc, PxReal dim)
 
 }
 
+void PhysicsEngine::AddSphere(PxVec3 loc, PxReal dim, PxReal statFric, PxReal dynmFriction, PxReal bouncyness)
+{
+	PxRigidDynamic* sphere = physics->createRigidDynamic(PxTransform(loc));
+	PxMaterial* mat = physics->createMaterial(statFric, dynmFriction, bouncyness);
+	sphere->createShape(PxSphereGeometry(dim), *mat);
+	PxRigidBodyExt::updateMassAndInertia(*sphere, 1.f);
+	scene->addActor(*sphere);
+}
+
 
 
 

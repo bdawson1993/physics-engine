@@ -14,11 +14,11 @@ int main()
 		for (int y = 1; y < 10; y++)
 		{
 
-			physics.AddCube(PxVec3(x, y, 0), PxBoxGeometry(.5f, .5f, .5f));
+			physics.AddCube(PxVec3(x, y, 0), PxBoxGeometry(.5f, .5f, .5f), 1.0f, 1.0f, 1.0f);
 		}
 	}
 
-	physics.AddSphere(PxVec3(4, 20, 0), 2);
+	physics.AddSphere(PxVec3(4, 20, 0), 2, 10.0f, 10.0f, 1.0f);
 
 
 	PxReal time = 1.f / 60.0f;
