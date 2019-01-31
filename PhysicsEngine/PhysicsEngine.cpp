@@ -24,12 +24,36 @@ PhysicsEngine::~PhysicsEngine()
 
 void PhysicsEngine::Update(PxReal delta_time)
 {
+
+
 	if (isLoaded == true)
 	{
+		PxRigidStatic* doorFrame = physics->createRigidStatic(PxTransform(PxVec3(0, 4, 0)));
+		doorFrame->createShape(PxBoxGeometry(0.5f, 3.0f, 0.5f), *default_material);
+		scene->addActor(*doorFrame);
+
+
+
+		PxRigidDynamic* door = AddCube(PxVec3(5.0f, 0.0f, 0.0f), PxBoxGeometry(4.0f, 3.0f, 0.5f));
+		
+		
+		PxRevoluteJoint* joint = PxRevoluteJointCreate(*physics, doorFrame, PxTransform(PxVec3(4.5f, 3.0f, 0.5f)), door, PxTransform(PxVec3(0.0f, 3.0f, 0.5f)));
+		joint->setLimit(PxJointAngularLimitPair(-PxPi / 4, PxPi / 4, 0.01f));
+		
+
+
+		PxRigidDynamic* sp = AddSphere(PxVec3(7.0f, 2.0f, 10.0f), 1.0f);
+
+
 		while (!GetAsyncKeyState(VK_ESCAPE))
 		{
+			sp->addForce(PxVec3(10.0f, 0.0f, -150.0f));
 			scene->simulate(delta_time);
 			scene->fetchResults(true);
+			
+			
+
+			
 			Sleep(100);
 		}
 		
@@ -37,12 +61,13 @@ void PhysicsEngine::Update(PxReal delta_time)
 
 }
 
-void PhysicsEngine::AddCube(PxVec3 loc, PxBoxGeometry boxDim)
+PxRigidDynamic* PhysicsEngine::AddCube(PxVec3 loc, PxBoxGeometry boxDim)
 {
 	PxRigidDynamic* box = physics->createRigidDynamic(PxTransform(loc));
 	box->createShape(boxDim, *default_material);
 	PxRigidBodyExt::updateMassAndInertia(*box, 1.f);
 	scene->addActor(*box);
+	return box;
 }
 
 void PhysicsEngine::AddCube(PxVec3 loc, PxBoxGeometry boxDim, PxReal statFric, PxReal dynamicFriction, PxReal bouncyness)
@@ -54,12 +79,13 @@ void PhysicsEngine::AddCube(PxVec3 loc, PxBoxGeometry boxDim, PxReal statFric, P
 	scene->addActor(*box);
 }
 
-void PhysicsEngine::AddSphere(PxVec3 loc, PxReal dim)
+PxRigidDynamic* PhysicsEngine::AddSphere(PxVec3 loc, PxReal dim)
 {
 	PxRigidDynamic* sphere = physics->createRigidDynamic(PxTransform(loc));
 	sphere->createShape(PxSphereGeometry(dim), *default_material);
 	PxRigidBodyExt::updateMassAndInertia(*sphere, 1.f);
 	scene->addActor(*sphere);
+	return sphere;
 
 
 }
@@ -72,9 +98,6 @@ void PhysicsEngine::AddSphere(PxVec3 loc, PxReal dim, PxReal statFric, PxReal dy
 	PxRigidBodyExt::updateMassAndInertia(*sphere, 1.f);
 	scene->addActor(*sphere);
 }
-
-
-
 
 bool PhysicsEngine::InitPhysics()
 {
@@ -100,6 +123,10 @@ bool PhysicsEngine::InitPhysics()
 	//connect to Visual debugger
 	vd_connection = PxVisualDebuggerExt::createConnection(physics->getPvdConnectionManager(), "localhost", 5425, 100,
 		PxVisualDebuggerExt::getAllConnectionFlags());
+	PxInitExtensions(*physics);
+	
+
+
 
 	//create scence
 	PxSceneDesc scenceDesc(physics->getTolerancesScale());
@@ -132,8 +159,11 @@ bool PhysicsEngine::InitPhysics()
 
 	//create floor
 	PxRigidStatic* plane = PxCreatePlane(*physics, PxPlane(PxVec3(0.f, 1.f, 0.f), 0.f), *default_material);
-	scene->addActor(*plane);
+	
+	
 
+	scene->addActor(*plane);
+	
 
 
 	return true;

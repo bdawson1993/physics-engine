@@ -32,10 +32,10 @@ public:
 
 	void Update(PxReal delta_time);
 
-	void AddCube(PxVec3 loc, PxBoxGeometry boxDim);
+	PxRigidDynamic* AddCube(PxVec3 loc, PxBoxGeometry boxDim);
 	void AddCube(PxVec3 loc, PxBoxGeometry boxDim, PxReal statFric, PxReal dynamicFriction, PxReal bouncyness);
 
-	void AddSphere(PxVec3 loc, PxReal dim);
+	PxRigidDynamic* AddSphere(PxVec3 loc, PxReal dim);
 	void AddSphere(PxVec3 loc, PxReal dim, PxReal statFric, PxReal dynmFriction, PxReal bouncyness);
 
 
