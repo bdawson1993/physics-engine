@@ -30,6 +30,7 @@ void PhysicsEngine::Update(PxReal delta_time)
 		{
 			scene->simulate(delta_time);
 			scene->fetchResults(true);
+			Sleep(100);
 		}
 		
 	}
@@ -40,8 +41,23 @@ void PhysicsEngine::AddCube(PxVec3 loc, PxBoxGeometry boxDim)
 {
 	PxRigidDynamic* box = physics->createRigidDynamic(PxTransform(loc));
 	box->createShape(boxDim, *default_material);
+	PxRigidBodyExt::updateMassAndInertia(*box, 1.f);
 	scene->addActor(*box);
 }
+
+void PhysicsEngine::AddCube(PxVec3 loc, PxBoxGeometry boxDim, PxReal statFric, PxReal dynamicFriction, PxReal bouncyness)
+{
+	PxRigidDynamic* box = physics->createRigidDynamic(PxTransform(loc));
+	PxMaterial* mat = physics->createMaterial(statFric, dynamicFriction, bouncyness);
+
+	box->createShape(boxDim, *mat);
+	PxRigidBodyExt::updateMassAndInertia(*box, 1.f);
+	scene->addActor(*box);
+
+}
+
+
+
 
 bool PhysicsEngine::InitPhysics()
 {
@@ -93,7 +109,7 @@ bool PhysicsEngine::InitPhysics()
 
 
 	//create base plane and set gravity
-	default_material = physics->createMaterial(0.f, 0.f, 0.f);
+	default_material = physics->createMaterial(0.f, 0.f, 2.f);
 	scene->setGravity(PxVec3(0.f, -9.81f, 0.f));
 
 
