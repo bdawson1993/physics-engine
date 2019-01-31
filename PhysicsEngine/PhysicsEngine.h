@@ -35,5 +35,8 @@ public:
 	void AddCube(PxVec3 loc, PxBoxGeometry boxDim);
 	void AddCube(PxVec3 loc, PxBoxGeometry boxDim, PxReal statFric, PxReal dynamicFriction, PxReal bouncyness);
 
+	void AddSphere(PxVec3 loc, PxReal dim);
+
+
 
 };

@@ -49,10 +49,18 @@ void PhysicsEngine::AddCube(PxVec3 loc, PxBoxGeometry boxDim, PxReal statFric, P
 {
 	PxRigidDynamic* box = physics->createRigidDynamic(PxTransform(loc));
 	PxMaterial* mat = physics->createMaterial(statFric, dynamicFriction, bouncyness);
-
 	box->createShape(boxDim, *mat);
 	PxRigidBodyExt::updateMassAndInertia(*box, 1.f);
 	scene->addActor(*box);
+}
+
+void PhysicsEngine::AddSphere(PxVec3 loc, PxReal dim)
+{
+	PxRigidDynamic* sphere = physics->createRigidDynamic(PxTransform(loc));
+	sphere->createShape(PxSphereGeometry(dim), *default_material);
+	PxRigidBodyExt::updateMassAndInertia(*sphere, 1.f);
+	scene->addActor(*sphere);
+
 
 }
 
@@ -109,7 +117,7 @@ bool PhysicsEngine::InitPhysics()
 
 
 	//create base plane and set gravity
-	default_material = physics->createMaterial(0.f, 0.f, 2.f);
+	default_material = physics->createMaterial(1.f, 1.f, 0.f);
 	scene->setGravity(PxVec3(0.f, -9.81f, 0.f));
 
 
