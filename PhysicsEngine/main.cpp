@@ -9,7 +9,9 @@ int main()
 {
 	PhysicsEngine physics;
 	
-    std::cout << "Hello World!\n";
+	physics.AddCube(PxVec3(0, 10, 0), PxBoxGeometry(.5f, .5f, .5f));
+	PxReal time = 1.f / 60.0f;
+	physics.Update(time);
 
 
 }
