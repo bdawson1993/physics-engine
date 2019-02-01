@@ -24,10 +24,10 @@ PhysicsEngine::~PhysicsEngine()
 
 void PhysicsEngine::Update(PxReal delta_time)
 {
-
-
 	if (isLoaded == true)
 	{
+		
+
 		while (!GetAsyncKeyState(VK_ESCAPE))
 		{
 			scene->simulate(delta_time);
@@ -39,13 +39,12 @@ void PhysicsEngine::Update(PxReal delta_time)
 
 }
 
-PxRigidDynamic* PhysicsEngine::AddCube(PxVec3 loc, PxBoxGeometry boxDim)
+void PhysicsEngine::AddCube(PxVec3 loc, PxBoxGeometry boxDim)
 {
 	PxRigidDynamic* box = physics->createRigidDynamic(PxTransform(loc));
 	box->createShape(boxDim, *default_material);
 	PxRigidBodyExt::updateMassAndInertia(*box, 1.f);
 	scene->addActor(*box);
-	return box;
 }
 
 void PhysicsEngine::AddCube(PxVec3 loc, PxBoxGeometry boxDim, PxReal statFric, PxReal dynamicFriction, PxReal bouncyness)
@@ -57,15 +56,12 @@ void PhysicsEngine::AddCube(PxVec3 loc, PxBoxGeometry boxDim, PxReal statFric, P
 	scene->addActor(*box);
 }
 
-PxRigidDynamic* PhysicsEngine::AddSphere(PxVec3 loc, PxReal dim)
+void PhysicsEngine::AddSphere(PxVec3 loc, PxReal dim)
 {
 	PxRigidDynamic* sphere = physics->createRigidDynamic(PxTransform(loc));
 	sphere->createShape(PxSphereGeometry(dim), *default_material);
 	PxRigidBodyExt::updateMassAndInertia(*sphere, 1.f);
 	scene->addActor(*sphere);
-	return sphere;
-
-
 }
 
 void PhysicsEngine::AddSphere(PxVec3 loc, PxReal dim, PxReal statFric, PxReal dynmFriction, PxReal bouncyness)

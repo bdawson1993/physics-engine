@@ -11,12 +11,6 @@
 int main()
 {
 	PhysicsEngine physics;
-
-	
-	 
-
-	
-
 	PxReal time = 1.f / 60.0f;
 	physics.Update(time);
 
