@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "PhysicsEngine.h"
+#include "Plane.h"
 
 
 PhysicsEngine::PhysicsEngine()
@@ -132,11 +133,10 @@ bool PhysicsEngine::InitPhysics()
 
 
 	//create floor
-	PxRigidStatic* plane = PxCreatePlane(*physics, PxPlane(PxVec3(0.f, 1.f, 0.f), 0.f), *default_material);
-	
-	
+	Plane plane = Plane("Ground", physics, default_material);
+	plane.CreateShape(PxVec3(0, 1, 0), PxVec3(1, 1, 1), default_material);
 
-	scene->addActor(*plane);
+	scene->addActor(*plane.GetActor());
 	
 
 

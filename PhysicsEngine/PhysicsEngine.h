@@ -9,8 +9,11 @@
 
 
 
+
 using namespace physx;
 using namespace std;
+
+
 
 class PhysicsEngine
 {
@@ -21,11 +24,11 @@ private:
 	PxScene* scene;
 	bool isLoaded;
 	PxMaterial* default_material;
-	
-	
+
+
 	bool InitPhysics();
 	void PxRelease();
-	
+
 public:
 	PhysicsEngine();
 	~PhysicsEngine();
