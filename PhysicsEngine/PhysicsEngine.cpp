@@ -27,49 +27,38 @@ PhysicsEngine::~PhysicsEngine()
 
 void PhysicsEngine::Update(PxReal delta_time)
 {
-	Cube cube = Cube("box", physics);
-	cube.CreateStatic(PxVec3(1, 1, 1), PxVec3(.5f,.5f,.5f), default_material);
-	scene.AddActor(&cube);
+	for (int x = 1; x < 10; x++)
+	{
+		for (int y = 1; y < 10; y++)
+		{
+			for (int z = 1; z < 10; z++)
+			{
 
-	Cube cube2 = Cube("box", physics);
-	cube2.CreateDynamic(PxVec3(1, 10, 1), PxVec3(.5f, .5f, .5f), default_material);
-	scene.AddActor(&cube2);
+				Cube cube = Cube("cube" + x, physics);
+				cube.CreateDynamic(PxVec3(x, y, z), PxVec3(.5f, .5f, .5f), default_material);
+				scene.AddActor(&cube);
+			}
+		}
+	}
 
 	Sphere sp = Sphere("ball", physics);
-	sp.CreateDynamic(PxVec3(3, 10, 1), 1, default_material);
+	sp.CreateDynamic(PxVec3(5, 20, 5), 3, default_material);
 	scene.AddActor(&sp);
+
 
 	if (isLoaded == true)
 	{
-		
-		sp.GetActor().
+
+
 		while (!GetAsyncKeyState(VK_ESCAPE))
 		{
 			scene.GetScene()->simulate(delta_time);
 			scene.GetScene()->fetchResults(true);
 			Sleep(100);
 		}
-		
+
 	}
 
-}
-
-
-void PhysicsEngine::AddSphere(PxVec3 loc, PxReal dim)
-{
-	PxRigidDynamic* sphere = physics->createRigidDynamic(PxTransform(loc));
-	sphere->createShape(PxSphereGeometry(dim), *default_material);
-	PxRigidBodyExt::updateMassAndInertia(*sphere, 1.f);
-	
-}
-
-void PhysicsEngine::AddSphere(PxVec3 loc, PxReal dim, PxReal statFric, PxReal dynmFriction, PxReal bouncyness)
-{
-	PxRigidDynamic* sphere = physics->createRigidDynamic(PxTransform(loc));
-	PxMaterial* mat = physics->createMaterial(statFric, dynmFriction, bouncyness);
-	sphere->createShape(PxSphereGeometry(dim), *mat);
-	PxRigidBodyExt::updateMassAndInertia(*sphere, 1.f);
-	
 }
 
 bool PhysicsEngine::InitPhysics()
@@ -80,7 +69,7 @@ bool PhysicsEngine::InitPhysics()
 
 	foundation = PxCreateFoundation(PX_PHYSICS_VERSION, gDefaultAllocatorCallback, gDefaultErrorCallback);
 
-	
+
 	if (!foundation)
 	{
 		return false;
@@ -97,7 +86,7 @@ bool PhysicsEngine::InitPhysics()
 	vd_connection = PxVisualDebuggerExt::createConnection(physics->getPvdConnectionManager(), "localhost", 5425, 100,
 		PxVisualDebuggerExt::getAllConnectionFlags());
 	PxInitExtensions(*physics);
-	
+
 
 
 
@@ -116,12 +105,12 @@ bool PhysicsEngine::InitPhysics()
 	{
 		scenceDesc.filterShader = PxDefaultSimulationFilterShader;
 	}
-	
+
 	scene = Scene(physics, scenceDesc);
 
 	//create base plane and set gravity
 	default_material = physics->createMaterial(1.f, 1.f, 0.f);
-	
+
 
 
 	//create floor
@@ -129,12 +118,12 @@ bool PhysicsEngine::InitPhysics()
 	plane.CreateStatic(PxVec3(0, 1, 0), PxVec3(1, 1, 1), default_material);
 
 	scene.AddActor(&plane);
-	
+
 
 
 	return true;
 
-	
+
 
 }
 

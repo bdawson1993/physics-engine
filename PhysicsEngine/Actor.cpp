@@ -33,8 +33,6 @@ void Actor::CreateStatic()
 {
 }
 
-
-
 void Actor::Update()
 {
 }
