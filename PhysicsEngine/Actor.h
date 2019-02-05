@@ -16,7 +16,11 @@ public:
 protected:
 	virtual void CreateDynamic(PxVec3 pos, PxVec3 size, PxMaterial* mat);
 	virtual void CreateStatic(PxVec3 pos, PxVec3 size, PxMaterial* mat);
+	virtual void CreateDynamic();
+	virtual void CreateStatic();
+
 	virtual void Update();
+
 
 protected:
 	string name;

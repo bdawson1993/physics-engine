@@ -1,3 +1,10 @@
 ﻿C:\Program Files\Visual Studio\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (ConsoleApplication1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Actor.cpp
+  Cube.cpp
+  main.cpp
   PhysicsEngine.cpp
+  Plane.cpp
+  Scene.cpp
+  Sphere.cpp
+  Generating Code...
   PhysicsEngine.vcxproj -> C:\Users\bdaws\source\repos\Physics Engine\x64\Debug\PhysicsEngine.exe

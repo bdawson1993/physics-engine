@@ -4,7 +4,7 @@
 class Cube : public Actor
 {
 public:
-	Cube(string, PxPhysics* physics, PxMaterial* mat) : Actor::Actor(name, physics)
+	Cube(string name, PxPhysics* physics) : Actor::Actor(name, physics)
 	{
 
 	};

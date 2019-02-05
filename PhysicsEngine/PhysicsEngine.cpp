@@ -2,6 +2,7 @@
 #include "PhysicsEngine.h"
 #include "Plane.h"
 #include "Cube.h"
+#include "Sphere.h"
 
 
 PhysicsEngine::PhysicsEngine()
@@ -26,10 +27,22 @@ PhysicsEngine::~PhysicsEngine()
 
 void PhysicsEngine::Update(PxReal delta_time)
 {
+	Cube cube = Cube("box", physics);
+	cube.CreateStatic(PxVec3(1, 1, 1), PxVec3(.5f,.5f,.5f), default_material);
+	scene.AddActor(&cube);
+
+	Cube cube2 = Cube("box", physics);
+	cube2.CreateDynamic(PxVec3(1, 10, 1), PxVec3(.5f, .5f, .5f), default_material);
+	scene.AddActor(&cube2);
+
+	Sphere sp = Sphere("ball", physics);
+	sp.CreateDynamic(PxVec3(3, 10, 1), 1, default_material);
+	scene.AddActor(&sp);
+
 	if (isLoaded == true)
 	{
 		
-
+		sp.GetActor().
 		while (!GetAsyncKeyState(VK_ESCAPE))
 		{
 			scene.GetScene()->simulate(delta_time);
@@ -40,6 +53,7 @@ void PhysicsEngine::Update(PxReal delta_time)
 	}
 
 }
+
 
 void PhysicsEngine::AddSphere(PxVec3 loc, PxReal dim)
 {
@@ -111,7 +125,7 @@ bool PhysicsEngine::InitPhysics()
 
 
 	//create floor
-	Plane plane = Plane("Ground", physics, default_material);
+	Plane plane = Plane("Ground", physics);
 	plane.CreateStatic(PxVec3(0, 1, 0), PxVec3(1, 1, 1), default_material);
 
 	scene.AddActor(&plane);

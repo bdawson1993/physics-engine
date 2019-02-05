@@ -25,6 +25,16 @@ void Actor::CreateStatic(PxVec3 pos, PxVec3 size, PxMaterial* mat)
 {
 }
 
+void Actor::CreateDynamic()
+{
+}
+
+void Actor::CreateStatic()
+{
+}
+
+
+
 void Actor::Update()
 {
 }
