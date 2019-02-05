@@ -15,6 +15,7 @@ Scene::Scene(PxPhysics* physics, PxSceneDesc desc)
 void Scene::AddActor(Actor* actor)
 {
 	sceneObj.push_back(actor);
+	scene->addActor(*actor->GetActor());
 
 }
 

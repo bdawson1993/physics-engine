@@ -7,7 +7,7 @@ Actor::Actor(string name, PxPhysics *physics)
 	this->physics = physics;
 }
 
-PxActor* Actor::GetActor()
+PxRigidActor* Actor::GetActor()
 {
 	return actor;
 }

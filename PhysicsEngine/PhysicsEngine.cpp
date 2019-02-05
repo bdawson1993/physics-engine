@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "PhysicsEngine.h"
 #include "Plane.h"
+#include "Cube.h"
 
 
 PhysicsEngine::PhysicsEngine()
@@ -38,23 +39,6 @@ void PhysicsEngine::Update(PxReal delta_time)
 		
 	}
 
-}
-
-void PhysicsEngine::AddCube(PxVec3 loc, PxBoxGeometry boxDim)
-{
-	PxRigidDynamic* box = physics->createRigidDynamic(PxTransform(loc));
-	box->createShape(boxDim, *default_material);
-	PxRigidBodyExt::updateMassAndInertia(*box, 1.f);
-	
-}
-
-void PhysicsEngine::AddCube(PxVec3 loc, PxBoxGeometry boxDim, PxReal statFric, PxReal dynamicFriction, PxReal bouncyness)
-{
-	PxRigidDynamic* box = physics->createRigidDynamic(PxTransform(loc));
-	PxMaterial* mat = physics->createMaterial(statFric, dynamicFriction, bouncyness);
-	box->createShape(boxDim, *mat);
-	PxRigidBodyExt::updateMassAndInertia(*box, 1.f);
-	
 }
 
 void PhysicsEngine::AddSphere(PxVec3 loc, PxReal dim)

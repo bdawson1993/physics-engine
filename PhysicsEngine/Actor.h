@@ -10,7 +10,7 @@ class Actor
 
 public:
 	Actor(string name, PxPhysics *physics);
-	PxActor* GetActor();
+	PxRigidActor* GetActor();
 	string GetName();
 
 protected:
@@ -20,7 +20,7 @@ protected:
 
 protected:
 	string name;
-	PxActor* actor;
+	PxRigidActor* actor;
 	PxPhysics* physics;
 	
 };
