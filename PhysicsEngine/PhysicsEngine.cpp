@@ -31,8 +31,8 @@ void PhysicsEngine::Update(PxReal delta_time)
 
 		while (!GetAsyncKeyState(VK_ESCAPE))
 		{
-			scene->simulate(delta_time);
-			scene->fetchResults(true);
+			scene.GetScene()->simulate(delta_time);
+			scene.GetScene()->fetchResults(true);
 			Sleep(100);
 		}
 		
@@ -45,7 +45,7 @@ void PhysicsEngine::AddCube(PxVec3 loc, PxBoxGeometry boxDim)
 	PxRigidDynamic* box = physics->createRigidDynamic(PxTransform(loc));
 	box->createShape(boxDim, *default_material);
 	PxRigidBodyExt::updateMassAndInertia(*box, 1.f);
-	scene->addActor(*box);
+	
 }
 
 void PhysicsEngine::AddCube(PxVec3 loc, PxBoxGeometry boxDim, PxReal statFric, PxReal dynamicFriction, PxReal bouncyness)
@@ -54,7 +54,7 @@ void PhysicsEngine::AddCube(PxVec3 loc, PxBoxGeometry boxDim, PxReal statFric, P
 	PxMaterial* mat = physics->createMaterial(statFric, dynamicFriction, bouncyness);
 	box->createShape(boxDim, *mat);
 	PxRigidBodyExt::updateMassAndInertia(*box, 1.f);
-	scene->addActor(*box);
+	
 }
 
 void PhysicsEngine::AddSphere(PxVec3 loc, PxReal dim)
@@ -62,7 +62,7 @@ void PhysicsEngine::AddSphere(PxVec3 loc, PxReal dim)
 	PxRigidDynamic* sphere = physics->createRigidDynamic(PxTransform(loc));
 	sphere->createShape(PxSphereGeometry(dim), *default_material);
 	PxRigidBodyExt::updateMassAndInertia(*sphere, 1.f);
-	scene->addActor(*sphere);
+	
 }
 
 void PhysicsEngine::AddSphere(PxVec3 loc, PxReal dim, PxReal statFric, PxReal dynmFriction, PxReal bouncyness)
@@ -71,7 +71,7 @@ void PhysicsEngine::AddSphere(PxVec3 loc, PxReal dim, PxReal statFric, PxReal dy
 	PxMaterial* mat = physics->createMaterial(statFric, dynmFriction, bouncyness);
 	sphere->createShape(PxSphereGeometry(dim), *mat);
 	PxRigidBodyExt::updateMassAndInertia(*sphere, 1.f);
-	scene->addActor(*sphere);
+	
 }
 
 bool PhysicsEngine::InitPhysics()
@@ -119,24 +119,18 @@ bool PhysicsEngine::InitPhysics()
 		scenceDesc.filterShader = PxDefaultSimulationFilterShader;
 	}
 	
-	scene = physics->createScene(scenceDesc);
-
-	if (!scene)
-	{
-		return false;
-	}
-
+	scene = Scene(physics, scenceDesc);
 
 	//create base plane and set gravity
 	default_material = physics->createMaterial(1.f, 1.f, 0.f);
-	scene->setGravity(PxVec3(0.f, -9.81f, 0.f));
+	
 
 
 	//create floor
 	Plane plane = Plane("Ground", physics, default_material);
-	plane.CreateShape(PxVec3(0, 1, 0), PxVec3(1, 1, 1), default_material);
+	plane.CreateStatic(PxVec3(0, 1, 0), PxVec3(1, 1, 1), default_material);
 
-	scene->addActor(*plane.GetActor());
+	scene.AddActor(&plane);
 	
 
 
@@ -148,8 +142,8 @@ bool PhysicsEngine::InitPhysics()
 
 void PhysicsEngine::PxRelease()
 {
-	if (scene)
-		scene->release();
+	if (scene.GetScene())
+		scene.GetScene()->release();
 	if (vd_connection)
 		vd_connection->release();
 	if (physics)

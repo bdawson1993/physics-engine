@@ -13,7 +13,7 @@ public:
 		
 	};
 
-	void CreateShape(PxVec3 pos, PxVec3 size, PxMaterial* mat);
+	void CreateStatic(PxVec3 pos, PxVec3 size, PxMaterial* mat);
 
 private:
 

@@ -1,23 +1,23 @@
 #pragma once
-
-#include <vector>
 #include <PxPhysicsAPI.h>
+#include <vector>
+#include "Actor.h"
 
-
-
-using namespace physx;
 using namespace std;
+using namespace physx;
 
 class Scene
 {
 public:
-	Scene();
-	~Scene();
-	PxScene* GetScene();
-	void Update();
-	void AddActor();
-	void InitScene(PxScene* px);
+	vector<Actor*> sceneObj;
 
+	Scene();
+	Scene(PxPhysics* physics, PxSceneDesc desc);
+	
+
+	void AddActor(Actor* actor);
+	Actor* GetActor(string name);
+	PxScene* GetScene();
 
 private:
 	PxScene* scene;

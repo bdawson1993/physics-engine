@@ -4,8 +4,8 @@
 #include <iomanip>
 #include <Windows.h>
 #include <PxPhysicsAPI.h>
-#include <map>
 #include <string>
+#include "Scene.h"
 
 
 
@@ -18,10 +18,11 @@ using namespace std;
 class PhysicsEngine
 {
 private:
+	
 	PxPhysics* physics;
 	PxFoundation* foundation;
 	debugger::comm::PvdConnection* vd_connection;
-	PxScene* scene;
+	Scene scene;
 	bool isLoaded;
 	PxMaterial* default_material;
 

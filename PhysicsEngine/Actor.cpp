@@ -12,7 +12,20 @@ PxActor* Actor::GetActor()
 	return actor;
 }
 
-void Actor::CreateShape(PxVec3 pos, PxVec3 size, PxMaterial * mat)
+string Actor::GetName()
+{
+	return name;
+}
+
+void Actor::CreateDynamic(PxVec3 pos, PxVec3 size, PxMaterial * mat)
+{
+}
+
+void Actor::CreateStatic(PxVec3 pos, PxVec3 size, PxMaterial* mat)
+{
+}
+
+void Actor::Update()
 {
 }
 
