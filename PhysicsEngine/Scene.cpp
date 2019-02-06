@@ -6,25 +6,9 @@ Scene::Scene()
 {
 }
 
-Scene::Scene(PxPhysics* physics)
+Scene::Scene(PxPhysics* physics, PxSceneDesc desc)
 {
-	//create scence
-	PxSceneDesc scenceDesc(physics->getTolerancesScale());
-
-	//use CPU
-	if (!scenceDesc.cpuDispatcher)
-	{
-		PxDefaultCpuDispatcher* mCpuDispacher = PxDefaultCpuDispatcherCreate(1);
-		scenceDesc.cpuDispatcher = mCpuDispacher;
-	}
-
-
-	if (!scenceDesc.filterShader)
-	{
-		scenceDesc.filterShader = PxDefaultSimulationFilterShader;
-	}
-
-	scene = physics->createScene(scenceDesc);
+	scene = physics->createScene(desc);
 	scene->setGravity(PxVec3(0.f, -9.81f, 0.f));
 }
 
