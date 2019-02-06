@@ -90,23 +90,6 @@ bool PhysicsEngine::InitPhysics()
 
 
 
-	//create scence
-	PxSceneDesc scenceDesc(physics->getTolerancesScale());
-
-	//use CPU
-	if (!scenceDesc.cpuDispatcher)
-	{
-		PxDefaultCpuDispatcher* mCpuDispacher = PxDefaultCpuDispatcherCreate(1);
-		scenceDesc.cpuDispatcher = mCpuDispacher;
-	}
-
-
-	if (!scenceDesc.filterShader)
-	{
-		scenceDesc.filterShader = PxDefaultSimulationFilterShader;
-	}
-
-	scene = Scene(physics, scenceDesc);
 
 	//create base plane and set gravity
 	default_material = physics->createMaterial(1.f, 1.f, 0.f);

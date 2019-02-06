@@ -12,7 +12,7 @@ public:
 	vector<Actor*> sceneObj;
 
 	Scene();
-	Scene(PxPhysics* physics, PxSceneDesc desc);
+	Scene(PxPhysics* physics);
 	
 
 	void AddActor(Actor* actor);
