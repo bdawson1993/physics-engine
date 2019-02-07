@@ -17,6 +17,10 @@ string Actor::GetName()
 	return name;
 }
 
+Actor::Actor()
+{
+}
+
 void Actor::CreateDynamic(PxVec3 pos, PxVec3 size, PxMaterial * mat)
 {
 }
@@ -33,8 +37,7 @@ void Actor::CreateStatic()
 {
 }
 
-void Actor::Update()
-{
-}
+
+
 
 

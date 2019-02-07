@@ -2,17 +2,13 @@
 //
 
 #include "pch.h"
-#include "PhysicsEngine.h"
+#include "CustomEngine.h"
 
-
-
-
-
-
-
-int main()
+int main(int argc, char* argv[])
 {
-	PhysicsEngine physics;
+	CustomEngine physics;
+	physics.SceneSetup();
+
 	PxReal time = 1.f / 60.0f;
 	physics.Update(time);
 

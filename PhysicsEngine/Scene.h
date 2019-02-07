@@ -2,6 +2,9 @@
 #include <PxPhysicsAPI.h>
 #include <vector>
 #include "Actor.h"
+#include <Windows.h>
+#include "BasicShapes.h"
+#include <iostream>
 
 using namespace std;
 using namespace physx;
@@ -9,17 +12,20 @@ using namespace physx;
 class Scene
 {
 public:
-	vector<Actor*> sceneObj;
+	vector<Actor> sceneObj;
 
 	Scene();
-	Scene(PxPhysics* physics, PxSceneDesc desc);
+	Scene(PxPhysics* physics);
 	
 
-	void AddActor(Actor* actor);
-	Actor* GetActor(string name);
+	void AddActor(Actor& actor);
+	Actor GetActor(string name);
 	PxScene* GetScene();
+	void ListActors();
 
 private:
 	PxScene* scene;
 
+
 };
+

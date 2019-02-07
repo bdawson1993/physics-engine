@@ -57,6 +57,9 @@
     <ClInclude Include="Scene.h">
       <Filter>Header Files\Physics Engine</Filter>
     </ClInclude>
+    <ClInclude Include="CustomEngine.h">
+      <Filter>Header Files\Physics Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -81,6 +84,9 @@
       <Filter>Source Files\Physics Engine</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
+      <Filter>Source Files\Physics Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomEngine.cpp">
       <Filter>Source Files\Physics Engine</Filter>
     </ClCompile>
   </ItemGroup>

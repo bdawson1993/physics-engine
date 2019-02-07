@@ -22,17 +22,11 @@ PhysicsEngine::~PhysicsEngine()
 
 void PhysicsEngine::Update(PxReal delta_time)
 {
-	Sphere sp = Sphere("ball", physics);
-	sp.CreateDynamic(PxVec3(5, 20, 5), 3, default_material);
-	scene.AddActor(&sp);
-
-
 	if (isLoaded == true)
 	{
-
-
 		while (!GetAsyncKeyState(VK_ESCAPE))
 		{
+			CustomUpdate();
 			scene.GetScene()->simulate(delta_time);
 			scene.GetScene()->fetchResults(true);
 			Sleep(10);
@@ -42,9 +36,17 @@ void PhysicsEngine::Update(PxReal delta_time)
 
 }
 
+void PhysicsEngine::CustomUpdate()
+{
+}
+
 Scene* PhysicsEngine::GetScene()
 {
 	return &scene;
+}
+
+void PhysicsEngine::SceneSetup()
+{
 }
 
 bool PhysicsEngine::InitPhysics()
@@ -74,44 +76,20 @@ bool PhysicsEngine::InitPhysics()
 	PxInitExtensions(*physics);
 
 
-	//create scence
-	PxSceneDesc scenceDesc(physics->getTolerancesScale());
-
-	//use CPU
-	if (!scenceDesc.cpuDispatcher)
-	{
-		PxDefaultCpuDispatcher* mCpuDispacher = PxDefaultCpuDispatcherCreate(1);
-		scenceDesc.cpuDispatcher = mCpuDispacher;
-	}
+	//create scene
+	scene = Scene(physics);
 
 
-	if (!scenceDesc.filterShader)
-	{
-		scenceDesc.filterShader = PxDefaultSimulationFilterShader;
-	}
-
-	scene = Scene(physics, scenceDesc);
-
-
-	//create base plane and set gravity
+	//create default material
 	default_material = physics->createMaterial(1.f, 1.f, 0.f);
-
-
 
 	//create floor
 	Plane plane = Plane("Ground", physics);
 	plane.CreateStatic(PxVec3(0, 1, 0), PxVec3(1, 1, 1), default_material);
+	scene.AddActor(plane);
 
-	scene.AddActor(&plane);
-
-	Cube cube = Cube("cube", physics);
-	cube.CreateDynamic(PxVec3(1, 1, 1), PxVec3(.5f, .5f, .5f), default_material);
-	scene.AddActor(&cube);
-
+	
 	return true;
-
-
-
 }
 
 void PhysicsEngine::PxRelease()
