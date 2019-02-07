@@ -1,6 +1,3 @@
 ﻿C:\Program Files\Visual Studio\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (ConsoleApplication1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  PhysicsEngine.cpp
-c:\users\bdaws\source\repos\physics engine\physicsengine\physicsengine.cpp(36): warning C4244: 'argument': conversion from 'int' to 'physx::PxReal', possible loss of data
   main.cpp
-  Generating Code...
   PhysicsEngine.vcxproj -> C:\Users\bdaws\source\repos\Physics Engine\x64\Debug\PhysicsEngine.exe

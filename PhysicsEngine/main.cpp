@@ -2,8 +2,10 @@
 //
 
 #include "pch.h"
-#include <iostream>
 #include "PhysicsEngine.h"
+
+
+
 
 
 
@@ -12,8 +14,11 @@ int main()
 {
 	PhysicsEngine physics;
 	PxReal time = 1.f / 60.0f;
-
 	physics.Update(time);
 
-
+	return 0;
 }
+
+
+
+

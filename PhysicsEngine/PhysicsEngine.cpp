@@ -5,16 +5,13 @@
 
 PhysicsEngine::PhysicsEngine()
 {
-	if (InitPhysics() == false)
+	if (InitPhysics() == true)
 	{
-		std::cout << "Physics Init Failed" << std::endl;
-		isLoaded = false;
+		isLoaded = true;
 	}
 	else
 	{
-		std::cout << "Physics Init Complete" << std::endl;
-		isLoaded = true;
-
+		throw exception("Failed To Init Physics");
 	}
 }
 
@@ -25,20 +22,6 @@ PhysicsEngine::~PhysicsEngine()
 
 void PhysicsEngine::Update(PxReal delta_time)
 {
-	for (int x = 1; x < 10; x++)
-	{
-		for (int y = 1; y < 10; y++)
-		{
-			for (int z = 1; z < 10; z++)
-			{
-
-				Cube cube = Cube("cube" + x, physics);
-				cube.CreateDynamic(PxVec3(x, y, z), PxVec3(.5f, .5f, .5f), default_material);
-				scene.AddActor(&cube);
-			}
-		}
-	}
-
 	Sphere sp = Sphere("ball", physics);
 	sp.CreateDynamic(PxVec3(5, 20, 5), 3, default_material);
 	scene.AddActor(&sp);
@@ -52,11 +35,16 @@ void PhysicsEngine::Update(PxReal delta_time)
 		{
 			scene.GetScene()->simulate(delta_time);
 			scene.GetScene()->fetchResults(true);
-			Sleep(100);
+			Sleep(10);
 		}
 
 	}
 
+}
+
+Scene* PhysicsEngine::GetScene()
+{
+	return &scene;
 }
 
 bool PhysicsEngine::InitPhysics()
@@ -108,7 +96,7 @@ bool PhysicsEngine::InitPhysics()
 	//create base plane and set gravity
 	default_material = physics->createMaterial(1.f, 1.f, 0.f);
 
-	
+
 
 	//create floor
 	Plane plane = Plane("Ground", physics);
@@ -116,7 +104,9 @@ bool PhysicsEngine::InitPhysics()
 
 	scene.AddActor(&plane);
 
-
+	Cube cube = Cube("cube", physics);
+	cube.CreateDynamic(PxVec3(1, 1, 1), PxVec3(.5f, .5f, .5f), default_material);
+	scene.AddActor(&cube);
 
 	return true;
 

@@ -35,5 +35,7 @@ public:
 	PhysicsEngine();
 	~PhysicsEngine();
 
+	
 	void Update(PxReal delta_time);
+	Scene* GetScene();
 };

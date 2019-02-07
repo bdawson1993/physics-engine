@@ -19,18 +19,21 @@
     <Filter Include="Header Files\Basic Shapes">
       <UniqueIdentifier>{fdef58ac-c9c6-4261-b50d-d1b1af82878e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Physics Engine">
+      <UniqueIdentifier>{19ba7d0b-a206-4fde-b455-3fc2a4d9fc0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics Engine">
+      <UniqueIdentifier>{07c316c7-9d6b-4fb2-ace2-bd26e7e68fd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics">
+      <UniqueIdentifier>{da13218d-b29b-44bb-a7be-2e090f32f14b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{2f0de585-b671-407c-968f-fe82415a45c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicsEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Actor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cube.h">
@@ -45,21 +48,21 @@
     <ClInclude Include="BasicShapes.h">
       <Filter>Header Files\Basic Shapes</Filter>
     </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>Header Files\Physics Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsEngine.h">
+      <Filter>Header Files\Physics Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Header Files\Physics Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicsEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Actor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Cube.cpp">
@@ -70,6 +73,15 @@
     </ClCompile>
     <ClCompile Include="Sphere.cpp">
       <Filter>Source Files\Basic Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Source Files\Physics Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsEngine.cpp">
+      <Filter>Source Files\Physics Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files\Physics Engine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
