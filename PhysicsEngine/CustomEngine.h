@@ -1,6 +1,7 @@
 #pragma once
 #include "PhysicsEngine.h"
 #include "BasicShapes.h"
+#include "Catapult.h"
 
 class CustomEngine : public PhysicsEngine
 {

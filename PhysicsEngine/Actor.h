@@ -9,10 +9,15 @@ class Actor
 {
 
 public:
-	Actor(string name, PxPhysics *physics);
+	Actor(string name, PxPhysics *physics) : 
+		actor(0)
+	{
+		this->name = name;
+		this->physics = physics;
+		
+	};
 	PxRigidActor* GetActor();
 	string GetName();
-	Actor();
 	
 
 protected:

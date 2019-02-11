@@ -1,11 +1,7 @@
 #include "pch.h"
 #include "Actor.h"
 
-Actor::Actor(string name, PxPhysics *physics)
-{
-	this->name = name;
-	this->physics = physics;
-}
+
 
 PxRigidActor* Actor::GetActor()
 {
@@ -17,9 +13,6 @@ string Actor::GetName()
 	return name;
 }
 
-Actor::Actor()
-{
-}
 
 void Actor::CreateDynamic(PxVec3 pos, PxVec3 size, PxMaterial * mat)
 {

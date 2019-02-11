@@ -60,6 +60,9 @@
     <ClInclude Include="CustomEngine.h">
       <Filter>Header Files\Physics Engine</Filter>
     </ClInclude>
+    <ClInclude Include="Catapult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -88,6 +91,9 @@
     </ClCompile>
     <ClCompile Include="CustomEngine.cpp">
       <Filter>Source Files\Physics Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Catapult.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
