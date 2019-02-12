@@ -1,3 +1,4 @@
+#include "ConvexMesh.h"
 #include "ConvexMesh.h
 
 ConvexShape::CreateShape(vector<PxVec3>& verts, PxTransform& pose=PxTransform(PxIdentity), PxReal density=1.f)
@@ -8,4 +9,11 @@ ConvexShape::CreateShape(vector<PxVec3>& verts, PxTransform& pose=PxTransform(Px
 	mesh_desc.points.data = &verts.front();
 	mesh_desc.flags = PxConvexFlag::eCOMPUTE_CONVEX;
 	mesh_desc.vertexLimit = 256;
+
+	return physics->createShape()
+}
+
+ConvexMesh::ConvexMesh(PxPhysics * physics)
+{
+	this->physics = physics;
 }
