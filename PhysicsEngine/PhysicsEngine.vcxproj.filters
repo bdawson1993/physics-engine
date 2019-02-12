@@ -63,6 +63,18 @@
     <ClInclude Include="Catapult.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CatapultArm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CatapultBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvexMesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -92,7 +104,10 @@
     <ClCompile Include="CustomEngine.cpp">
       <Filter>Source Files\Physics Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Catapult.cpp">
+    <ClCompile Include="CatapultBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConvexMesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
