@@ -3,12 +3,13 @@
 
 void CustomEngine::SceneSetup()
 {
-	Cube cub = Cube("cube", physics);
+	CatapultBase cat = CatapultBase("base", physics);
+	cat.CreateDynamic();
 
-	cub.CreateDynamic(PxVec3(1, 1, 1), PxVec3(1, 1, 1), default_material);
+	scene.AddActor(cat);
 
 	
-	scene.AddActor(cub);
+	
 	
 
 }
