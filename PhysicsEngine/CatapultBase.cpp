@@ -25,6 +25,9 @@ void Catapult::CreateDynamic()
 	bottom->setLocalPose(PxTransform(PxTransform(PxVec3(1,0,-1))));
 	actor->attachShape(*bottom);
 
+
+
+	//left arm
 	//left V
 	PxShape* lLeftArm = physics->createShape(PxBoxGeometry(1.0f,1.0f, 0.5f), *mat);
 	lLeftArm->setLocalPose(PxTransform(PxVec3(1,0,1)));
@@ -34,5 +37,19 @@ void Catapult::CreateDynamic()
 	PxShape* lRightArm = physics->createShape(PxBoxGeometry(1.0f,1.0f, 0.5f), *mat);
 	lLeftArm->setLocalPose(PxTransform(PxVec3(1,0,-1)));
 	actor->attachShape(*lRightArm);
+
+
+
+	//right arm
+	//left V
+	PxShape* rLeftArm = physics->createShape(PxBoxGeometry(1.0f,1.0f, 0.5f), *mat);
+	lLeftArm->setLocalPose(PxTransform(PxVec3(-1,0,1)));
+	actor->attachShape(*rLeftArm);
+
+	//right v
+	PxShape* rRightArm = physics->createShape(PxBoxGeometry(1.0f,1.0f, 0.5f), *mat);
+	lLeftArm->setLocalPose(PxTransform(PxVec3(-1,0,-1)));
+	actor->attachShape(*rRightArm);
+
 
 }
