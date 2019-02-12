@@ -1,8 +1,10 @@
 #pragma once
 
 #include "PxPhysicsAPI.h"
+#include <vector>
 
-using namespace phys;
+using namespace physx;
+using namespace std;
 
 class Shape
 {
@@ -10,7 +12,7 @@ class Shape
         Shape();
 
     protected:
-        PxGemometry* shape;
-        virtual PxGemometry* CreateShape();
+		PxGeometry* shape;
+       
 
 };

@@ -66,9 +66,6 @@
     <ClInclude Include="CustomEngine.h">
       <Filter>Header Files\Physics Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Catapult.h">
-      <Filter>Header Files\Game Objects</Filter>
-    </ClInclude>
     <ClInclude Include="CatapultArm.h">
       <Filter>Header Files\Game Objects</Filter>
     </ClInclude>
@@ -115,6 +112,9 @@
     </ClCompile>
     <ClCompile Include="ConvexMesh.cpp">
       <Filter>Source Files\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

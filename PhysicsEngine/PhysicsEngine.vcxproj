@@ -158,7 +158,6 @@
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="BasicShapes.h" />
-    <ClInclude Include="Catapult.h" />
     <ClInclude Include="CatapultArm.h" />
     <ClInclude Include="CatapultBase.h" />
     <ClInclude Include="ConvexMesh.h" />
@@ -187,6 +186,7 @@
     <ClCompile Include="PhysicsEngine.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Sphere.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

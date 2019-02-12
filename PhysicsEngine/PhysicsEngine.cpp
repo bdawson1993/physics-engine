@@ -29,7 +29,6 @@ void PhysicsEngine::Update(PxReal delta_time)
 			CustomUpdate();
 			scene.GetScene()->simulate(delta_time);
 			scene.GetScene()->fetchResults(true);
-			Sleep(10);
 		}
 
 	}

@@ -3,18 +3,18 @@
 
 void CustomEngine::SceneSetup()
 {
-	Catapult cap = Catapult("hello", physics);
-	cap.CreateDynamic();
+	Cube cub = Cube("cube", physics);
+
+	cub.CreateDynamic(PxVec3(1, 1, 1), PxVec3(1, 1, 1), default_material);
 
 	
-	scene.AddActor(cap);
+	scene.AddActor(cub);
 	
 
 }
 
 void CustomEngine::CustomUpdate()
 {
-	PxRigidDynamic* captupult = (PxRigidDynamic*) scene.GetActor("hello").GetActor();
-
+	
 	
 }
