@@ -13,4 +13,4 @@ class Shape
         PxGemometry* shape;
         virtual PxGemometry* CreateShape();
 
-}
+};

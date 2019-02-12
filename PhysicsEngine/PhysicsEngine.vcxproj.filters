@@ -31,6 +31,12 @@
     <Filter Include="Source Files\Graphics">
       <UniqueIdentifier>{2f0de585-b671-407c-968f-fe82415a45c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game Objects">
+      <UniqueIdentifier>{21f9b6cb-6ae8-490c-82e4-fb64d27642aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects">
+      <UniqueIdentifier>{677661a1-0f26-46ff-969b-da5ea6f69965}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -61,19 +67,19 @@
       <Filter>Header Files\Physics Engine</Filter>
     </ClInclude>
     <ClInclude Include="Catapult.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="CatapultArm.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="CatapultBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ConvexMesh.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="Shape.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Basic Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvexMesh.h">
+      <Filter>Header Files\Basic Shapes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -105,10 +111,10 @@
       <Filter>Source Files\Physics Engine</Filter>
     </ClCompile>
     <ClCompile Include="CatapultBase.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game Objects</Filter>
     </ClCompile>
     <ClCompile Include="ConvexMesh.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game Objects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
