@@ -3,10 +3,9 @@
 
 void CustomEngine::SceneSetup()
 {
-	
-
 	Catapult cap = Catapult("hello", physics);
 	cap.CreateDynamic();
+
 	
 	scene.AddActor(cap);
 	
