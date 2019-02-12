@@ -16,6 +16,7 @@ public:
 		this->physics = physics;
 		
 	};
+
 	PxRigidActor* GetActor();
 	string GetName();
 	
@@ -27,8 +28,6 @@ protected:
 	virtual void CreateStatic();
 	
 	
-
-
 protected:
 	string name;
 	PxRigidActor* actor;
