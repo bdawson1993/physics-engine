@@ -75,9 +75,6 @@
     <ClInclude Include="ConvexMesh.h">
       <Filter>Header Files\Basic Shapes</Filter>
     </ClInclude>
-    <ClInclude Include="CollsionModifer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -115,9 +112,6 @@
     </ClCompile>
     <ClCompile Include="Shape.cpp">
       <Filter>Source Files\Basic Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="CollsionModifer.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

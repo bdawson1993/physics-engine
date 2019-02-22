@@ -1,10 +1,11 @@
 #include "pch.h"
 #include "CustomEngine.h"
-#include "CollsionModifer.h"
+
 
 void CustomEngine::SceneSetup()
 {
-	MyContactModification* coll = new MyContactModification();
+	
+	
 
 	string name = "Player";
 	Catapult* cat = new Catapult("Player", physics, scene);
@@ -13,11 +14,10 @@ void CustomEngine::SceneSetup()
 	scene.AddActor(*cube);
 
 	
-	cat->base.SetupFiltering(FilterGroup::ACTOR0, FilterGroup::ACTOR1);
-	cube->SetupFiltering(FilterGroup::ACTOR1, FilterGroup::ACTOR0);
+	
 	cube->SetTrigger(true, 0);
 
-	scene.GetScene()->setSimulationEventCallback(coll);
+	
 	
 	
 	

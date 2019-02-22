@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 
+
 using namespace physx;
 using namespace std;
 
@@ -18,7 +19,7 @@ struct FilterGroup
 };
 
 
-class Actor
+class Actor 
 {
 
 public:
@@ -27,10 +28,8 @@ public:
 
 	}
 
-	Actor(string name, PxPhysics *physics) : 
-		actor(0)
+	Actor(string name, PxPhysics *physics)
 	{
-		
 		
 		this->name = name;
 		this->physics = physics;
@@ -50,6 +49,7 @@ protected:
 	virtual void CreateDynamic();
 	virtual void CreateStatic();
 	void CreateShape(const PxGeometry& geometry, int density, PxMaterial& mat, PxVec3 local);
+	
 	
 	
 protected:

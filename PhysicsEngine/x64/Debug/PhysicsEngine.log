@@ -1,3 +1,6 @@
 ﻿C:\Program Files\Visual Studio\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (ConsoleApplication1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  CustomEngine.cpp
+  PhysicsEngine.cpp
+  Scene.cpp
+  Generating Code...
+c:\users\bdaws\source\repos\bdawson1993\physics-engine\physicsengine\scene.cpp(62): warning C4715: 'Scene::GetActor': not all control paths return a value
   PhysicsEngine.vcxproj -> C:\Users\bdaws\Source\Repos\bdawson1993\physics-engine\x64\Debug\PhysicsEngine.exe

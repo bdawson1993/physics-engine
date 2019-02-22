@@ -40,5 +40,6 @@ protected:
 	Scene scene;
 	bool isLoaded;
 	PxMaterial* default_material;
+	
 
 };

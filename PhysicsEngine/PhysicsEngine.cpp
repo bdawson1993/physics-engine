@@ -91,7 +91,7 @@ bool PhysicsEngine::InitPhysics()
 	scene.AddActor(plane);
 
 	
-
+	scene.GetScene()->setSimulationEventCallback(&scene);
 	
 	return true;
 }

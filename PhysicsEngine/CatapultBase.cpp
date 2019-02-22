@@ -40,3 +40,4 @@ Catapult::Catapult(string name, PxPhysics * phy, Scene scene)
 	scene.AddActor(base);
 	scene.AddActor(arm);
 }
+
