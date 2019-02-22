@@ -1,17 +1,37 @@
 #pragma once
 #include "PxPhysicsAPI.h"
 #include <string>
+#include <vector>
 
 using namespace physx;
 using namespace std;
+
+struct FilterGroup
+{
+	enum Enum
+	{
+		ACTOR0 = (1 << 0),
+		ACTOR1 = (1 << 1),
+		ACTOR2 = (1 << 2)
+		//add more if you need
+	};
+};
+
 
 class Actor
 {
 
 public:
+	Actor()
+	{
+
+	}
+
 	Actor(string name, PxPhysics *physics) : 
 		actor(0)
 	{
+		
+		
 		this->name = name;
 		this->physics = physics;
 		
@@ -19,6 +39,9 @@ public:
 
 	PxRigidActor* GetActor();
 	string GetName();
+	void SetTrigger(bool value, PxU32 shape_index=-1);
+	void SetupFiltering(PxU32 filterGroup, PxU32 filterMask, PxU32 shape_index=-1);
+	vector<PxShape*> GetShapes(PxU32 index);
 	
 
 protected:

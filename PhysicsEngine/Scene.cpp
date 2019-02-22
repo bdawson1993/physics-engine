@@ -12,6 +12,8 @@ Scene::Scene(PxPhysics* physics)
 	//create scence
 	PxSceneDesc scenceDesc(physics->getTolerancesScale());
 
+	
+
 	//use CPU
 	if (!scenceDesc.cpuDispatcher)
 	{
@@ -23,11 +25,17 @@ Scene::Scene(PxPhysics* physics)
 	if (!scenceDesc.filterShader)
 	{
 		scenceDesc.filterShader = PxDefaultSimulationFilterShader;
+		
 	}
 
-
+	
 	scene = physics->createScene(scenceDesc);
 	scene->setGravity(PxVec3(0.f, -9.81f, 0.f));
+
+	scene->setVisualizationParameter(PxVisualizationParameter::eJOINT_LOCAL_FRAMES, true);
+	scene->setVisualizationParameter(PxVisualizationParameter::eJOINT_LIMITS, true);
+
+	
 }
 
 void Scene::AddActor(Actor& actor)

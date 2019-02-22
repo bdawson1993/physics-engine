@@ -158,8 +158,8 @@
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="BasicShapes.h" />
-    <ClInclude Include="CatapultArm.h" />
     <ClInclude Include="CatapultBase.h" />
+    <ClInclude Include="CollsionModifer.h" />
     <ClInclude Include="ConvexMesh.h" />
     <ClInclude Include="Cube.h" />
     <ClInclude Include="CustomEngine.h" />
@@ -173,6 +173,7 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="CatapultBase.cpp" />
+    <ClCompile Include="CollsionModifer.cpp" />
     <ClCompile Include="ConvexMesh.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="CustomEngine.cpp" />

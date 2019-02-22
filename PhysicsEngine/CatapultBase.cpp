@@ -3,10 +3,10 @@
 
 Catapult::Catapult(string name, PxPhysics * phy, Scene scene)
 {
-	CatapultBase base = CatapultBase(name, phy);
+	base = CatapultBase(name, phy);
 	base.CreateDynamic();
 
-	CatapultArm arm =  CatapultArm(name, phy);
+	arm =  CatapultArm(name, phy);
 	arm.CreateDynamic();
 
 
@@ -18,6 +18,8 @@ Catapult::Catapult(string name, PxPhysics * phy, Scene scene)
 		(PxRigidActor*)base.GetActor(), PxTransform(4.5f, 0.5f, 0.0f));
 
 	leftJoint->setConstraintFlag(PxConstraintFlag::eVISUALIZATION, true);
+	
+
 	leftJoint->setLimit(PxJointAngularLimitPair(-PxPi / rad, PxPi / rad, 1.0f));
 	leftJoint->setRevoluteJointFlag(PxRevoluteJointFlag::eLIMIT_ENABLED, true);
 	leftJoint->setRevoluteJointFlag(PxRevoluteJointFlag::eDRIVE_ENABLED, true);

@@ -66,9 +66,6 @@
     <ClInclude Include="CustomEngine.h">
       <Filter>Header Files\Physics Engine</Filter>
     </ClInclude>
-    <ClInclude Include="CatapultArm.h">
-      <Filter>Header Files\Game Objects</Filter>
-    </ClInclude>
     <ClInclude Include="CatapultBase.h">
       <Filter>Header Files\Game Objects</Filter>
     </ClInclude>
@@ -77,6 +74,9 @@
     </ClInclude>
     <ClInclude Include="ConvexMesh.h">
       <Filter>Header Files\Basic Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="CollsionModifer.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="Shape.cpp">
       <Filter>Source Files\Basic Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="CollsionModifer.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

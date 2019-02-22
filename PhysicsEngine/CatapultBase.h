@@ -7,6 +7,11 @@ using namespace std;
 class CatapultBase : public Actor
 {
 public:
+	CatapultBase()
+	{
+
+	};
+
 	CatapultBase(string name, PxPhysics* phy) : Actor(name, phy)
 	{
 		
@@ -48,6 +53,10 @@ public:
 class CatapultArm : public Actor
 {
 public:
+	CatapultArm()
+	{
+
+	};
 
 	CatapultArm(string name, PxPhysics* phy) : Actor(name, phy)
 	{
@@ -69,6 +78,8 @@ public:
 class Catapult
 {
 public:
+	CatapultBase base;
+	CatapultArm arm;
 	Catapult(string name, PxPhysics* phy, Scene scene);
 
 

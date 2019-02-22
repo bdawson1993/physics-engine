@@ -72,6 +72,9 @@ bool PhysicsEngine::InitPhysics()
 	//connect to Visual debugger
 	vd_connection = PxVisualDebuggerExt::createConnection(physics->getPvdConnectionManager(), "localhost", 5425, 100,
 		PxVisualDebuggerExt::getAllConnectionFlags());
+	
+
+	
 	PxInitExtensions(*physics);
 
 
@@ -86,6 +89,8 @@ bool PhysicsEngine::InitPhysics()
 	Plane plane = Plane("Ground", physics);
 	plane.CreateStatic(PxVec3(0, 1, 0), PxVec3(1, 1, 1), default_material);
 	scene.AddActor(plane);
+
+	
 
 	
 	return true;
