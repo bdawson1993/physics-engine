@@ -3,10 +3,9 @@
 
 void CustomEngine::SceneSetup()
 {
-	CatapultBase cat = CatapultBase("base", physics);
-	cat.CreateDynamic();
+	string name = "Player";
+	Catapult* cat = new Catapult("Player", physics, scene);
 
-	scene.AddActor(cat);
 
 	
 	

@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Actor.h"
+#include "Scene.h"
 
 using namespace std;
 class CatapultBase : public Actor
@@ -44,17 +45,32 @@ public:
 	}
 };
 
-class CaptpultArm : public Actor
+class CatapultArm : public Actor
 {
 public:
 
-	CaptpultArm(string name, PxPhysics* phy) : Actor(name, phy)
+	CatapultArm(string name, PxPhysics* phy) : Actor(name, phy)
 	{
 
 	};
 
 	void CreateDynamic()
 	{
+		PxMaterial* mat = physics->createMaterial(1, 1, 1);
+		actor = (PxRigidDynamic*)physics->createRigidDynamic(PxTransform(PxVec3(0, 5, 0)));
 
+		CreateShape(PxBoxGeometry(1.5f, 0.5f, 0.5f), 100, *mat, PxVec3(0.0f, 1.0f, 0.0f));
+		CreateShape(PxBoxGeometry(.5f, 2.0f, 0.5f), 100, *mat, PxVec3(0.0f, 3.50f, 0.0f));
+		CreateShape(PxBoxGeometry(1.0f, 1.0f, 1.0f), 100, *mat, PxVec3(0.0f, 6.5f, 0.0f));
+		
 	}
 };
+
+class Catapult
+{
+public:
+	Catapult(string name, PxPhysics* phy, Scene scene);
+
+
+};
+
