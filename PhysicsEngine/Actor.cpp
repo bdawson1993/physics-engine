@@ -30,6 +30,15 @@ void Actor::CreateStatic()
 {
 }
 
+void  Actor::CreateShape(const PxGeometry& geometry, int density, PxMaterial& mat, PxVec3 local)
+{
+
+	PxShape* shape = physics->createShape(geometry, mat);
+	PxRigidBodyExt::updateMassAndInertia(*(PxRigidDynamic*)actor, density);
+	shape->setLocalPose(PxTransform(local));
+	actor->attachShape(*shape);
+}
+
 
 
 

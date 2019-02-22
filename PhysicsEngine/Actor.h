@@ -26,6 +26,7 @@ protected:
 	virtual void CreateStatic(PxVec3 pos, PxVec3 size, PxMaterial* mat);
 	virtual void CreateDynamic();
 	virtual void CreateStatic();
+	void CreateShape(const PxGeometry& geometry, int density, PxMaterial& mat, PxVec3 local);
 	
 	
 protected:
