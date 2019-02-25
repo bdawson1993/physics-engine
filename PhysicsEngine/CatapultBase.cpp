@@ -1,13 +1,15 @@
 #include "pch.h"
 #include "CatapultBase.h"
 
-Catapult::Catapult(string name, PxPhysics * phy, Scene scene)
+Catapult::Catapult(const char* name, PxPhysics * phy, Scene scene)
 {
 	base = CatapultBase(name, phy);
 	base.CreateDynamic();
+	base.SetName();
 
 	arm =  CatapultArm(name, phy);
 	arm.CreateDynamic();
+	arm.SetName();
 
 
 

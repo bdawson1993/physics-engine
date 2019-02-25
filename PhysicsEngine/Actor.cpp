@@ -13,6 +13,11 @@ string Actor::GetName()
 	return name;
 }
 
+void Actor::SetName()
+{
+	actor->setName(name);
+}
+
 void Actor::SetTrigger(bool value, PxU32 shape_index)
 {
 	std::vector<PxShape*> shape_list = GetShapes(shape_index);
@@ -45,21 +50,24 @@ vector<PxShape*> Actor::GetShapes(PxU32 index)
 }
 
 
-
 void Actor::CreateDynamic(PxVec3 pos, PxVec3 size, PxMaterial * mat)
 {
+	
 }
 
 void Actor::CreateStatic(PxVec3 pos, PxVec3 size, PxMaterial* mat)
 {
+	
 }
 
 void Actor::CreateDynamic()
 {
+	
 }
 
 void Actor::CreateStatic()
 {
+	
 }
 
 void  Actor::CreateShape(const PxGeometry& geometry, int density, PxMaterial& mat, PxVec3 local)

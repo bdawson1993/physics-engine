@@ -4,7 +4,7 @@
 class Cube : public Actor
 {
 public:
-	Cube(string name, PxPhysics* physics) : Actor::Actor(name, physics)
+	Cube(const char* name, PxPhysics* physics) : Actor::Actor(name, physics)
 	{
 
 	};

@@ -8,7 +8,7 @@ using namespace std;
 class Plane : public Actor
 {
 public:
-	Plane(string name, PxPhysics* physics) : Actor::Actor(name, physics)
+	Plane(const char* name, PxPhysics* physics) : Actor::Actor(name, physics)
 	{
 		
 	};

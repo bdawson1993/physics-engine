@@ -25,19 +25,21 @@ class Actor
 public:
 	Actor()
 	{
-
+		
 	}
 
-	Actor(string name, PxPhysics *physics)
+	Actor(const char* name, PxPhysics *physics)
 	{
 		
 		this->name = name;
 		this->physics = physics;
 		
+		
 	};
 
 	PxRigidActor* GetActor();
 	string GetName();
+	void SetName();
 	void SetTrigger(bool value, PxU32 shape_index=-1);
 	void SetupFiltering(PxU32 filterGroup, PxU32 filterMask, PxU32 shape_index=-1);
 	vector<PxShape*> GetShapes(PxU32 index);
@@ -53,7 +55,7 @@ protected:
 	
 	
 protected:
-	string name;
+	const char* name;
 	PxRigidActor* actor;
 	PxPhysics* physics;
 	

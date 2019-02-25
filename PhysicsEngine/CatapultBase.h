@@ -12,7 +12,7 @@ public:
 
 	};
 
-	CatapultBase(string name, PxPhysics* phy) : Actor(name, phy)
+	CatapultBase(const char* name, PxPhysics* phy) : Actor(name, phy)
 	{
 		
 	};
@@ -59,7 +59,7 @@ public:
 
 	};
 
-	CatapultArm(string name, PxPhysics* phy) : Actor(name, phy)
+	CatapultArm(const char* name, PxPhysics* phy) : Actor(name, phy)
 	{
 
 	};
@@ -81,7 +81,7 @@ class Catapult
 public:
 	CatapultBase base;
 	CatapultArm arm;
-	Catapult(string name, PxPhysics* phy, Scene scene);
+	Catapult(const char* name, PxPhysics* phy, Scene scene);
 
 
 };

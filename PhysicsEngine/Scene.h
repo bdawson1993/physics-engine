@@ -15,8 +15,36 @@ public:
 	bool trigger = false;
 	vector<Actor> sceneObj;
 
-	Scene();
-	Scene(PxPhysics* physics);
+	Scene() {};
+	Scene(PxPhysics* physics, PxSimulationFilterShader custom_filter_shader = PxDefaultSimulationFilterShader) : filter_shader(custom_filter_shader) 
+	{
+		//create scence
+		PxSceneDesc scenceDesc(physics->getTolerancesScale());
+
+
+
+		//use CPU
+		if (!scenceDesc.cpuDispatcher)
+		{
+			PxDefaultCpuDispatcher* mCpuDispacher = PxDefaultCpuDispatcherCreate(1);
+			scenceDesc.cpuDispatcher = mCpuDispacher;
+		}
+
+
+
+		scenceDesc.filterShader = filter_shader;
+
+
+
+
+		scene = physics->createScene(scenceDesc);
+		scene->setGravity(PxVec3(0.f, -9.81f, 0.f));
+
+		scene->setVisualizationParameter(PxVisualizationParameter::eJOINT_LOCAL_FRAMES, true);
+		scene->setVisualizationParameter(PxVisualizationParameter::eJOINT_LIMITS, true);
+	
+	};
+	
 	
 
 	void AddActor(Actor& actor);
@@ -38,6 +66,7 @@ public:
 
 private:
 	PxScene* scene;
+	PxSimulationFilterShader filter_shader;
 
 
 };

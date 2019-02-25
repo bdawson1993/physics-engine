@@ -3,42 +3,9 @@
 
 
 
-Scene::Scene()
-{
-}
-
-Scene::Scene(PxPhysics* physics)
-{
-	//create scence
-	PxSceneDesc scenceDesc(physics->getTolerancesScale());
-
-	
-
-	//use CPU
-	if (!scenceDesc.cpuDispatcher)
-	{
-		PxDefaultCpuDispatcher* mCpuDispacher = PxDefaultCpuDispatcherCreate(1);
-		scenceDesc.cpuDispatcher = mCpuDispacher;
-	}
 
 
-	if (!scenceDesc.filterShader)
-	{
-		scenceDesc.filterShader = PxDefaultSimulationFilterShader;
-		
-	}
 
-	
-	scene = physics->createScene(scenceDesc);
-	scene->setGravity(PxVec3(0.f, -9.81f, 0.f));
-
-	scene->setVisualizationParameter(PxVisualizationParameter::eJOINT_LOCAL_FRAMES, true);
-	scene->setVisualizationParameter(PxVisualizationParameter::eJOINT_LIMITS, true);
-	
-
-
-	
-}
 
 void Scene::AddActor(Actor& actor)
 {
@@ -116,6 +83,10 @@ void Scene::onTrigger(PxTriggerPair * pairs, PxU32 count)
 			//check if eNOTIFY_TOUCH_FOUND trigger
 			if (pairs[i].status & PxPairFlag::eNOTIFY_TOUCH_FOUND)
 			{
+				
+				PxRigidActor* bod = (PxRigidBody*)pairs[i].otherActor;
+				cout << bod->getName() << endl;
+
 				cerr << "onTrigger::eNOTIFY_TOUCH_FOUND" << endl;
 				trigger = true;
 			}

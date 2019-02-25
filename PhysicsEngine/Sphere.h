@@ -6,7 +6,7 @@
 class Sphere : public Actor
 {
 public:
-	Sphere(string name, PxPhysics* physics) : Actor::Actor(name, physics)
+	Sphere(const char* name, PxPhysics* physics) : Actor::Actor(name, physics)
 	{
 
 	};
