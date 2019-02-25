@@ -2,6 +2,7 @@
 #include "PxPhysicsAPI.h"
 #include <string>
 #include <vector>
+#include "Extras/UserData.h"
 
 
 using namespace physx;
@@ -43,6 +44,7 @@ public:
 	void SetTrigger(bool value, PxU32 shape_index=-1);
 	void SetupFiltering(PxU32 filterGroup, PxU32 filterMask, PxU32 shape_index=-1);
 	vector<PxShape*> GetShapes(PxU32 index);
+	PxShape* GetShape(PxU32 index);
 	
 
 protected:
@@ -58,6 +60,7 @@ protected:
 	const char* name;
 	PxRigidActor* actor;
 	PxPhysics* physics;
+	vector<PxVec3> colors;
 	
 };
 

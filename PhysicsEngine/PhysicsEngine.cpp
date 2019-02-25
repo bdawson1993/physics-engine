@@ -24,12 +24,14 @@ void PhysicsEngine::Update(PxReal delta_time)
 {
 	if (isLoaded == true)
 	{
-		while (!GetAsyncKeyState(VK_ESCAPE))
-		{
-			CustomUpdate();
-			scene.GetScene()->simulate(delta_time);
-			scene.GetScene()->fetchResults(true);
-		}
+		if (pause == true)
+			return;
+
+
+		CustomUpdate();
+		scene.GetScene()->simulate(delta_time);
+		scene.GetScene()->fetchResults(true);
+
 
 	}
 
@@ -44,7 +46,23 @@ Scene* PhysicsEngine::GetScene()
 	return &scene;
 }
 
+bool PhysicsEngine::Pause()
+{
+	return pause;
+}
+
+void PhysicsEngine::Pause(bool value)
+{
+	pause = value;
+}
+
+
+
 void PhysicsEngine::SceneSetup()
+{
+}
+
+void PhysicsEngine::KeyPress(char key)
 {
 }
 
@@ -72,9 +90,9 @@ bool PhysicsEngine::InitPhysics()
 	//connect to Visual debugger
 	vd_connection = PxVisualDebuggerExt::createConnection(physics->getPvdConnectionManager(), "localhost", 5425, 100,
 		PxVisualDebuggerExt::getAllConnectionFlags());
-	
 
-	
+
+
 	PxInitExtensions(*physics);
 
 
@@ -90,11 +108,11 @@ bool PhysicsEngine::InitPhysics()
 	plane.CreateStatic(PxVec3(0, 1, 0), PxVec3(1, 1, 1), default_material);
 	scene.AddActor(plane);
 
-	
+
 	scene.GetScene()->setSimulationEventCallback(&scene);
-	
-	
-	
+
+
+
 	return true;
 }
 

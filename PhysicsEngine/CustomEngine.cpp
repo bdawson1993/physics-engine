@@ -16,7 +16,7 @@ void CustomEngine::SceneSetup()
 
 	
 	
-	cube->SetTrigger(true, 0);
+	
 	
 	
 	

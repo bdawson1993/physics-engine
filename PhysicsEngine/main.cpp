@@ -1,20 +1,25 @@
-// ConsoleApplication1.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+#include <iostream>
+#include "VisualDebugger.h"
+#include "Exception.h"
 
-#include "pch.h"
-#include "CustomEngine.h"
+using namespace std;
 
-int main(int argc, char* argv[])
+int main()
 {
-	CustomEngine physics;
-	physics.SceneSetup();
+	try
+	{
+		VisualDebugger::Init("Tutorial 3", 800, 800);
+	}
+	catch (Exception exc)
+	{
+		cerr << exc.what() << endl;
+		return 0;
+	}
 
-	PxReal time = 1.f / 60.0f;
-	physics.Update(time);
+	VisualDebugger::Start();
 
 	return 0;
 }
-
 
 
 

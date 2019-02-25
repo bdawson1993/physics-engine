@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Actor.h"
 #include "Scene.h"
+#include "Projectile.h"
 
 using namespace std;
 class CatapultBase : public Actor
@@ -79,10 +80,18 @@ public:
 class Catapult
 {
 public:
+	Scene scene;
 	CatapultBase base;
 	CatapultArm arm;
+	PxPhysics* phys;
+
 	Catapult(const char* name, PxPhysics* phy, Scene scene);
 
+	void Update();
 
+
+private:
+	PxFixedJoint* ballJoint;
+	void CreateBall();
 };
 

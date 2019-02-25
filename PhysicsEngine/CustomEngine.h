@@ -14,6 +14,8 @@ public:
 	void SceneSetup();
 
 	void CustomUpdate();
+
+	void KeyPress(char key);
 private:
 
 };

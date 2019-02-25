@@ -22,6 +22,7 @@ private:
 	
 	bool InitPhysics();
 	void PxRelease();
+	bool pause = false;
 
 public:
 	PhysicsEngine();
@@ -31,6 +32,8 @@ public:
 	void Update(PxReal delta_time);
 	virtual void CustomUpdate();
 	Scene* GetScene();
+	bool Pause();
+	void Pause(bool value);
 
 protected:
 	virtual void SceneSetup();
@@ -40,6 +43,9 @@ protected:
 	Scene scene;
 	bool isLoaded;
 	PxMaterial* default_material;
+
+	virtual void KeyPress(char key);
+
 	
 
 };

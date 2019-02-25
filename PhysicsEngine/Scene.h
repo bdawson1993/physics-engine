@@ -45,12 +45,11 @@ public:
 	
 	};
 	
-	
 
 	void AddActor(Actor& actor);
 	Actor GetActor(string name);
 	PxScene* GetScene();
-	void ListActors();
+	vector<PxActor*> GetActors();
 
 	//collsion Callbacks
 	static PxFilterFlags CustomFilterShader(PxFilterObjectAttributes attributes0, PxFilterData filterData0,

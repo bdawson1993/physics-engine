@@ -37,11 +37,14 @@
     <Filter Include="Source Files\Game Objects">
       <UniqueIdentifier>{677661a1-0f26-46ff-969b-da5ea6f69965}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Visual Debugger">
+      <UniqueIdentifier>{04b303f8-2117-4068-896b-73e23497a969}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Visual Debugger">
+      <UniqueIdentifier>{ae71698c-6695-4443-b88e-eb7ad51093d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Cube.h">
       <Filter>Header Files\Basic Shapes</Filter>
     </ClInclude>
@@ -75,12 +78,39 @@
     <ClInclude Include="ConvexMesh.h">
       <Filter>Header Files\Basic Shapes</Filter>
     </ClInclude>
+    <ClInclude Include="Extras\Camera.h">
+      <Filter>Header Files\Visual Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="Extras\GLFontData.h">
+      <Filter>Header Files\Visual Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="Extras\GLFontRenderer.h">
+      <Filter>Header Files\Visual Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="Extras\HUD.h">
+      <Filter>Header Files\Visual Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="Extras\Renderer.h">
+      <Filter>Header Files\Visual Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="Extras\UserData.h">
+      <Filter>Header Files\Visual Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="Exception.h">
+      <Filter>Header Files\Visual Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="VisualDebugger.h">
+      <Filter>Header Files\Visual Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Header Files\Game Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Cube.cpp">
@@ -112,6 +142,22 @@
     </ClCompile>
     <ClCompile Include="Shape.cpp">
       <Filter>Source Files\Basic Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Extras\Camera.cpp">
+      <Filter>Source Files\Visual Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="Extras\GLFontRenderer.cpp">
+      <Filter>Source Files\Visual Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="Extras\Renderer.cpp">
+      <Filter>Source Files\Visual Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="VisualDebugger.cpp">
+      <Filter>Source Files\Visual Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

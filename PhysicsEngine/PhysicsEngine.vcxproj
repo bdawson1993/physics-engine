@@ -100,7 +100,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
@@ -162,12 +162,21 @@
     <ClInclude Include="ConvexMesh.h" />
     <ClInclude Include="Cube.h" />
     <ClInclude Include="CustomEngine.h" />
+    <ClInclude Include="Exception.h" />
+    <ClInclude Include="Extras\Camera.h" />
+    <ClInclude Include="Extras\GLFontData.h" />
+    <ClInclude Include="Extras\GLFontRenderer.h" />
+    <ClInclude Include="Extras\HUD.h" />
+    <ClInclude Include="Extras\Renderer.h" />
+    <ClInclude Include="Extras\UserData.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PhysicsEngine.h" />
     <ClInclude Include="Plane.h" />
+    <ClInclude Include="Projectile.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="Sphere.h" />
+    <ClInclude Include="VisualDebugger.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
@@ -175,6 +184,9 @@
     <ClCompile Include="ConvexMesh.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="CustomEngine.cpp" />
+    <ClCompile Include="Extras\Camera.cpp" />
+    <ClCompile Include="Extras\GLFontRenderer.cpp" />
+    <ClCompile Include="Extras\Renderer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -184,9 +196,11 @@
     </ClCompile>
     <ClCompile Include="PhysicsEngine.cpp" />
     <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="VisualDebugger.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

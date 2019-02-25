@@ -3,10 +3,6 @@
 
 
 
-
-
-
-
 void Scene::AddActor(Actor& actor)
 {
 	sceneObj.push_back(actor);
@@ -33,12 +29,13 @@ PxScene * Scene::GetScene()
 	return scene;
 }
 
-void Scene::ListActors()
+vector<PxActor*> Scene::GetActors()
 {
-	for (int x = 0; x <= sceneObj.size() - 1; x++)
-	{
-		cout << sceneObj[x].GetName() << endl;
-	}
+	physx::PxActorTypeSelectionFlags selection_flag = PxActorTypeSelectionFlag::eRIGID_DYNAMIC | PxActorTypeSelectionFlag::eRIGID_STATIC |
+		PxActorTypeSelectionFlag::eCLOTH;
+	std::vector<PxActor*> actors(scene->getNbActors(selection_flag));
+	scene->getActors(selection_flag, (PxActor**)&actors.front(), (PxU32)actors.size());
+	return actors;
 
 }
 
