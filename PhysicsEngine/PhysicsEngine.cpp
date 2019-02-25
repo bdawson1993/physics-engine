@@ -25,13 +25,15 @@ void PhysicsEngine::Update(PxReal delta_time)
 	if (isLoaded == true)
 	{
 		if (pause == true)
+		{
 			return;
+		}
 
 
-		CustomUpdate();
+		
 		scene.GetScene()->simulate(delta_time);
 		scene.GetScene()->fetchResults(true);
-
+		CustomUpdate();
 
 	}
 
@@ -55,7 +57,6 @@ void PhysicsEngine::Pause(bool value)
 {
 	pause = value;
 }
-
 
 
 void PhysicsEngine::SceneSetup()
@@ -101,11 +102,13 @@ bool PhysicsEngine::InitPhysics()
 
 
 	//create default material
-	default_material = physics->createMaterial(1.f, 1.f, 0.f);
+	default_material = physics->createMaterial(0.35f, 0.35f, 0.0f);
 
 	//create floor
 	Plane plane = Plane("Ground", physics);
 	plane.CreateStatic(PxVec3(0, 1, 0), PxVec3(1, 1, 1), default_material);
+
+	plane.SetColor(PxVec3(0.0f, 255.0f, 0.0f));
 	scene.AddActor(plane);
 
 

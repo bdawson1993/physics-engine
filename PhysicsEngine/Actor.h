@@ -38,6 +38,9 @@ public:
 		
 	};
 
+
+
+
 	PxRigidActor* GetActor();
 	string GetName();
 	void SetName();
@@ -45,6 +48,7 @@ public:
 	void SetupFiltering(PxU32 filterGroup, PxU32 filterMask, PxU32 shape_index=-1);
 	vector<PxShape*> GetShapes(PxU32 index);
 	PxShape* GetShape(PxU32 index);
+	void SetColor(PxVec3 color);
 	
 
 protected:
@@ -52,7 +56,8 @@ protected:
 	virtual void CreateStatic(PxVec3 pos, PxVec3 size, PxMaterial* mat);
 	virtual void CreateDynamic();
 	virtual void CreateStatic();
-	void CreateShape(const PxGeometry& geometry, int density, PxMaterial& mat, PxVec3 local);
+	void CreateShape(const PxGeometry& geometry, PxMaterial& mat, int density = 1, PxVec3 local = PxVec3(0, 1, 0));
+	
 	
 	
 	

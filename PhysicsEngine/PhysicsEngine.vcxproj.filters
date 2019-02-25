@@ -69,9 +69,6 @@
     <ClInclude Include="CustomEngine.h">
       <Filter>Header Files\Physics Engine</Filter>
     </ClInclude>
-    <ClInclude Include="CatapultBase.h">
-      <Filter>Header Files\Game Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Shape.h">
       <Filter>Header Files\Basic Shapes</Filter>
     </ClInclude>
@@ -108,6 +105,12 @@
     <ClInclude Include="Projectile.h">
       <Filter>Header Files\Game Objects</Filter>
     </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files\Physics Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Catapult.h">
+      <Filter>Header Files\Game Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -134,9 +137,6 @@
     <ClCompile Include="CustomEngine.cpp">
       <Filter>Source Files\Physics Engine</Filter>
     </ClCompile>
-    <ClCompile Include="CatapultBase.cpp">
-      <Filter>Source Files\Game Objects</Filter>
-    </ClCompile>
     <ClCompile Include="ConvexMesh.cpp">
       <Filter>Source Files\Game Objects</Filter>
     </ClCompile>
@@ -156,8 +156,11 @@
       <Filter>Source Files\Visual Debugger</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Projectile.cpp">
+    <ClCompile Include="GameObject.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Catapult.cpp">
+      <Filter>Source Files\Game Objects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

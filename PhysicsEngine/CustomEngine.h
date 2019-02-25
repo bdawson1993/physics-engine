@@ -1,7 +1,7 @@
 #pragma once
 #include "PhysicsEngine.h"
 #include "BasicShapes.h"
-#include "CatapultBase.h"
+#include "Catapult.h"
 
 class CustomEngine : public PhysicsEngine
 {
@@ -17,6 +17,7 @@ public:
 
 	void KeyPress(char key);
 private:
+	Catapult* cat;
 
 };
 

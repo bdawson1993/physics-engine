@@ -134,6 +134,7 @@ namespace VisualDebugger
 		//start rendering
 		Renderer::Start(camera->getEye(), camera->getDir());
 
+		
 		if ((render_mode == DEBUG) || (render_mode == BOTH))
 		{
 			Renderer::Render(eng->GetScene()->GetScene()->getRenderBuffer());
@@ -142,7 +143,6 @@ namespace VisualDebugger
 		if ((render_mode == NORMAL) || (render_mode == BOTH))
 		{
 			std::vector<PxActor*> actors = eng->GetScene()->GetActors();
-			cout << actors.size() << endl;
 			if (actors.size())
 				Renderer::Render(&actors[0], (PxU32)actors.size());
 		}
@@ -180,6 +180,8 @@ namespace VisualDebugger
 		default:
 			break;
 		}
+
+		eng->KeyPress(key);
 	}
 
 	void UserKeyRelease(int key)
@@ -343,6 +345,8 @@ namespace VisualDebugger
 	{
 		delete camera;
 		delete eng;
+		
+		
 		
 	}
 }
