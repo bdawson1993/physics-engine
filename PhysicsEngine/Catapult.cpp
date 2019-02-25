@@ -107,7 +107,8 @@ void Catapult::CreateBall()
 
 	//ball connection
 	ballJoint = PxFixedJointCreate(*phys, (PxRigidActor*)ball->GetActor(), PxTransform(PxVec3(0.0f, 0.0f, 0.0f), PxQuat(0, 1, 0, 0)),
-		(PxRigidActor*)arm->GetActor(), PxTransform(PxVec3(0.0, 5.5f, -2.0f), PxQuat(0, 1, 0, 0)));
+		(PxRigidActor*)arm->GetActor(), PxTransform(PxVec3(0.0, 6.0f, -2.0f), PxQuat(0, 1, 0, 0)));
+	ballJoint->setConstraintFlag(PxConstraintFlag::eVISUALIZATION, true);
 
 	scene.AddActor(*ball);
 

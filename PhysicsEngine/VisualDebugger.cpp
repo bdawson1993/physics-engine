@@ -41,7 +41,7 @@ namespace VisualDebugger
 	CustomEngine* eng;
 	PxReal delta_time = 1.f/60.f;
 	PxReal gForceStrength = 20;
-	RenderMode render_mode = NORMAL;
+	RenderMode render_mode = BOTH;
 	const int MAX_KEYS = 256;
 	bool key_state[MAX_KEYS];
 	bool hud_show = true;
