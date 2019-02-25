@@ -54,6 +54,7 @@ Catapult::Catapult(const char* name, PxPhysics* phy, Scene scene)
 
 void Catapult::Update()
 {
+
 }
 
 void Catapult::KeyPress(char key)
@@ -106,7 +107,7 @@ void Catapult::CreateBall()
 
 	//ball connection
 	ballJoint = PxFixedJointCreate(*phys, (PxRigidActor*)ball->GetActor(), PxTransform(PxVec3(0.0f, 0.0f, 0.0f), PxQuat(0, 1, 0, 0)),
-		(PxRigidActor*)arm->GetActor(), PxTransform(PxVec3(0.0f, 6.0f, -2.0f), PxQuat(0, 1, 0, 0)));
+		(PxRigidActor*)arm->GetActor(), PxTransform(PxVec3(0.0, 5.5f, -2.0f), PxQuat(0, 1, 0, 0)));
 
 	scene.AddActor(*ball);
 

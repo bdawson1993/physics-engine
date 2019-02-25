@@ -15,7 +15,10 @@ public:
 	bool trigger = false;
 	vector<Actor> sceneObj;
 
-	Scene() {};
+	Scene() {
+		
+	
+	};
 	Scene(PxPhysics* physics, PxSimulationFilterShader custom_filter_shader = PxDefaultSimulationFilterShader) : filter_shader(custom_filter_shader) 
 	{
 		//create scence

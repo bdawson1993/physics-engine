@@ -96,7 +96,7 @@ void Actor::CreateShape(const PxGeometry& geometry, PxMaterial& mat, int density
 		PxRigidBodyExt::updateMassAndInertia(*(PxRigidDynamic*)actor, density);
 		shape->setLocalPose(PxTransform(local));
 
-		PxVec3 default_color = PxVec3(0.0f, 0.0f, 0.0f);
+		PxVec3 default_color = PxVec3(255.0f, 0.0f, 0.0f);
 		colors.push_back(default_color);
 
 		//pass the color pointers to the renderer

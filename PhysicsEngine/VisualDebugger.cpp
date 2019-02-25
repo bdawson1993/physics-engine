@@ -344,6 +344,7 @@ namespace VisualDebugger
 	void exitCallback(void)
 	{
 		delete camera;
+		eng->PxRelease();
 		delete eng;
 		
 		

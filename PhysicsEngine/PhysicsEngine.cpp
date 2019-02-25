@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "PhysicsEngine.h"
+#include "glut.h"
 
 
 
@@ -15,28 +16,12 @@ PhysicsEngine::PhysicsEngine()
 	}
 }
 
-PhysicsEngine::~PhysicsEngine()
-{
-	PxRelease();
-}
 
 void PhysicsEngine::Update(PxReal delta_time)
 {
-	if (isLoaded == true)
-	{
-		if (pause == true)
-		{
-			return;
-		}
-
-
-		
-		scene.GetScene()->simulate(delta_time);
-		scene.GetScene()->fetchResults(true);
-		CustomUpdate();
-
-	}
-
+	CustomUpdate();
+	scene.GetScene()->simulate(delta_time);
+	scene.GetScene()->fetchResults(true);
 }
 
 void PhysicsEngine::CustomUpdate()
@@ -88,11 +73,11 @@ bool PhysicsEngine::InitPhysics()
 		return false;
 	}
 
+	
+
 	//connect to Visual debugger
 	vd_connection = PxVisualDebuggerExt::createConnection(physics->getPvdConnectionManager(), "localhost", 5425, 100,
 		PxVisualDebuggerExt::getAllConnectionFlags());
-
-
 
 	PxInitExtensions(*physics);
 
@@ -100,20 +85,26 @@ bool PhysicsEngine::InitPhysics()
 	//create scene
 	scene = Scene(physics);
 
+	//visualisation
+	scene.GetScene()->setVisualizationParameter(PxVisualizationParameter::eSCALE, 1.0f);
+	scene.GetScene()->setVisualizationParameter(PxVisualizationParameter::eCOLLISION_SHAPES, 1.0f);
+	scene.GetScene()->setVisualizationParameter(PxVisualizationParameter::eCLOTH_HORIZONTAL, 1.0f);
+	scene.GetScene()->setVisualizationParameter(PxVisualizationParameter::eCLOTH_VERTICAL, 1.0f);
+	scene.GetScene()->setVisualizationParameter(PxVisualizationParameter::eCLOTH_BENDING, 1.0f);
+	scene.GetScene()->setVisualizationParameter(PxVisualizationParameter::eCLOTH_SHEARING, 1.0f);
 
 	//create default material
 	default_material = physics->createMaterial(0.35f, 0.35f, 0.0f);
 
 	//create floor
-	Plane plane = Plane("Ground", physics);
-	plane.CreateStatic(PxVec3(0, 1, 0), PxVec3(1, 1, 1), default_material);
+	Plane* plane = new Plane("Ground", physics);
+	plane->CreateStatic(PxVec3(0, 1, 0), PxVec3(1, 1, 1), default_material);
+	plane->SetColor(PxVec3(0.0f, 255.0f, 0.0f));
 
-	plane.SetColor(PxVec3(0.0f, 255.0f, 0.0f));
-	scene.AddActor(plane);
+	scene.AddActor(*plane);
 
 
 	scene.GetScene()->setSimulationEventCallback(&scene);
-
 
 
 	return true;
@@ -129,4 +120,7 @@ void PhysicsEngine::PxRelease()
 		physics->release();
 	if (foundation)
 		foundation->release();
+	
+
+
 }

@@ -11,6 +11,13 @@ public:
 
 	};
 	
+	~CustomEngine()
+	{
+		delete cat;
+		delete cube;
+	}
+
+
 	void SceneSetup();
 
 	void CustomUpdate();
@@ -18,6 +25,7 @@ public:
 	void KeyPress(char key);
 private:
 	Catapult* cat;
+	Cube* cube;
 
 };
 
