@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "Extras/UserData.h"
+#include "GameObject.h"
 
 
 using namespace physx;
@@ -20,7 +21,7 @@ struct FilterGroup
 };
 
 
-class Actor 
+class Actor : public GameObject
 {
 
 public:
