@@ -50,7 +50,7 @@ PxFilterFlags Scene::CustomFilterShader(PxFilterObjectAttributes attributes0, Px
 
 	pairFlags = PxPairFlag::eCONTACT_DEFAULT;
 	//enable continous collision detection
-//		pairFlags |= PxPairFlag::eCCD_LINEAR;
+	pairFlags |= PxPairFlag::eCCD_LINEAR;
 
 
 		//customise collision filtering here
@@ -63,7 +63,7 @@ PxFilterFlags Scene::CustomFilterShader(PxFilterObjectAttributes attributes0, Px
 		//trigger onContact callback for this pair of objects
 		pairFlags |= PxPairFlag::eNOTIFY_TOUCH_FOUND;
 		pairFlags |= PxPairFlag::eNOTIFY_TOUCH_LOST;
-		//			pairFlags |= PxPairFlag::eNOTIFY_CONTACT_POINTS;
+		pairFlags |= PxPairFlag::eNOTIFY_CONTACT_POINTS;
 	}
 
 	return PxFilterFlags();
@@ -101,7 +101,9 @@ void Scene::onTrigger(PxTriggerPair * pairs, PxU32 count)
 
 void Scene::onContact(const PxContactPairHeader & pairHeader, const PxContactPair * pairs, PxU32 nbPairs)
 {
-	cerr << "Contact found between " << pairHeader.actors[0]->getName() << " " << pairHeader.actors[1]->getName() << endl;
+	PxRigidActor* act = pairs[0].shapes[0]->getActor();
+	cout << pairs[0].shapes[0]->getActor()->getName() << endl;
+
 
 	//check all pairs
 	for (PxU32 i = 0; i < nbPairs; i++)

@@ -34,10 +34,10 @@ public:
 		}
 
 
+		 
+		scenceDesc.filterShader = &CustomFilterShader;
 
-		scenceDesc.filterShader = filter_shader;
-
-
+		
 
 
 		scene = physics->createScene(scenceDesc);
