@@ -18,5 +18,7 @@ void Goal::CreateStatic(PxVec3 pos, PxVec3 size, PxMaterial * mat)
 	GetShape(4)->setLocalPose(PxTransform(PxVec3(0, 40.0f, 0.0f)));
 	SetTrigger(true, 4);
 
+	SetColor(PxVec3(255, 0, 0));
+
 
 }

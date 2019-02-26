@@ -56,7 +56,7 @@ protected:
 	virtual void CreateStatic(PxVec3 pos, PxVec3 size, PxMaterial* mat);
 	virtual void CreateDynamic();
 	virtual void CreateStatic();
-	void CreateShape(const PxGeometry& geometry, PxMaterial& mat, int density = 1, PxVec3 local = PxVec3(0, 1, 0));
+	void CreateShape(const PxGeometry& geometry, PxMaterial& mat, int density = 1, PxVec3 local = PxVec3(0, 0, 0));
 	
 	
 	

@@ -27,6 +27,7 @@ void Actor::SetTrigger(bool value, PxU32 shape_index)
 	{
 		shape_list[i]->setFlag(PxShapeFlag::eSIMULATION_SHAPE, !value);
 		shape_list[i]->setFlag(PxShapeFlag::eTRIGGER_SHAPE, value);
+		
 	}
 }
 
