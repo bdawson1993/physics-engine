@@ -130,8 +130,8 @@ void Scene::onContact(const PxContactPairHeader & pairHeader, const PxContactPai
 			otherActor = GetActor(pairHeader.actors[i]->getName());
 
 			
-			triggerActor->OnContact(otherActor);
-			otherActor->OnContact(triggerActor);
+			triggerActor->OnContact(triggerActor);
+			otherActor->OnContact(otherActor);
 			
 
 		}

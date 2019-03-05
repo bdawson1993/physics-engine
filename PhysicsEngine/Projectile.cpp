@@ -2,9 +2,10 @@
 
 void Projectile::OnContact(Actor* collidedObject)
 {
-	if (collidedObject->GetName() == "Ground")
+	cout << " DO STUFF " << endl;
+	if (collidedObject->GetName() == "ball")
 	{
-		delete(collidedObject);
+		collidedObject->GetActor()->release();
 		
 	}
 
