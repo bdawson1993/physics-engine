@@ -22,3 +22,12 @@ void Goal::CreateStatic(PxVec3 pos, PxVec3 size, PxMaterial * mat)
 
 
 }
+
+void Goal::OnTriggerEnter(Actor onCollidedObjects)
+{
+}
+
+void Goal::OnTriggerEnter(Actor onCollidedObjects)
+{
+	cout << "yayayayyayayayayyaya" << endl;
+}

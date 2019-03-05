@@ -67,6 +67,17 @@ void Actor::SetColor(PxVec3 color)
 			colors[i] = color;
 }
 
+void Actor::OnTriggerEnter(Actor collidedObject)
+{
+}
+
+void Actor::OnTriggerLeave(Actor collidedObject)
+{
+}
+
+void Actor::OnContact(Actor collidedObject)
+{
+}
 
 void Actor::CreateDynamic(PxVec3 pos, PxVec3 size, PxMaterial * mat)
 {

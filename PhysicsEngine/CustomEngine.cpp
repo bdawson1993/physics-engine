@@ -4,14 +4,10 @@
 
 void CustomEngine::SceneSetup()
 {
-
-
-
 	cat = new Catapult("Player", physics, scene);
 
-	cube = new Cube("cube", physics);
+	cube = new Cube("falling cube", physics);
 	cube->CreateDynamic(PxVec3(0, 50, 0), PxVec3(0.5f, 0.5f, 0.5f), default_material);
-	cube->SetName();
 	scene.AddActor(*cube);
 
 	goal = new Goal("goal", physics);
