@@ -34,7 +34,6 @@ public:
 	{
 		this->name = name;
 		this->physics = physics;
-		
 	};
 
 
@@ -47,10 +46,13 @@ public:
 	PxShape* GetShape(PxU32 index);
 	void SetColor(PxVec3 color);
 
+	
+
+
 	//collsion messages
-	virtual void OnTriggerEnter(Actor collidedObject);
-	virtual void OnTriggerLeave(Actor collidedObject);
-	virtual void OnContact(Actor collidedObject);
+	virtual void OnTriggerEnter(Actor* collidedObject);
+	virtual void OnTriggerLeave(Actor* collidedObject);
+	virtual void OnContact(Actor* collidedObject);
 	
 
 protected:
@@ -60,11 +62,14 @@ protected:
 	virtual void CreateStatic();
 	void CreateShape(const PxGeometry& geometry, PxMaterial& mat, int density = 1, PxVec3 local = PxVec3(0, 0, 0));
 	
+	
 protected:
 	const char* name;
 	PxRigidActor* actor;
 	PxPhysics* physics;
 	vector<PxVec3> colors;
+
+	
 	
 };
 

@@ -13,7 +13,7 @@ class Scene : public PxSimulationEventCallback
 {
 public:
 	bool trigger = false;
-	vector<Actor> sceneObj;
+	vector<Actor*> sceneObj;
 
 	Scene() {
 		
@@ -50,7 +50,7 @@ public:
 	
 
 	void AddActor(Actor& actor);
-	Actor GetActor(string name);
+	Actor* GetActor(string name);
 	PxScene* GetScene();
 	vector<PxActor*> GetActors();
 

@@ -4,15 +4,15 @@
 void Scene::AddActor(Actor& actor)
 {
 	actor.SetName();
-	sceneObj.push_back(actor);
+	sceneObj.push_back(&actor);
 	scene->addActor(*actor.GetActor());
 }
 
-Actor Scene::GetActor(string name)
+Actor* Scene::GetActor(string name)
 {
 	for (int i = 0; i < sceneObj.size(); i++)
 	{
-		if (sceneObj[i].GetName() == name)
+		if (sceneObj[i]->GetName() == name)
 		{
 			return sceneObj[i];
 		}
@@ -70,22 +70,22 @@ void Scene::onTrigger(PxTriggerPair * pairs, PxU32 count)
 	{
 		if (pairs[i].status & PxPairFlag::eNOTIFY_TOUCH_FOUND)
 		{
-			Actor act = GetActor(pairs[i].triggerActor->getName());
-			Actor act2 = GetActor(pairs[i].otherActor->getName());
+			Actor* triggerActor = GetActor(pairs[i].triggerActor->getName());
+			Actor* otherActor = GetActor(pairs[i].otherActor->getName());
 
 			//send object that had been collided with
-			act.OnTriggerEnter(act2);
-			act2.OnTriggerEnter(act);
+			triggerActor->OnTriggerEnter(otherActor);
+			
 		}
 
 		if (pairs[i].status & PxPairFlag::eNOTIFY_TOUCH_LOST)
 		{
-			Actor act = GetActor(pairs[i].triggerActor->getName());
-			Actor act2 = GetActor(pairs[i].otherActor->getName());
+			Actor* triggerActor = GetActor(pairs[i].triggerActor->getName());
+			Actor* otherActor = GetActor(pairs[i].otherActor->getName());
 
 			//send object that had been collided with
-			act.OnTriggerLeave(act2);
-			act2.OnTriggerLeave(act);
+			triggerActor->OnTriggerLeave(otherActor);
+			
 
 			trigger = false;
 		}

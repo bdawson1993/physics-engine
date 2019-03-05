@@ -1,16 +1,3 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (ConsoleApplication1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Actor.cpp
-c:\users\student\source\repos\physics-engine\physicsengine\actor.cpp(108): warning C4244: 'argument': conversion from 'int' to 'physx::PxReal', possible loss of data
-  Catapult.cpp
-  Cube.cpp
-  CustomEngine.cpp
   Goal.cpp
-  PhysicsEngine.cpp
-  Plane.cpp
-  Scene.cpp
-  Sphere.cpp
-  VisualDebugger.cpp
-  main.cpp
-  Generating Code...
-c:\users\student\source\repos\physics-engine\physicsengine\scene.cpp(20): warning C4715: 'Scene::GetActor': not all control paths return a value
   PhysicsEngine.vcxproj -> C:\Users\Student\Source\Repos\physics-engine\x64\Debug\PhysicsEngine.exe
