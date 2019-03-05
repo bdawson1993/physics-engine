@@ -2,9 +2,6 @@
 #include "Actor.h"
 #include <iostream>
 
-
-
-
 PxRigidActor* Actor::GetActor()
 {
 	return actor;
@@ -67,6 +64,55 @@ void Actor::SetColor(PxVec3 color)
 			colors[i] = color;
 }
 
+void Actor::CreateShape(const PxGeometry& geometry, PxMaterial& mat, int density, PxVec3 local)
+{
+	if (actor->isRigidDynamic())
+	{
+		PxShape* shape = actor->createShape(geometry, mat);
+		PxRigidBodyExt::updateMassAndInertia(*(PxRigidDynamic*)actor, density);
+		shape->setLocalPose(PxTransform(local));
+
+		PxVec3 default_color = PxVec3(255.0f, 0.0f, 0.0f);
+		colors.push_back(default_color);
+
+		//pass the color pointers to the renderer
+		shape->userData = new UserData();
+		for (unsigned int i = 0; i < colors.size(); i++)
+			((UserData*)GetShape(i)->userData)->color = &colors[i];
+	}
+	else
+	{
+
+		PxShape* Nshape = actor->createShape(geometry, mat);
+		Nshape->setLocalPose(PxTransform(local));
+
+		PxVec3 static_color = PxVec3(0.0f, 255.0f, 0.0f);
+		colors.push_back(static_color);
+
+		//pass the color pointers to the renderer
+		Nshape->userData = new UserData();
+		for (unsigned int i = 0; i < colors.size(); i++)
+			((UserData*)GetShape(i)->userData)->color = &colors[i];
+	}
+
+}
+
+
+///abstract functions 
+void Actor::OnTriggerEnter(Actor* collidedObject)
+{
+	
+}
+
+void Actor::OnTriggerLeave(Actor* collidedObject)
+{
+	
+}
+
+void Actor::OnContact(Actor* collidedObject)
+{
+	
+}
 
 void Actor::CreateDynamic(PxVec3 pos, PxVec3 size, PxMaterial * mat)
 {
@@ -89,38 +135,8 @@ void Actor::CreateStatic()
 }
 
 
-void Actor::CreateShape(const PxGeometry& geometry, PxMaterial& mat, int density, PxVec3 local)
-{
-	if (actor->isRigidDynamic())
-	{
-		PxShape* shape = actor->createShape(geometry, mat);
-		PxRigidBodyExt::updateMassAndInertia(*(PxRigidDynamic*)actor, density);
-		shape->setLocalPose(PxTransform(local));
 
-		PxVec3 default_color = PxVec3(255.0f, 0.0f, 0.0f);
-		colors.push_back(default_color);
 
-		//pass the color pointers to the renderer
-		shape->userData = new UserData();
-		for (unsigned int i = 0; i < colors.size(); i++)
-			((UserData*)GetShape(i)->userData)->color = &colors[i];
-	}
-	else
-	{
-		
-		PxShape* Nshape = actor->createShape(geometry, mat);
-		Nshape->setLocalPose(PxTransform(local));
-
-		PxVec3 static_color = PxVec3(0.0f, 255.0f, 0.0f);
-		colors.push_back(static_color);
-
-		//pass the color pointers to the renderer
-		Nshape->userData = new UserData();
-		for (unsigned int i = 0; i < colors.size(); i++)
-			((UserData*)GetShape(i)->userData)->color = &colors[i];
-	}
-	
-}
 
 
 

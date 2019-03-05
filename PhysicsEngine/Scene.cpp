@@ -1,27 +1,22 @@
 #include "pch.h"
 #include "Scene.h"
 
-
-
 void Scene::AddActor(Actor& actor)
 {
-	sceneObj.push_back(actor);
+	actor.SetName();
+	sceneObj.push_back(&actor);
 	scene->addActor(*actor.GetActor());
-
 }
 
-Actor Scene::GetActor(string name)
+Actor* Scene::GetActor(string name)
 {
 	for (int i = 0; i < sceneObj.size(); i++)
 	{
-		if (sceneObj[i].GetName() == name)
+		if (sceneObj[i]->GetName() == name)
 		{
-			cout << "Found" << endl;
 			return sceneObj[i];
 		}
 	}
-
-	cout << "Not Found" << endl;
 }
 
 PxScene * Scene::GetScene()
@@ -71,28 +66,28 @@ PxFilterFlags Scene::CustomFilterShader(PxFilterObjectAttributes attributes0, Px
 
 void Scene::onTrigger(PxTriggerPair * pairs, PxU32 count)
 {
-	//you can read the trigger information here
 	for (PxU32 i = 0; i < count; i++)
 	{
-		//filter out contact with the planes
-		if (pairs[i].otherShape->getGeometryType() != PxGeometryType::ePLANE)
+		if (pairs[i].status & PxPairFlag::eNOTIFY_TOUCH_FOUND)
 		{
-			//check if eNOTIFY_TOUCH_FOUND trigger
-			if (pairs[i].status & PxPairFlag::eNOTIFY_TOUCH_FOUND)
-			{
-				
-				PxRigidActor* bod = (PxRigidBody*)pairs[i].otherActor;
-				cout << bod->getName() << endl;
+			Actor* triggerActor = GetActor(pairs[i].triggerActor->getName());
+			Actor* otherActor = GetActor(pairs[i].otherActor->getName());
 
-				cerr << "onTrigger::eNOTIFY_TOUCH_FOUND" << endl;
-				trigger = true;
-			}
-			//check if eNOTIFY_TOUCH_LOST trigger
-			if (pairs[i].status & PxPairFlag::eNOTIFY_TOUCH_LOST)
-			{
-				cerr << "onTrigger::eNOTIFY_TOUCH_LOST" << endl;
-				trigger = false;
-			}
+			//send object that had been collided with
+			triggerActor->OnTriggerEnter(otherActor);
+			
+		}
+
+		if (pairs[i].status & PxPairFlag::eNOTIFY_TOUCH_LOST)
+		{
+			Actor* triggerActor = GetActor(pairs[i].triggerActor->getName());
+			Actor* otherActor = GetActor(pairs[i].otherActor->getName());
+
+			//send object that had been collided with
+			triggerActor->OnTriggerLeave(otherActor);
+			
+
+			trigger = false;
 		}
 	}
 
@@ -101,22 +96,18 @@ void Scene::onTrigger(PxTriggerPair * pairs, PxU32 count)
 
 void Scene::onContact(const PxContactPairHeader & pairHeader, const PxContactPair * pairs, PxU32 nbPairs)
 {
-	PxRigidActor* act = pairs[0].shapes[0]->getActor();
-	cout << pairs[0].shapes[0]->getActor()->getName() << endl;
-
-
 	//check all pairs
 	for (PxU32 i = 0; i < nbPairs; i++)
 	{
 		//check eNOTIFY_TOUCH_FOUND
 		if (pairs[i].events & PxPairFlag::eNOTIFY_TOUCH_FOUND)
 		{
-			cerr << "onContact::eNOTIFY_TOUCH_FOUND" << endl;
+			//cerr << "onContact::eNOTIFY_TOUCH_FOUND" << endl;
 		}
 		//check eNOTIFY_TOUCH_LOST
 		if (pairs[i].events & PxPairFlag::eNOTIFY_TOUCH_LOST)
 		{
-			cerr << "onContact::eNOTIFY_TOUCH_LOST" << endl;
+			//cerr << "onContact::eNOTIFY_TOUCH_LOST" << endl;
 		}
 	}
 

@@ -22,3 +22,15 @@ void Goal::CreateStatic(PxVec3 pos, PxVec3 size, PxMaterial * mat)
 
 
 }
+
+void Goal::OnTriggerEnter(Actor* collidedObject)
+{
+	cout <<  collidedObject->GetActor()->getName() << "Went through trigger goal"  << endl;
+}
+
+void Goal::OnTriggerLeave(Actor* collidedObject)
+{
+	cout << collidedObject->GetName() << "left trigger goal" << endl;
+}
+
+
