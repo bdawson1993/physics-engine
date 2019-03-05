@@ -6,7 +6,7 @@ Catapult::Catapult()
 
 }
 
-Catapult::Catapult(const char* name, PxPhysics* phy, Scene scene)
+Catapult::Catapult(const char* name, PxPhysics* phy, Scene* scene)
 {
 	base = new CatapultBase(name, phy);
 	base->CreateDynamic();
@@ -46,8 +46,8 @@ Catapult::Catapult(const char* name, PxPhysics* phy, Scene scene)
 	this->phys = phy;
 	this->scene = scene;
 
-	scene.AddActor(*base);
-	scene.AddActor(*arm);
+	scene->AddActor(*base);
+	scene->AddActor(*arm);
 
 	CreateBall();
 }
@@ -98,7 +98,7 @@ void Catapult::CreateBall()
 
 	PxRigidBody* pos = (PxRigidBody*)this->base->GetActor();
 	Projectile* ball = new Projectile("ball", phys);
-	ball->SetName();
+	ball->SetupFiltering(FilterGroup::ACTOR0, FilterGroup::ACTOR1);
 
 
 	PxRigidBody* bod = (PxRigidBody*)ball->GetActor();
@@ -110,7 +110,7 @@ void Catapult::CreateBall()
 		(PxRigidActor*)arm->GetActor(), PxTransform(PxVec3(0.0, 6.5f, -2.0f), PxQuat(0, 1, 0, 0)));
 	ballJoint->setConstraintFlag(PxConstraintFlag::eVISUALIZATION, true);
 
-	scene.AddActor(*ball);
+	scene->AddActor(*ball);
 
 	
 

@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include <iostream>
 
+
 PxRigidActor* Actor::GetActor()
 {
 	return actor;
@@ -99,19 +100,19 @@ void Actor::CreateShape(const PxGeometry& geometry, PxMaterial& mat, int density
 
 
 ///abstract functions 
-void Actor::OnTriggerEnter(Actor* collidedObject)
+void Actor::OnTriggerEnter(string collidedObject)
 {
-	
+	cout << "On Trigger Enter " << endl;
 }
 
-void Actor::OnTriggerLeave(Actor* collidedObject)
+void Actor::OnTriggerLeave(string collidedObject)
 {
-	
+	cout << "On Trigger Leave " << endl;
 }
 
-void Actor::OnContact(Actor* collidedObject)
+void Actor::OnContact(string collidedObject)
 {
-	
+	cout << "On Contact Enter" << endl;
 }
 
 void Actor::CreateDynamic(PxVec3 pos, PxVec3 size, PxMaterial * mat)

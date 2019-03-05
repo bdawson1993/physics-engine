@@ -100,6 +100,7 @@ bool PhysicsEngine::InitPhysics()
 	Plane* plane = new Plane("Ground", physics);
 	plane->CreateStatic(PxVec3(0, 1, 0), PxVec3(1, 1, 1), default_material);
 	plane->SetColor(PxVec3(0.0f, 255.0f, 0.0f));
+	plane->SetupFiltering(FilterGroup::ACTOR1, FilterGroup::ACTOR0);
 
 	scene.AddActor(*plane);
 

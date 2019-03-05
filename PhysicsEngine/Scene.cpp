@@ -17,6 +17,8 @@ Actor* Scene::GetActor(string name)
 			return sceneObj[i];
 		}
 	}
+
+	throw exception();
 }
 
 PxScene * Scene::GetScene()
@@ -31,6 +33,16 @@ vector<PxActor*> Scene::GetActors()
 	std::vector<PxActor*> actors(scene->getNbActors(selection_flag));
 	scene->getActors(selection_flag, (PxActor**)&actors.front(), (PxU32)actors.size());
 	return actors;
+
+}
+
+void Scene::ListAllActors()
+{
+	cout << "ACTORS: " << endl;
+	for (int i = 0; i <= sceneObj.size() - 1; i++)
+	{
+		cout << sceneObj[i]->GetName() << endl;
+	}
 
 }
 
@@ -66,25 +78,29 @@ PxFilterFlags Scene::CustomFilterShader(PxFilterObjectAttributes attributes0, Px
 
 void Scene::onTrigger(PxTriggerPair * pairs, PxU32 count)
 {
+	Actor* triggerActor = new Actor();
+	Actor* otherActor = new Actor();
+
 	for (PxU32 i = 0; i < count; i++)
 	{
 		if (pairs[i].status & PxPairFlag::eNOTIFY_TOUCH_FOUND)
 		{
-			Actor* triggerActor = GetActor(pairs[i].triggerActor->getName());
-			Actor* otherActor = GetActor(pairs[i].otherActor->getName());
+			triggerActor = GetActor(pairs[i].triggerActor->getName());
+			otherActor = GetActor(pairs[i].otherActor->getName());
 
+			
 			//send object that had been collided with
-			triggerActor->OnTriggerEnter(otherActor);
+			triggerActor->OnTriggerEnter(pairs[i].otherActor->getName());
 			
 		}
 
 		if (pairs[i].status & PxPairFlag::eNOTIFY_TOUCH_LOST)
 		{
-			Actor* triggerActor = GetActor(pairs[i].triggerActor->getName());
-			Actor* otherActor = GetActor(pairs[i].otherActor->getName());
+			triggerActor = GetActor(pairs[i].triggerActor->getName());
+			otherActor = GetActor(pairs[i].otherActor->getName());
 
 			//send object that had been collided with
-			triggerActor->OnTriggerLeave(otherActor);
+			//triggerActor->OnTriggerLeave(*otherActor);
 			
 
 			trigger = false;
@@ -96,18 +112,29 @@ void Scene::onTrigger(PxTriggerPair * pairs, PxU32 count)
 
 void Scene::onContact(const PxContactPairHeader & pairHeader, const PxContactPair * pairs, PxU32 nbPairs)
 {
+	ListAllActors();
+
+	Actor* triggerActor = new Actor();
+	Actor* otherActor = new Actor();
+
 	//check all pairs
 	for (PxU32 i = 0; i < nbPairs; i++)
 	{
 		//check eNOTIFY_TOUCH_FOUND
 		if (pairs[i].events & PxPairFlag::eNOTIFY_TOUCH_FOUND)
-		{
-			//cerr << "onContact::eNOTIFY_TOUCH_FOUND" << endl;
+		{ 
+			//otherActor = GetActor(pairHeader.actors[i + 1]->getName());
+			triggerActor = GetActor(pairHeader.actors[i]->getName());
+
+			cout << triggerActor->GetName() << endl;
+			triggerActor->OnContact(pairHeader.actors[i]->getName());
+			
+
 		}
 		//check eNOTIFY_TOUCH_LOST
 		if (pairs[i].events & PxPairFlag::eNOTIFY_TOUCH_LOST)
 		{
-			//cerr << "onContact::eNOTIFY_TOUCH_LOST" << endl;
+			cerr << "onContact::eNOTIFY_TOUCH_LOST" << endl;
 		}
 	}
 

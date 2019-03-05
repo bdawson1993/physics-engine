@@ -81,7 +81,7 @@ public:
 class Catapult : public GameObject
 {
 public:
-	Scene scene;
+	Scene* scene;
 	CatapultBase* base;
 	CatapultArm* arm;
 
@@ -90,7 +90,7 @@ public:
 	PxRevoluteJoint* rightJoint;
 
 	Catapult();
-	Catapult(const char* name, PxPhysics* phy, Scene scene);
+	Catapult(const char* name, PxPhysics* phy, Scene* scene);
 
 	void Update();
 	void KeyPress(char key);

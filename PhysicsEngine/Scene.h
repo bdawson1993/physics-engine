@@ -53,6 +53,7 @@ public:
 	Actor* GetActor(string name);
 	PxScene* GetScene();
 	vector<PxActor*> GetActors();
+	void ListAllActors();
 
 	//collsion Callbacks
 	static PxFilterFlags CustomFilterShader(PxFilterObjectAttributes attributes0, PxFilterData filterData0,
