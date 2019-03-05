@@ -112,8 +112,6 @@ void Scene::onTrigger(PxTriggerPair * pairs, PxU32 count)
 
 void Scene::onContact(const PxContactPairHeader & pairHeader, const PxContactPair * pairs, PxU32 nbPairs)
 {
-	ListAllActors();
-
 	Actor* triggerActor = new Actor();
 	Actor* otherActor = new Actor();
 
@@ -123,11 +121,11 @@ void Scene::onContact(const PxContactPairHeader & pairHeader, const PxContactPai
 		//check eNOTIFY_TOUCH_FOUND
 		if (pairs[i].events & PxPairFlag::eNOTIFY_TOUCH_FOUND)
 		{ 
-			//otherActor = GetActor(pairHeader.actors[i + 1]->getName());
+			otherActor = GetActor(pairHeader.actors[i + 1]->getName());
 			triggerActor = GetActor(pairHeader.actors[i]->getName());
 
-			cout << triggerActor->GetName() << endl;
-			triggerActor->OnContact(pairHeader.actors[i]->getName());
+			
+			triggerActor->OnContact(pairHeader.actors[i + 1]->getName());
 			
 
 		}

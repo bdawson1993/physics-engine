@@ -2,5 +2,11 @@
 
 void Projectile::OnContact(string collidedObject)
 {
-	cout << collidedObject << endl;
+	if (collidedObject == "Ground")
+	{
+		
+		
+	}
+
+	
 }

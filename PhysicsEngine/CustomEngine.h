@@ -15,7 +15,6 @@ public:
 	~CustomEngine()
 	{
 		delete cat;
-		delete cube;
 	}
 
 
@@ -26,7 +25,6 @@ public:
 	void KeyPress(char key);
 private:
 	Catapult* cat;
-	Cube* cube;
 	Goal* goal;
 
 };
