@@ -18,8 +18,8 @@ public:
 
 	void CreateStatic(PxVec3 pos, PxVec3 size, PxMaterial* mat);
 
-	void OnTriggerEnter(string collidedObject);
-	void OnTriggerLeave(string collidedObject);
+	void OnTriggerEnter(Actor* collidedObject);
+	void OnTriggerLeave(Actor* collidedObject);
 	
 
 };

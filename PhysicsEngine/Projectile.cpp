@@ -1,10 +1,10 @@
 #include "Projectile.h"
 
-void Projectile::OnContact(string collidedObject)
+void Projectile::OnContact(Actor* collidedObject)
 {
-	if (collidedObject == "Ground")
+	if (collidedObject->GetName() == "Ground")
 	{
-		
+		delete(collidedObject);
 		
 	}
 

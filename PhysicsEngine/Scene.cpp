@@ -88,9 +88,14 @@ void Scene::onTrigger(PxTriggerPair * pairs, PxU32 count)
 			triggerActor = GetActor(pairs[i].triggerActor->getName());
 			otherActor = GetActor(pairs[i].otherActor->getName());
 
-			
+			cout << triggerActor->GetName() << endl;
+			cout << otherActor->GetName() << endl;
+
+
+
 			//send object that had been collided with
-			triggerActor->OnTriggerEnter(pairs[i].otherActor->getName());
+			triggerActor->OnTriggerEnter(triggerActor);
+			otherActor->OnTriggerEnter(otherActor);
 			
 		}
 
@@ -121,11 +126,12 @@ void Scene::onContact(const PxContactPairHeader & pairHeader, const PxContactPai
 		//check eNOTIFY_TOUCH_FOUND
 		if (pairs[i].events & PxPairFlag::eNOTIFY_TOUCH_FOUND)
 		{ 
-			otherActor = GetActor(pairHeader.actors[i + 1]->getName());
-			triggerActor = GetActor(pairHeader.actors[i]->getName());
+			triggerActor = GetActor(pairHeader.actors[i + 1]->getName());
+			otherActor = GetActor(pairHeader.actors[i]->getName());
 
 			
-			triggerActor->OnContact(pairHeader.actors[i + 1]->getName());
+			triggerActor->OnContact(otherActor);
+			otherActor->OnContact(triggerActor);
 			
 
 		}

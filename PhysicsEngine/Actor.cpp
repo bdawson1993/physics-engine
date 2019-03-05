@@ -100,17 +100,17 @@ void Actor::CreateShape(const PxGeometry& geometry, PxMaterial& mat, int density
 
 
 ///abstract functions 
-void Actor::OnTriggerEnter(string collidedObject)
+void Actor::OnTriggerEnter(Actor* collidedObject)
 {
 	cout << "On Trigger Enter " << endl;
 }
 
-void Actor::OnTriggerLeave(string collidedObject)
+void Actor::OnTriggerLeave(Actor* collidedObject)
 {
 	cout << "On Trigger Leave " << endl;
 }
 
-void Actor::OnContact(string collidedObject)
+void Actor::OnContact(Actor* collidedObject)
 {
 	cout << "On Contact Enter" << endl;
 }

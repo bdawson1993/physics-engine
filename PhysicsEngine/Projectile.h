@@ -14,6 +14,6 @@ public:
 		CreateDynamic(PxVec3(0, 5, 0), 1.0f, mat);
 	}
 
-	void OnContact(string collidedObject);
+	void OnContact(Actor* collidedObject);
 
 };

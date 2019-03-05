@@ -50,9 +50,9 @@ public:
 
 
 	//collsion messages
-	virtual void OnTriggerEnter(string collidedObject);
-	virtual void OnTriggerLeave(string collidedObject);
-	virtual void OnContact(string collidedObject);
+	virtual void OnTriggerEnter(Actor* collidedObject);
+	virtual void OnTriggerLeave(Actor* collidedObject);
+	virtual void OnContact(Actor* collidedObject);
 	
 
 protected:
