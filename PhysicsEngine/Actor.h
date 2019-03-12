@@ -6,6 +6,7 @@
 #include "GameObject.h"
 
 
+
 using namespace physx;
 using namespace std;
 
@@ -45,10 +46,8 @@ public:
 	vector<PxShape*> GetShapes(PxU32 index);
 	PxShape* GetShape(PxU32 index);
 	void SetColor(PxVec3 color);
-
+	bool GetDelete();
 	
-
-
 	//collsion messages
 	virtual void OnTriggerEnter(Actor* collidedObject);
 	virtual void OnTriggerLeave(Actor* collidedObject);
@@ -68,6 +67,7 @@ protected:
 	PxRigidActor* actor;
 	PxPhysics* physics;
 	vector<PxVec3> colors;
+	bool flagForDeletion;
 
 	
 	

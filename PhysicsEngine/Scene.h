@@ -48,7 +48,7 @@ public:
 	
 	};
 	
-
+	void CheckActors();
 	void AddActor(Actor& actor);
 	Actor* GetActor(string name);
 	PxScene* GetScene();

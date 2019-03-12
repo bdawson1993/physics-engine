@@ -1,6 +1,21 @@
 #include "pch.h"
 #include "Scene.h"
 
+void Scene::CheckActors()
+{
+	for (int i = 0; i < sceneObj.size(); i++)
+	{
+		if (sceneObj[i]->GetDelete() == true)
+		{
+			sceneObj[i]->GetActor()->release();
+			sceneObj.erase(sceneObj.begin() + i); //remove item from vector
+			break;
+		}
+	}
+
+
+}
+
 void Scene::AddActor(Actor& actor)
 {
 	actor.SetName();
@@ -126,12 +141,11 @@ void Scene::onContact(const PxContactPairHeader & pairHeader, const PxContactPai
 		//check eNOTIFY_TOUCH_FOUND
 		if (pairs[i].events & PxPairFlag::eNOTIFY_TOUCH_FOUND)
 		{ 
-			triggerActor = GetActor(pairHeader.actors[i + 1]->getName());
-			otherActor = GetActor(pairHeader.actors[i]->getName());
+			triggerActor = GetActor(pairHeader.actors[i]->getName());
+			otherActor = GetActor(pairHeader.actors[i + 1]->getName());
 
-			
-			triggerActor->OnContact(triggerActor);
-			otherActor->OnContact(otherActor);
+			triggerActor->OnContact(otherActor);
+			otherActor->OnContact(triggerActor);
 			
 
 		}

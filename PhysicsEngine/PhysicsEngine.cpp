@@ -16,12 +16,12 @@ PhysicsEngine::PhysicsEngine()
 	}
 }
 
-
 void PhysicsEngine::Update(PxReal delta_time)
 {
 	CustomUpdate();
 	scene.GetScene()->simulate(delta_time);
 	scene.GetScene()->fetchResults(true);
+	
 }
 
 void PhysicsEngine::CustomUpdate()
@@ -42,7 +42,6 @@ void PhysicsEngine::Pause(bool value)
 {
 	pause = value;
 }
-
 
 void PhysicsEngine::SceneSetup()
 {

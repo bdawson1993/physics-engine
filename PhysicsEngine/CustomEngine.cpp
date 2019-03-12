@@ -20,6 +20,7 @@ void CustomEngine::SceneSetup()
 void CustomEngine::CustomUpdate()
 {
 	cat->Update();
+	scene.CheckActors();
 	
 }
 
