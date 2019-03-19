@@ -118,7 +118,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="WindMill.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Game Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

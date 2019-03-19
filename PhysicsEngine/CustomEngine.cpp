@@ -11,9 +11,8 @@ void CustomEngine::SceneSetup()
 	goal->CreateStatic(PxVec3(0, 5.0f, -250), PxVec3(1, 1, 1), default_material);
 	scene.AddActor(*goal);
 
-	mill = new WindMill(*physics, &scene);
-
-
+	mill = new WindMill(physics, &scene, default_material);
+	
 
 	cat->base->SetupFiltering(FilterGroup::ACTOR1, FilterGroup::ACTOR0);
 }
