@@ -3,6 +3,7 @@
 #include "BasicShapes.h"
 #include "Catapult.h"
 #include "Goal.h"
+#include "WindMill.h"
 
 class CustomEngine : public PhysicsEngine
 {
@@ -29,6 +30,7 @@ public:
 private:
 	Catapult* cat;
 	Goal* goal;
+	WindMill* mill;
 
 };
 

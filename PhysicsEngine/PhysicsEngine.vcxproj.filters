@@ -117,6 +117,9 @@
     <ClInclude Include="Materials.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="WindMill.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
