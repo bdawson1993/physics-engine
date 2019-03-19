@@ -23,6 +23,9 @@ public:
 	void CustomUpdate();
 
 	void KeyPress(char key);
+
+	int GetCatForce();
+
 private:
 	Catapult* cat;
 	Goal* goal;

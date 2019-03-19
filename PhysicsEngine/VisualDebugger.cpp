@@ -44,7 +44,7 @@ namespace VisualDebugger
 	RenderMode render_mode = BOTH;
 	const int MAX_KEYS = 256;
 	bool key_state[MAX_KEYS];
-	bool hud_show = true;
+	bool hud_show = false;
 	HUD hud;
 
 	//Init the debugger
@@ -63,7 +63,7 @@ namespace VisualDebugger
 		camera = new Camera(PxVec3(0.0f, 5.0f, 15.0f), PxVec3(0.f,-.1f,-1.f), 5.f);
 
 		//initialise HUD
-		HUDInit();
+		//HUDInit();
 
 		///Assign callbacks
 		//render
@@ -92,24 +92,23 @@ namespace VisualDebugger
 		//initialise HUD
 		//add an empty screen
 		hud.AddLine(EMPTY, "");
+		hud.AddLine(EMPTY, "Launch Force: " + to_string(eng->GetCatForce()));
 		//add a help screen
-		hud.AddLine(HELP, " Simulation");
-		hud.AddLine(HELP, "    F9 - select next actor");
-		hud.AddLine(HELP, "    F10 - pause");
-		hud.AddLine(HELP, "    F12 - reset");
 		hud.AddLine(HELP, "");
-		hud.AddLine(HELP, " Display");
-		hud.AddLine(HELP, "    F5 - help on/off");
-		hud.AddLine(HELP, "    F6 - shadows on/off");
-		hud.AddLine(HELP, "    F7 - render mode");
 		hud.AddLine(HELP, "");
 		hud.AddLine(HELP, " Camera");
 		hud.AddLine(HELP, "    W,S,A,D,Q,Z - forward,backward,left,right,up,down");
 		hud.AddLine(HELP, "    mouse + click - change orientation");
 		hud.AddLine(HELP, "    F8 - reset view");
 		hud.AddLine(HELP, "");
-		hud.AddLine(HELP, " Force (applied to the selected actor)");
-		hud.AddLine(HELP, "    I,K,J,L,U,M - forward,backward,left,right,up,down");
+
+		hud.AddLine(HELP, " Controls");
+		hud.AddLine(HELP, "     Space - fire");
+		hud.AddLine(HELP, "     O - Rotate Right");
+		hud.AddLine(HELP, "     I - Rotate Left");
+		hud.AddLine(HELP, "     [ - Add Force");
+		hud.AddLine(HELP, "     ] - Subtract Force");
+		
 		//add a pause screen
 		hud.AddLine(PAUSE, "");
 		hud.AddLine(PAUSE, "");
@@ -130,6 +129,7 @@ namespace VisualDebugger
 	//Render the scene and perform a single simulation step
 	void RenderScene()
 	{
+		HUDInit();
 		//handle pressed keys
 		KeyHold();
 
@@ -168,6 +168,7 @@ namespace VisualDebugger
 
 		//perform a single simulation step
 		eng->Update(delta_time);
+		hud.Clear();
 	}
 
 	//user defined keyboard handlers
@@ -182,7 +183,6 @@ namespace VisualDebugger
 		default:
 			break;
 		}
-
 		eng->KeyPress(key);
 	}
 
@@ -286,7 +286,6 @@ namespace VisualDebugger
 		//exit
 		if (key == 27)
 			exit(0);
-
 		UserKeyPress(key);
 	}
 

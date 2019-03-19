@@ -8,23 +8,24 @@ void CustomEngine::SceneSetup()
 
 	
 	goal = new Goal("goal", physics);
-	goal->CreateStatic(PxVec3(0, 5.0f, -60), PxVec3(1, 1, 1), default_material);
+	goal->CreateStatic(PxVec3(0, 5.0f, -250), PxVec3(1, 1, 1), default_material);
 	scene.AddActor(*goal);
 
-	
 	cat->base->SetupFiltering(FilterGroup::ACTOR1, FilterGroup::ACTOR0);
-
-
 }
 
 void CustomEngine::CustomUpdate()
 {
 	cat->Update();
 	scene.CheckActors();
-	
 }
 
 void CustomEngine::KeyPress(char key)
 {
 	cat->KeyPress(key);
+}
+
+int CustomEngine::GetCatForce()
+{
+	return cat->GetLaunchForce();
 }

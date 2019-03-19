@@ -7,6 +7,7 @@
 #include <string>
 #include "Scene.h"
 #include "BasicShapes.h"
+#include "Materials.h"
 
 
 
@@ -44,6 +45,7 @@ protected:
 	Scene scene;
 	bool isLoaded;
 	PxMaterial* default_material;
+	Materials mat; 
 
 	virtual void KeyPress(char key);
 
