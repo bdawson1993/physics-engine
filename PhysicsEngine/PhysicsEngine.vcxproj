@@ -107,14 +107,14 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>.\Graphics\include\win32\GL;$(PHYSX_SDK)\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\Graphics\include\win32\GL;C:\Program Files (x86)\NVIDIA Corporation\PhysX\NVIDIA PhysX SDK\3.3.4\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>PhysX3CommonDEBUG_$(PlatformTarget).lib;PhysX3ExtensionsDEBUG.lib;PhysXVisualDebuggerSDKDEBUG.lib;PhysX3DEBUG_$(PlatformTarget).lib;glut32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>.\Graphics\lib\win64\glut;$(PHYSX_SDK)\Lib\vc14win64</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>.\Graphics\lib\win64\glut;C:\Program Files (x86)\NVIDIA Corporation\PhysX\NVIDIA PhysX SDK\3.3.4\Lib\vc14win64</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -171,6 +171,7 @@
     <ClInclude Include="Extras\UserData.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Goal.h" />
+    <ClInclude Include="Materials.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PhysicsEngine.h" />
     <ClInclude Include="Plane.h" />
@@ -179,6 +180,7 @@
     <ClInclude Include="Shape.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="VisualDebugger.h" />
+    <ClInclude Include="WindMill.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
@@ -192,6 +194,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Goal.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Materials.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

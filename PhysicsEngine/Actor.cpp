@@ -3,6 +3,7 @@
 #include <iostream>
 
 
+
 PxRigidActor* Actor::GetActor()
 {
 	return actor;
@@ -65,6 +66,11 @@ void Actor::SetColor(PxVec3 color)
 			colors[i] = color;
 }
 
+bool Actor::GetDelete()
+{
+	return flagForDeletion;
+}
+
 void Actor::CreateShape(const PxGeometry& geometry, PxMaterial& mat, int density, PxVec3 local)
 {
 	if (actor->isRigidDynamic())
@@ -97,7 +103,6 @@ void Actor::CreateShape(const PxGeometry& geometry, PxMaterial& mat, int density
 	}
 
 }
-
 
 ///abstract functions 
 void Actor::OnTriggerEnter(Actor* collidedObject)

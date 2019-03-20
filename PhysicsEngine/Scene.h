@@ -6,6 +6,7 @@
 #include "BasicShapes.h"
 #include <iostream>
 
+
 using namespace std;
 using namespace physx;
 
@@ -48,7 +49,7 @@ public:
 	
 	};
 	
-
+	void CheckActors();
 	void AddActor(Actor& actor);
 	Actor* GetActor(string name);
 	PxScene* GetScene();

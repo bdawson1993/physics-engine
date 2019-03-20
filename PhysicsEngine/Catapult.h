@@ -19,7 +19,6 @@ public:
 		
 	};
 
-	
 	void CreateDynamic()
 	{
 			PxMaterial* mat = physics->createMaterial(1, 1, 1);
@@ -91,7 +90,8 @@ public:
 
 	Catapult();
 	Catapult(const char* name, PxPhysics* phy, Scene* scene);
-
+	
+	int GetLaunchForce();
 	void Update();
 	void KeyPress(char key);
 
@@ -99,5 +99,6 @@ public:
 private:
 	PxFixedJoint* ballJoint;
 	void CreateBall();
+	int launchForce = 5;
 };
 

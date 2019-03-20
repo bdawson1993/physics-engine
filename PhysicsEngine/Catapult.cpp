@@ -52,6 +52,11 @@ Catapult::Catapult(const char* name, PxPhysics* phy, Scene* scene)
 	CreateBall();
 }
 
+int Catapult::GetLaunchForce()
+{
+	return launchForce;
+}
+
 void Catapult::Update()
 {
 
@@ -64,8 +69,8 @@ void Catapult::KeyPress(char key)
 
 		if (leftJoint->getDriveVelocity() == -10)
 		{
-			leftJoint->setDriveVelocity(10);
-			rightJoint->setDriveVelocity(10);
+			leftJoint->setDriveVelocity(launchForce);
+			rightJoint->setDriveVelocity(launchForce);
 			ballJoint->setBreakForce(1.0f, 1.0f);
 
 		}
@@ -85,7 +90,25 @@ void Catapult::KeyPress(char key)
 	if (key == 'i')
 	{
 		PxRigidBody* bod = (PxRigidBody*)base->GetActor();
-		bod->setLinearVelocity(PxVec3(0, 0, -10));
+		int val = 10 * bod->getMass();
+		bod->setAngularVelocity(PxVec3(0, -1, 0));
+	}
+
+	if (key == 'o')
+	{
+		PxRigidBody* bod = (PxRigidBody*)base->GetActor();
+		int val = 10 * bod->getMass();
+		bod->setAngularVelocity(PxVec3(0, 1, 0));
+	}
+
+	if (key == '[')
+	{
+		launchForce++;
+	}
+
+	if (key == ']')
+	{
+		launchForce--;
 	}
 }
 
