@@ -129,8 +129,8 @@ void Scene::onContact(const PxContactPairHeader & pairHeader, const PxContactPai
 			triggerActor = GetActor(pairHeader.actors[i + 1]->getName());
 			otherActor = GetActor(pairHeader.actors[i]->getName());
 
-			
-			triggerActor->OnContact(triggerActor);
+			//send collsion data to actors
+			triggerActor->OnContact(otherActor);
 			otherActor->OnContact(otherActor);
 			
 
