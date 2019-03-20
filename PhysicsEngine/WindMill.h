@@ -1,7 +1,10 @@
 #pragma once
 #include "Actor.h"
+#include "Scene.h"
+#include <cmath>
 
 using namespace physx;
+using namespace std;
 
 class WindMillArms : public Actor
 {
@@ -14,10 +17,13 @@ public:
 	{
 		actor = (PxRigidDynamic*)physics->createRigidDynamic(PxTransform(pos));
 		CreateShape(PxBoxGeometry(1, 5, 1), *mat, 100);
-		CreateShape(PxBoxGeometry(1, 5, 1), *mat, 100, PxVec3(0,15,1));
-		CreateShape(PxBoxGeometry(5, 1, 1), *mat, 100, PxVec3(10, 7.5, 1));
-		CreateShape(PxBoxGeometry(5, 1, 1), *mat, 100, PxVec3(-10, 7.5, 1));
+		CreateShape(PxBoxGeometry(1, 5, 1), *mat, 100, PxVec3(0,12,0));
+
+		CreateShape(PxBoxGeometry(5, 1, 1), *mat, 100, PxVec3(7, 6, 0));
+		CreateShape(PxBoxGeometry(5, 1, 1), *mat, 100, PxVec3(-7, 6, 0));
 	}
+
+	
 };
 
 class WindMillBase : public Actor
@@ -42,29 +48,38 @@ class WindMill : public GameObject
 {
 
 public:
-	WindMill(PxPhysics* phys, Scene* scene, PxMaterial* mat)
+	WindMillArms* arms;
+	WindMillBase* base;
+	
+
+	WindMill(PxPhysics* phys, Scene* scene, PxMaterial* mat, PxVec3 pos)
 	{
 		//create arms
 		arms = new WindMillArms("Windmill Arms", phys);
-		arms->CreateDynamic(PxVec3(1, 1, -20), PxVec3(1, 1, 1), mat);
+		arms->CreateDynamic(pos, pos, mat);
 		arms->SetName();
 
 		//create base
 		base = new WindMillBase("Windmill Base", phys);
-		base->CreateStatic(PxVec3(1, 1, -21), PxVec3(1, 1, 0), mat);
+		base->CreateStatic(pos, pos, mat);
 		base->SetName();
 
-		PxRevoluteJoint* joint = PxRevoluteJointCreate(*phys, base->GetActor(), PxTransform(1, 20, -4), arms->GetActor(), PxTransform(1, 10, -4));
+		float rad = 2.8f;
+		joint = PxRevoluteJointCreate(*phys, base->GetActor(), PxTransform(PxVec3(-0.5, 20, 10), PxQuat(0, sqrt(0.5), 0, sqrt(0.5))), arms->GetActor(),
+			PxTransform(PxVec3(-0.5, 6, 5), PxQuat(0, sqrt(0.5), 0, sqrt(0.5))));
 		joint->setConstraintFlag(PxConstraintFlag::eVISUALIZATION, true);
+		joint->setRevoluteJointFlag(PxRevoluteJointFlag::eDRIVE_ENABLED, true);
+
 
 		scene->AddActor(*arms);
 		scene->AddActor(*base);
 		
 	}
 
+	void Update();
+
 
 private:
 	PxPhysics* phy;
-	WindMillArms* arms;
-	WindMillBase* base;
+	PxRevoluteJoint* joint;
 };

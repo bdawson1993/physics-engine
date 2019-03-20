@@ -31,6 +31,7 @@ private:
 	Catapult* cat;
 	Goal* goal;
 	WindMill* mill;
+	WindMill* mill2;
 
 };
 
