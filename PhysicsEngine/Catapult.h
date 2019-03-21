@@ -10,7 +10,7 @@ class CatapultBase : public Actor
 {
 public:
 	bool hasRecivedBall = false;
-
+	
 
 	CatapultBase()
 	{
@@ -44,20 +44,19 @@ public:
 			CreateShape(PxBoxGeometry(0.5f, 1.0f, 0.5f), *mat, 1000,  PxVec3(-1.0f, -0.5f, 3.5f)); //left
 			CreateShape(PxBoxGeometry(0.5f, 1.0f, 0.5f), *mat, 1000,  PxVec3(-1.0f, -0.5f, -3.5f)); //left
 
-			CreateShape(PxBoxGeometry(5.0f, 5.0f, 6.5f), *mat, -1, PxVec3(3.0f, 2.5f, 0.0f));
+			//pass trigger box
+			CreateShape(PxBoxGeometry(5.0f, 12.0f, 6.5f), *mat, -1, PxVec3(3.0f, 10.0f, 0.0f));
 			SetTrigger(true, 8);
-			GetShape(8)->setFlag(PxShapeFlag::eSIMULATION_SHAPE, false);
+			
 
 
-
-
-
-
-
-		
 	}
-	void OnContact(Actor* collidedObject);
-	
+	void OnTriggerEnter(Actor* collidedObject);
+	void SetHasBall(bool value);
+
+private:
+	bool hasBall;
+	 
 	
 };
 
@@ -112,6 +111,6 @@ private:
 	PxFixedJoint* ballJoint;
 	void CreateBall();
 	int launchForce = 5;
-	bool hasBall = true;
+	bool hasBall;
 };
 

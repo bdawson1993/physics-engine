@@ -12,13 +12,13 @@ Catapult::Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos,bo
 	base = new CatapultBase(name, phy);
 	base->CreateDynamic(pos);
 	base->SetName();
+	base->SetHasBall(hasBall);
+
+
 
 	arm = new CatapultArm("arm", phy);
 	arm->CreateDynamic(pos);
 	arm->SetName();
-
-
-
 	float rad = 2.8f;
 
 	//left side
@@ -101,28 +101,31 @@ void Catapult::KeyPress(char key)
 
 void Catapult::KeyHold(char key)
 {
-	if (key == '[')
+	if (hasBall == true)
 	{
-		launchForce++;
-	}
+		if (key == '[')
+		{
+			launchForce++;
+		}
 
-	if (key == ']')
-	{
-		launchForce--;
-	}
+		if (key == ']')
+		{
+			launchForce--;
+		}
 
-	if (key == 'i')
-	{
-		PxRigidBody* bod = (PxRigidBody*)base->GetActor();
-		int val = 10 * bod->getMass();
-		bod->setAngularVelocity(PxVec3(0, -1, 0));
-	}
+		if (key == 'i')
+		{
+			PxRigidBody* bod = (PxRigidBody*)base->GetActor();
+			int val = 10 * bod->getMass();
+			bod->setAngularVelocity(PxVec3(0, -1, 0));
+		}
 
-	if (key == 'o')
-	{
-		PxRigidBody* bod = (PxRigidBody*)base->GetActor();
-		int val = 10 * bod->getMass();
-		bod->setAngularVelocity(PxVec3(0, 1, 0));
+		if (key == 'o')
+		{
+			PxRigidBody* bod = (PxRigidBody*)base->GetActor();
+			int val = 10 * bod->getMass();
+			bod->setAngularVelocity(PxVec3(0, 1, 0));
+		}
 	}
 }
 
@@ -154,12 +157,12 @@ void Catapult::CreateBall()
 
 }
 
-
-//catapult base functions
-void CatapultBase::OnContact(Actor * collidedObject)
+void CatapultBase::OnTriggerEnter(Actor* collidedObject)
 {
-	if (collidedObject->GetName() == "ball")
-	{
-		hasRecivedBall = true;
-	}
+	cout << collidedObject->GetName() << endl;
+}
+
+void CatapultBase::SetHasBall(bool value)
+{
+	hasBall = value;
 }

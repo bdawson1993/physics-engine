@@ -78,7 +78,7 @@ namespace VisualDebugger
 		//mouse
 		glutMouseFunc(mouseCallback);
 		glutMotionFunc(motionCallback);
-		glutFullScreen();
+		//glutFullScreen();
 
 
 		//exit
