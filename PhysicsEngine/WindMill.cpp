@@ -4,5 +4,5 @@
 
 void WindMill::Update()
 {
-	joint->setDriveVelocity(0.1);
+	joint->setDriveVelocity(0.5);
 }

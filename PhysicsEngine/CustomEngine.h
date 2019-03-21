@@ -32,6 +32,7 @@ private:
 	Goal* goal;
 	WindMill* mill;
 	WindMill* mill2;
+	WindMill* mill3;
 
 };
 

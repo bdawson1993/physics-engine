@@ -120,6 +120,9 @@
     <ClInclude Include="WindMill.h">
       <Filter>Header Files\Game Objects</Filter>
     </ClInclude>
+    <ClInclude Include="SZ_HighResTimer.h">
+      <Filter>Header Files\Physics Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -181,6 +184,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WindMill.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SZ_HighResTimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

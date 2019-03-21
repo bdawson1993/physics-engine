@@ -13,6 +13,7 @@ void CustomEngine::SceneSetup()
 
 	mill = new WindMill(physics, &scene, default_material, PxVec3(-15, 5.0f, -200.0f));
 	mill2 = new WindMill(physics, &scene, default_material, PxVec3(15, 5.0f, -200.0f));
+	mill3 = new WindMill(physics, &scene, default_material, PxVec3(0, 5.0f, -190.0f));
 
 	cat->base->SetupFiltering(FilterGroup::ACTOR1, FilterGroup::ACTOR0);
 }
@@ -22,6 +23,7 @@ void CustomEngine::CustomUpdate()
 	cat->Update();
 	mill->Update();
 	mill2->Update();
+	mill3->Update();
 	scene.CheckActors();
 }
 

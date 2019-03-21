@@ -179,6 +179,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="Sphere.h" />
+    <ClInclude Include="SZ_HighResTimer.h" />
     <ClInclude Include="VisualDebugger.h" />
     <ClInclude Include="WindMill.h" />
   </ItemGroup>
@@ -207,6 +208,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="SZ_HighResTimer.cpp" />
     <ClCompile Include="VisualDebugger.cpp" />
     <ClCompile Include="WindMill.cpp" />
   </ItemGroup>

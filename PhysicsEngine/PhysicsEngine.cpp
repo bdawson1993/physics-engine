@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "PhysicsEngine.h"
 #include "glut.h"
-
+#include "SZ_HighResTimer.h"
 
 
 
