@@ -13,7 +13,7 @@ Catapult::Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos,bo
 	base->CreateDynamic(pos);
 	base->SetName();
 
-	arm = new CatapultArm(name, phy);
+	arm = new CatapultArm("arm", phy);
 	arm->CreateDynamic(pos);
 	arm->SetName();
 

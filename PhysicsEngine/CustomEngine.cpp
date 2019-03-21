@@ -5,7 +5,7 @@
 void CustomEngine::SceneSetup()
 {
 	cat = new Catapult("player", physics, &scene,PxVec3(0,1,0) ,true);
-	cat2 = new Catapult("player", physics, &scene, PxVec3(15, 1, 0));
+	cat2 = new Catapult("player", physics, &scene, PxVec3(35, 1, 10));
 
 	
 	goal = new Goal("goal", physics);
