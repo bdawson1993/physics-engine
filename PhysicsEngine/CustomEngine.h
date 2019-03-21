@@ -25,6 +25,8 @@ public:
 
 	void KeyPress(char key);
 
+	void KeyHold(char key);
+
 	int GetCatForce();
 
 private:

@@ -78,7 +78,7 @@ namespace VisualDebugger
 		//mouse
 		glutMouseFunc(mouseCallback);
 		glutMotionFunc(motionCallback);
-		glutFullScreen();
+		//glutFullScreen();
 
 
 		//exit
@@ -204,6 +204,7 @@ namespace VisualDebugger
 
 	void UserKeyHold(int key)
 	{
+		eng->KeyHold(key);
 	}
 
 	//handle camera control keys

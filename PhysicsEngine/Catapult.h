@@ -10,7 +10,7 @@ class CatapultBase : public Actor
 {
 public:
 	bool hasRecivedBall = false;
-
+	
 
 	CatapultBase()
 	{
@@ -44,16 +44,19 @@ public:
 			CreateShape(PxBoxGeometry(0.5f, 1.0f, 0.5f), *mat, 1000,  PxVec3(-1.0f, -0.5f, 3.5f)); //left
 			CreateShape(PxBoxGeometry(0.5f, 1.0f, 0.5f), *mat, 1000,  PxVec3(-1.0f, -0.5f, -3.5f)); //left
 
+			//pass trigger box
+			CreateShape(PxBoxGeometry(5.0f, 12.0f, 6.5f), *mat, -1, PxVec3(3.0f, 10.0f, 0.0f));
+			SetTrigger(true, 8);
+			
 
 
-
-
-
-
-		
 	}
-	void OnContact(Actor* collidedObject);
-	
+	void OnTriggerEnter(Actor* collidedObject);
+	void SetHasBall(bool value);
+
+private:
+	bool hasBall;
+	 
 	
 };
 
@@ -82,6 +85,8 @@ public:
 	}
 };
 
+
+
 class Catapult : public GameObject
 {
 public:
@@ -95,16 +100,19 @@ public:
 
 	Catapult();
 	Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos, bool _hasBall = false);
-	
+	Projectile GetBall();
+
 	int GetLaunchForce();
 	void Update();
 	void KeyPress(char key);
-
+	void KeyHold(char key);
+	bool hasBall;
 
 private:
 	PxFixedJoint* ballJoint;
 	void CreateBall();
 	int launchForce = 5;
-	bool hasBall = true;
+	Projectile* ball;
+	
 };
 
