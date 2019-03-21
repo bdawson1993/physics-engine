@@ -1,5 +1,4 @@
 #pragma once
-
 #include <iostream>
 #include <iomanip>
 #include <Windows.h>
@@ -8,9 +7,7 @@
 #include "Scene.h"
 #include "BasicShapes.h"
 #include "Materials.h"
-
-
-
+#include "SZ_HighResTimer.h"
 
 using namespace physx;
 using namespace std;
@@ -29,7 +26,7 @@ public:
 	PhysicsEngine();
 
 	void PxRelease();
-	void Update(PxReal delta_time);
+	float Update(PxReal delta_time);
 	virtual void CustomUpdate();
 	Scene* GetScene();
 	bool Pause();
@@ -38,6 +35,8 @@ public:
 	
 
 protected:
+	float updateRate;
+	SZ_HighResTimer timer;
 	virtual void SceneSetup();
 	PxPhysics* physics;
 	PxFoundation* foundation;
@@ -46,7 +45,6 @@ protected:
 	bool isLoaded;
 	PxMaterial* default_material;
 	Materials mat; 
-
 	virtual void KeyPress(char key);
 
 	
