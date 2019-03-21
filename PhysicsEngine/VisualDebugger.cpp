@@ -204,6 +204,7 @@ namespace VisualDebugger
 
 	void UserKeyHold(int key)
 	{
+		eng->KeyHold(key);
 	}
 
 	//handle camera control keys

@@ -44,6 +44,10 @@ public:
 			CreateShape(PxBoxGeometry(0.5f, 1.0f, 0.5f), *mat, 1000,  PxVec3(-1.0f, -0.5f, 3.5f)); //left
 			CreateShape(PxBoxGeometry(0.5f, 1.0f, 0.5f), *mat, 1000,  PxVec3(-1.0f, -0.5f, -3.5f)); //left
 
+			CreateShape(PxBoxGeometry(5.0f, 5.0f, 6.5f), *mat, -1, PxVec3(3.0f, 2.5f, 0.0f));
+			SetTrigger(true, 8);
+			GetShape(8)->setFlag(PxShapeFlag::eSIMULATION_SHAPE, false);
+
 
 
 
@@ -82,6 +86,8 @@ public:
 	}
 };
 
+
+
 class Catapult : public GameObject
 {
 public:
@@ -99,6 +105,7 @@ public:
 	int GetLaunchForce();
 	void Update();
 	void KeyPress(char key);
+	void KeyHold(char key);
 
 
 private:

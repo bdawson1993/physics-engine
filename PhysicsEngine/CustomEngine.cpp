@@ -16,7 +16,7 @@ void CustomEngine::SceneSetup()
 	mill2 = new WindMill(physics, &scene, default_material, PxVec3(15, 5.0f, -200.0f));
 	mill3 = new WindMill(physics, &scene, default_material, PxVec3(0, 20.0f, -190.0f));
 
-	cat->base->SetupFiltering(FilterGroup::ACTOR2, FilterGroup::ACTOR0);
+	cat->base->SetupFiltering(FilterGroup::ACTOR0, FilterGroup::ACTOR1);
 }
 
 void CustomEngine::CustomUpdate()
@@ -32,6 +32,12 @@ void CustomEngine::KeyPress(char key)
 {
 	cat->KeyPress(key);
 }
+
+void CustomEngine::KeyHold(char key)
+{
+	cat->KeyHold(key);
+}
+
 
 int CustomEngine::GetCatForce()
 {

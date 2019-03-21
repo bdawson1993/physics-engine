@@ -94,6 +94,23 @@ void Catapult::KeyPress(char key)
 	}
 
 
+	
+
+	
+}
+
+void Catapult::KeyHold(char key)
+{
+	if (key == '[')
+	{
+		launchForce++;
+	}
+
+	if (key == ']')
+	{
+		launchForce--;
+	}
+
 	if (key == 'i')
 	{
 		PxRigidBody* bod = (PxRigidBody*)base->GetActor();
@@ -106,16 +123,6 @@ void Catapult::KeyPress(char key)
 		PxRigidBody* bod = (PxRigidBody*)base->GetActor();
 		int val = 10 * bod->getMass();
 		bod->setAngularVelocity(PxVec3(0, 1, 0));
-	}
-
-	if (key == '[')
-	{
-		launchForce++;
-	}
-
-	if (key == ']')
-	{
-		launchForce--;
 	}
 }
 
