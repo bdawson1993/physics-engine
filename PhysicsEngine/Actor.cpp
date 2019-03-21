@@ -140,6 +140,14 @@ void Actor::CreateStatic()
 	
 }
 
+void Actor::CreateDynamic(PxVec3 pos)
+{
+}
+
+void Actor::CreateStatic(PxVec3 pos)
+{
+}
+
 
 
 
