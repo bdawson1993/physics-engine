@@ -104,8 +104,8 @@ void Scene::onTrigger(PxTriggerPair * pairs, PxU32 count)
 			otherActor = GetActor(pairs[i].otherActor->getName());
 
 			//send object that had been collided with
-			triggerActor->OnTriggerEnter(triggerActor);
-			otherActor->OnTriggerEnter(otherActor);
+			triggerActor->OnTriggerEnter(otherActor);
+			otherActor->OnTriggerEnter(triggerActor);
 			
 		}
 

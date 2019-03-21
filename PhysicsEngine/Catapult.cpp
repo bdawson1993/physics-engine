@@ -159,7 +159,12 @@ void Catapult::CreateBall()
 
 void CatapultBase::OnTriggerEnter(Actor* collidedObject)
 {
-	cout << collidedObject->GetName() << endl;
+	if (hasBall == true)
+	{
+		cout << hasBall << endl;
+	}
+
+	
 }
 
 void CatapultBase::SetHasBall(bool value)
