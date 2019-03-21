@@ -9,7 +9,7 @@ using namespace std;
 class CatapultBase : public Actor
 {
 public:
-	bool hasRecivedBall = false;
+	
 	
 
 	CatapultBase()
@@ -53,10 +53,12 @@ public:
 	}
 	void OnTriggerEnter(Actor* collidedObject);
 	void SetHasBall(bool value);
+	void SetHasRecived(bool value);
+	bool GetRecived();
 
 private:
 	bool hasBall;
-	 
+	bool hasRecivedBall = false;
 	
 };
 

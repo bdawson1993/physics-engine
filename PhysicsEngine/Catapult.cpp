@@ -67,11 +67,11 @@ int Catapult::GetLaunchForce()
 
 void Catapult::Update()
 {
-	if (base->hasRecivedBall == true)
+	if (base->GetRecived() == true)
 	{
 		CreateBall();
-		base->hasRecivedBall = false;
 		hasBall = true;
+		base->SetHasRecived(false);
 	}
 }
 
@@ -165,17 +165,25 @@ void Catapult::CreateBall()
 
 void CatapultBase::OnTriggerEnter(Actor* collidedObject)
 {
+	cout << collidedObject->GetName() << endl;
 	if (((hasBall == false) && (collidedObject->GetName() == "ball")))
 	{
-		cout << GetName() << "recived ball" << endl;
 		hasBall = true;
 		hasRecivedBall = true;
-		
-		
 	}
 }
 
 void CatapultBase::SetHasBall(bool value)
 {
 	hasBall = value;
+}
+
+void CatapultBase::SetHasRecived(bool value)
+{
+	hasRecivedBall = value;
+}
+
+bool CatapultBase::GetRecived()
+{
+	return hasRecivedBall;
 }
