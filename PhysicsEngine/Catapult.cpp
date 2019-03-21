@@ -12,7 +12,7 @@ Catapult::Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos,bo
 	base = new CatapultBase(name, phy);
 	base->CreateDynamic(pos);
 	base->SetName();
-	base->SetHasBall(hasBall);
+	base->SetHasBall(_hasBall);
 
 
 
@@ -55,6 +55,11 @@ Catapult::Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos,bo
 		CreateBall();
 }
 
+Projectile Catapult::GetBall()
+{
+	return *ball;
+}
+
 int Catapult::GetLaunchForce()
 {
 	return launchForce;
@@ -66,6 +71,7 @@ void Catapult::Update()
 	{
 		CreateBall();
 		base->hasRecivedBall = false;
+		hasBall = true;
 	}
 }
 
@@ -73,7 +79,7 @@ void Catapult::KeyPress(char key)
 {
 	if ((key == ' ') && (hasBall == true))
 	{
-
+		//hasBall = false;
 		if (leftJoint->getDriveVelocity() == -10)
 		{
 			leftJoint->setDriveVelocity(launchForce);
@@ -137,7 +143,7 @@ void Catapult::CreateBall()
 	}
 
 	PxRigidBody* pos = (PxRigidBody*)this->base->GetActor();
-	Projectile* ball = new Projectile("ball", phys);
+	ball = new Projectile("ball", phys);
 	ball->SetupFiltering(FilterGroup::ACTOR1, FilterGroup::ACTOR0);
 
 
@@ -159,12 +165,14 @@ void Catapult::CreateBall()
 
 void CatapultBase::OnTriggerEnter(Actor* collidedObject)
 {
-	if (hasBall == true)
+	if (((hasBall == false) && (collidedObject->GetName() == "ball")))
 	{
-		cout << hasBall << endl;
+		cout << GetName() << "recived ball" << endl;
+		hasBall = true;
+		hasRecivedBall = true;
+		
+		
 	}
-
-	
 }
 
 void CatapultBase::SetHasBall(bool value)

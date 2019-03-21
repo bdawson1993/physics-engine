@@ -5,7 +5,7 @@
 void CustomEngine::SceneSetup()
 {
 	cat = new Catapult("player", physics, &scene, PxVec3(0, 1, 0), true);
-	cat2 = new Catapult("player", physics, &scene, PxVec3(35, 1, 10));
+	cat2 = new Catapult("player1", physics, &scene, PxVec3(35, 1, 10));
 
 
 	goal = new Goal("goal", physics);
@@ -18,7 +18,7 @@ void CustomEngine::SceneSetup()
 
 	//setup object filtering
 	cat->base->SetupFiltering(FilterGroup::ACTOR0, FilterGroup::ACTOR1);
-	cat2->base->SetupFiltering(FilterGroup::ACTOR0, FilterGroup::ACTOR1);
+	//cat2->base->SetupFiltering(FilterGroup::ACTOR0, FilterGroup::ACTOR1);
 }
 
 void CustomEngine::CustomUpdate()
@@ -29,6 +29,8 @@ void CustomEngine::CustomUpdate()
 	mill->Update();
 	mill2->Update();
 	mill3->Update();
+
+	
 	scene.CheckActors();
 }
 

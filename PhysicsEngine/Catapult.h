@@ -100,17 +100,19 @@ public:
 
 	Catapult();
 	Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos, bool _hasBall = false);
-	
+	Projectile GetBall();
+
 	int GetLaunchForce();
 	void Update();
 	void KeyPress(char key);
 	void KeyHold(char key);
-
+	bool hasBall;
 
 private:
 	PxFixedJoint* ballJoint;
 	void CreateBall();
 	int launchForce = 5;
-	bool hasBall;
+	Projectile* ball;
+	
 };
 
