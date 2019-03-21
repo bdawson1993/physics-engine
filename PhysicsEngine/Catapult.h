@@ -9,6 +9,9 @@ using namespace std;
 class CatapultBase : public Actor
 {
 public:
+	bool hasRecivedBall = false;
+
+
 	CatapultBase()
 	{
 
@@ -19,10 +22,10 @@ public:
 		
 	};
 
-	void CreateDynamic()
+	void CreateDynamic(PxVec3 pos)
 	{
 			PxMaterial* mat = physics->createMaterial(1, 1, 1);
-			actor = (PxRigidDynamic*)physics->createRigidDynamic(PxTransform(PxVec3(0, 1, 0)));
+			actor = (PxRigidDynamic*)physics->createRigidDynamic(PxTransform(pos));
 
 			//sides
 			CreateShape(PxBoxGeometry(0.5f, 0.5f, 3.0f), *mat, 100,  PxVec3(0, 0, 0));
@@ -49,6 +52,8 @@ public:
 
 		
 	}
+	void OnContact(Actor* collidedObject);
+	
 	
 };
 
@@ -65,10 +70,10 @@ public:
 
 	};
 
-	void CreateDynamic()
+	void CreateDynamic(PxVec3 pos)
 	{
 		PxMaterial* mat = physics->createMaterial(1, 1, 1);
-		actor = (PxRigidDynamic*)physics->createRigidDynamic(PxTransform(PxVec3(0, 5, 0)));
+		actor = (PxRigidDynamic*)physics->createRigidDynamic(PxTransform(pos));
 
 		CreateShape(PxBoxGeometry(1.5f, 0.5f, 0.5f), *mat, 100, PxVec3(0.0f, 1.0f, 0.0f));
 		CreateShape(PxBoxGeometry(.5f, 2.0f, 0.5f), *mat, 100, PxVec3(0.0f, 3.50f, 0.0f));
@@ -89,7 +94,7 @@ public:
 	PxRevoluteJoint* rightJoint;
 
 	Catapult();
-	Catapult(const char* name, PxPhysics* phy, Scene* scene);
+	Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos, bool _hasBall = false);
 	
 	int GetLaunchForce();
 	void Update();
@@ -100,5 +105,6 @@ private:
 	PxFixedJoint* ballJoint;
 	void CreateBall();
 	int launchForce = 5;
+	bool hasBall = true;
 };
 
