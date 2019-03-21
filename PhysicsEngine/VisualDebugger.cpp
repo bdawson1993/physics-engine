@@ -46,6 +46,7 @@ namespace VisualDebugger
 	bool key_state[MAX_KEYS];
 	bool hud_show = false;
 	HUD hud;
+	float updateRate = 0.0f;
 
 	//Init the debugger
 	void Init(const char *window_name, int width, int height)
@@ -93,6 +94,8 @@ namespace VisualDebugger
 		//add an empty screen
 		hud.AddLine(EMPTY, "");
 		hud.AddLine(EMPTY, "Launch Force: " + to_string(eng->GetCatForce()));
+		hud.AddLine(EMPTY, "Update Rate: " + to_string(updateRate));
+
 		//add a help screen
 		hud.AddLine(HELP, "");
 		hud.AddLine(HELP, "");
@@ -167,7 +170,7 @@ namespace VisualDebugger
 		Renderer::Finish();
 
 		//perform a single simulation step
-		eng->Update(delta_time);
+		updateRate = eng->Update(delta_time);
 		hud.Clear();
 	}
 

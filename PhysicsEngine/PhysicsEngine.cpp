@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "PhysicsEngine.h"
 #include "glut.h"
-#include "SZ_HighResTimer.h"
+
 
 
 
@@ -17,11 +17,14 @@ PhysicsEngine::PhysicsEngine()
 	}
 }
 
-void PhysicsEngine::Update(PxReal delta_time)
+float PhysicsEngine::Update(PxReal delta_time)
 {
+	timer.resetChronoTimer();
 	CustomUpdate();
 	scene.GetScene()->simulate(delta_time);
 	scene.GetScene()->fetchResults(true);
+	updateRate = timer.getChronoTime();
+	return updateRate;
 	
 }
 
