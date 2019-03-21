@@ -13,18 +13,14 @@ using namespace physx;
 using namespace std;
 
 
-
 class PhysicsEngine
 {
 private:
-	
 	bool InitPhysics();
-	
 	bool pause = false;
 
 public:
 	PhysicsEngine();
-
 	void PxRelease();
 	float Update(PxReal delta_time);
 	virtual void CustomUpdate();

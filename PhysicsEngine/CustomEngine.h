@@ -29,6 +29,9 @@ public:
 
 private:
 	Catapult* cat;
+	Catapult* cat2;
+
+
 	Goal* goal;
 	WindMill* mill;
 	WindMill* mill2;

@@ -4,7 +4,8 @@
 
 void CustomEngine::SceneSetup()
 {
-	cat = new Catapult("Player", physics, &scene);
+	cat = new Catapult("player", physics, &scene,PxVec3(0,1,0) ,true);
+	cat2 = new Catapult("player", physics, &scene, PxVec3(15, 1, 0));
 
 	
 	goal = new Goal("goal", physics);
@@ -13,9 +14,9 @@ void CustomEngine::SceneSetup()
 
 	mill = new WindMill(physics, &scene, default_material, PxVec3(-15, 5.0f, -200.0f));
 	mill2 = new WindMill(physics, &scene, default_material, PxVec3(15, 5.0f, -200.0f));
-	mill3 = new WindMill(physics, &scene, default_material, PxVec3(0, 5.0f, -190.0f));
+	mill3 = new WindMill(physics, &scene, default_material, PxVec3(0, 20.0f, -190.0f));
 
-	cat->base->SetupFiltering(FilterGroup::ACTOR1, FilterGroup::ACTOR0);
+	cat->base->SetupFiltering(FilterGroup::ACTOR2, FilterGroup::ACTOR0);
 }
 
 void CustomEngine::CustomUpdate()
