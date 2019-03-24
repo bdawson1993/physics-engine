@@ -120,7 +120,7 @@ namespace VisualDebugger
 		//set font size for all screens
 		hud.FontSize(0.018f);
 		//set font color for all screens
-		hud.Color(PxVec3(0.f,0.f,0.f));
+		hud.Color(PxVec3(255.0f,255.0f,255.0f));
 	}
 
 	//Start the main loop

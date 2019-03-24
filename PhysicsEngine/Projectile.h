@@ -16,7 +16,7 @@ public:
 	}
 
 	void CreateDynamic(PxVec3 pos, PxVec3 size, PxMaterial* mat);
-
+	void OnTriggerEnter(Actor* collidedObject);
 	void OnContact(Actor* collidedObject);
 
 };

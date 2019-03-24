@@ -144,7 +144,7 @@ void Catapult::CreateBall()
 
 	PxRigidBody* pos = (PxRigidBody*)this->base->GetActor();
 	ball = new Projectile("ball", phys);
-	ball->CreateDynamic(PxVec3(1, 1, 1), PxVec3(1, 1, 1), ballMat);
+	ball->CreateDynamic(PxVec3(1, 1, 0), PxVec3(1, 1, 1), ballMat);
 	ball->SetupFiltering(FilterGroup::ACTOR1, FilterGroup::ACTOR0);
 	ball->SetName();
 

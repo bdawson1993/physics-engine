@@ -32,6 +32,8 @@ public:
 private:
 	Catapult* cat;
 	//Catapult* cat2;
+	Cube* leftWall;
+	Cube* rightWall;
 
 
 	Goal* goal;

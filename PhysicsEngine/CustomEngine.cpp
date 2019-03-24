@@ -4,8 +4,25 @@
 
 void CustomEngine::SceneSetup()
 {
+	
 	cat = new Catapult("player", physics, &scene, PxVec3(0, 1, 0), mat.GetMaterial("default"), true);
 	//cat2 = new Catapult("player1", physics, &scene, PxVec3(35, 1, 10));
+
+	//create left wall
+	leftWall = new Cube("left wall", physics);
+	leftWall->CreateStatic(PxVec3(-30.0f, 10.0f, -100.0f), PxVec3(1.0f, 30.0f, 130.0f), mat.GetMaterial("default"));
+	leftWall->SetColor(PxVec3(0, 0, 0));
+	scene.AddActor(*leftWall);
+
+	//create right wall
+	rightWall = new Cube("right wall", physics);
+	rightWall->CreateStatic(PxVec3(30.0f, 10.0f, -100.0f), PxVec3(1.0f, 30.0f, 130.0f), mat.GetMaterial("default"));
+	rightWall->SetColor(PxVec3(0, 0, 0));
+	scene.AddActor(*rightWall);
+
+
+
+
 
 
 	goal = new Goal("goal", physics);
