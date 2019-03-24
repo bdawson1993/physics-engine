@@ -47,6 +47,7 @@ public:
 	PxShape* GetShape(PxU32 index);
 	void SetColor(PxVec3 color);
 	bool GetDelete();
+	void Delete();
 	
 	//collsion messages
 	virtual void OnTriggerEnter(Actor* collidedObject);

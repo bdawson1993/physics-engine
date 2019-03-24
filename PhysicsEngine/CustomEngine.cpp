@@ -47,6 +47,9 @@ void CustomEngine::SceneSetup()
 	//setup object filtering
 	cat->base->SetupFiltering(FilterGroup::ACTOR0, FilterGroup::ACTOR1);
 	//cat2->base->SetupFiltering(FilterGroup::ACTOR0, FilterGroup::ACTOR1);
+
+	partEngine = ParticleEngine(&scene, physics, EmitterShape::ShapeRectangle, mat.GetMaterial("default"),
+		PxVec3(-40, 20, 200), -20, 20);
 }
 
 void CustomEngine::CustomUpdate()
@@ -60,6 +63,10 @@ void CustomEngine::CustomUpdate()
 
 	
 	scene.CheckActors();
+
+	//particle system update
+	partEngine.Emit();
+	partEngine.Update();
 }
 
 void CustomEngine::KeyPress(char key)

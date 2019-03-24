@@ -71,6 +71,11 @@ bool Actor::GetDelete()
 	return flagForDeletion;
 }
 
+void Actor::Delete()
+{
+	flagForDeletion = true;
+}
+
 void Actor::CreateShape(const PxGeometry& geometry, PxMaterial& mat, int density, PxVec3 local)
 {
 	if (actor->isRigidDynamic())
