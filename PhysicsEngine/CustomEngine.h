@@ -4,6 +4,7 @@
 #include "Catapult.h"
 #include "Goal.h"
 #include "WindMill.h"
+#include "ParticleEngine.h"
 
 class CustomEngine : public PhysicsEngine
 {
@@ -42,6 +43,7 @@ private:
 	WindMill* mill;
 	WindMill* mill2;
 	WindMill* mill3;
+	ParticleEngine partEngine;
 
 };
 
