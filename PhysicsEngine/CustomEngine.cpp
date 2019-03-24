@@ -4,8 +4,8 @@
 
 void CustomEngine::SceneSetup()
 {
-	cat = new Catapult("player", physics, &scene, PxVec3(0, 1, 0), true);
-	cat2 = new Catapult("player1", physics, &scene, PxVec3(35, 1, 10));
+	cat = new Catapult("player", physics, &scene, PxVec3(0, 1, 0), mat.GetMaterial("default"), true);
+	//cat2 = new Catapult("player1", physics, &scene, PxVec3(35, 1, 10));
 
 
 	goal = new Goal("goal", physics);
@@ -24,7 +24,7 @@ void CustomEngine::SceneSetup()
 void CustomEngine::CustomUpdate()
 {
 	cat->Update();
-	cat2->Update();
+	//cat2->Update();
 
 	mill->Update();
 	mill2->Update();
@@ -37,13 +37,13 @@ void CustomEngine::CustomUpdate()
 void CustomEngine::KeyPress(char key)
 {
 	cat->KeyPress(key);
-	cat2->KeyPress(key);
+	//cat2->KeyPress(key);
 }
 
 void CustomEngine::KeyHold(char key)
 {
 	cat->KeyHold(key);
-	cat2->KeyHold(key);
+	//cat2->KeyHold(key);
 }
 
 

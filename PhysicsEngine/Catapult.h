@@ -99,7 +99,7 @@ public:
 	PxRevoluteJoint* rightJoint;
 
 	Catapult();
-	Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos, bool _hasBall = false);
+	Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos, PxMaterial* mat, bool _hasBall = false);
 	Projectile GetBall();
 
 	int GetLaunchForce();
@@ -113,6 +113,8 @@ private:
 	void CreateBall();
 	int launchForce = 5;
 	Projectile* ball;
+	PxMaterial* ballMat;
+	
 	
 };
 

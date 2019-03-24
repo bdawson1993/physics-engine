@@ -31,7 +31,7 @@ public:
 
 private:
 	Catapult* cat;
-	Catapult* cat2;
+	//Catapult* cat2;
 
 
 	Goal* goal;

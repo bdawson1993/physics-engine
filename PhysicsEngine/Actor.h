@@ -52,6 +52,8 @@ public:
 	virtual void OnTriggerEnter(Actor* collidedObject);
 	virtual void OnTriggerLeave(Actor* collidedObject);
 	virtual void OnContact(Actor* collidedObject);
+
+	//shape
 	
 
 protected:
