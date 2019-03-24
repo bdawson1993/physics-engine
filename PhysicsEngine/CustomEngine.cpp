@@ -4,6 +4,8 @@
 
 void CustomEngine::SceneSetup()
 {
+	mat.AddMaterial("water", physics->createMaterial(0.5f, 0.5f, 0.5f));
+
 	
 	cat = new Catapult("player", physics, &scene, PxVec3(0, 1, 0), mat.GetMaterial("default"), true);
 	//cat2 = new Catapult("player1", physics, &scene, PxVec3(35, 1, 10));
@@ -48,7 +50,7 @@ void CustomEngine::SceneSetup()
 	cat->base->SetupFiltering(FilterGroup::ACTOR0, FilterGroup::ACTOR1);
 	//cat2->base->SetupFiltering(FilterGroup::ACTOR0, FilterGroup::ACTOR1);
 
-	partEngine = ParticleEngine(&scene, physics, EmitterShape::ShapeRectangle, mat.GetMaterial("default"),
+	partEngine = ParticleEngine(&scene, physics, EmitterShape::ShapeRectangle, mat.GetMaterial("water"),
 		PxVec3(-40, 20, 200), -20, 20);
 }
 
