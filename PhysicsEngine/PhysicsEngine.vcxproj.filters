@@ -123,6 +123,9 @@
     <ClInclude Include="SZ_HighResTimer.h">
       <Filter>Header Files\Physics Engine</Filter>
     </ClInclude>
+    <ClInclude Include="ParticleEngine.h">
+      <Filter>Header Files\Physics Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
