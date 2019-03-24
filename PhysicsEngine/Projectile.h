@@ -6,15 +6,16 @@
 
 using namespace std;
 
-class Projectile : public Sphere
+class Projectile : public Actor
 {
 public:
 	bool onFloor;
-	Projectile(const char* name, PxPhysics* phys) : Sphere(name, phys)
+	Projectile(const char* name, PxPhysics* phys) : Actor(name, phys)
 	{
-		PxMaterial* mat = physics->createMaterial(0, 0, 0);
-		CreateDynamic(PxVec3(0, 5, 0), 1.0f, mat);
+		
 	}
+
+	void CreateDynamic(PxVec3 pos, PxVec3 size, PxMaterial* mat);
 
 	void OnContact(Actor* collidedObject);
 
