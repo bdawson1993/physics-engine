@@ -10,16 +10,27 @@ void CustomEngine::SceneSetup()
 
 	//create left wall
 	leftWall = new Cube("left wall", physics);
-	leftWall->CreateStatic(PxVec3(-30.0f, 10.0f, -100.0f), PxVec3(1.0f, 30.0f, 130.0f), mat.GetMaterial("default"));
+	leftWall->CreateStatic(PxVec3(-30.0f, 10.0f, -110.0f), PxVec3(1.0f, 30.0f, 150.0f), mat.GetMaterial("default"));
 	leftWall->SetColor(PxVec3(0, 0, 0));
 	scene.AddActor(*leftWall);
 
 	//create right wall
 	rightWall = new Cube("right wall", physics);
-	rightWall->CreateStatic(PxVec3(30.0f, 10.0f, -100.0f), PxVec3(1.0f, 30.0f, 130.0f), mat.GetMaterial("default"));
+	rightWall->CreateStatic(PxVec3(30.0f, 10.0f, -110.0f), PxVec3(1.0f, 30.0f, 150.0f), mat.GetMaterial("default"));
 	rightWall->SetColor(PxVec3(0, 0, 0));
 	scene.AddActor(*rightWall);
 
+	//create rear wall
+	rearWall = new Cube("rear wall", physics);
+	rearWall->CreateStatic(PxVec3(0.0f, 10.0f, 40.0f), PxVec3(30.0f, 30.0f, 1.0f), mat.GetMaterial("default"));
+	rearWall->SetColor(PxVec3(0, 0, 0));
+	scene.AddActor(*rearWall);
+
+	//create front wall
+	frontWall = new Cube("rear wall", physics);
+	frontWall->CreateStatic(PxVec3(0.0f, 10.0f, -260.0f), PxVec3(30.0f, 30.0f, 1.0f), mat.GetMaterial("default"));
+	frontWall->SetColor(PxVec3(0, 0, 0));
+	scene.AddActor(*frontWall);
 
 
 

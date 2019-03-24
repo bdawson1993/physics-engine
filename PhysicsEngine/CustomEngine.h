@@ -34,6 +34,8 @@ private:
 	//Catapult* cat2;
 	Cube* leftWall;
 	Cube* rightWall;
+	Cube* rearWall;
+	Cube* frontWall;
 
 
 	Goal* goal;
