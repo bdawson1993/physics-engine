@@ -51,7 +51,7 @@ void CustomEngine::SceneSetup()
 	//cat2->base->SetupFiltering(FilterGroup::ACTOR0, FilterGroup::ACTOR1);
 
 	partEngine = ParticleEngine(&scene, physics, EmitterShape::ShapeRectangle, mat.GetMaterial("water"),
-		PxVec3(-40, 20, 200), -20, 20);
+		PxVec3(-40, 100, 200), -20, 20);
 }
 
 void CustomEngine::CustomUpdate()
