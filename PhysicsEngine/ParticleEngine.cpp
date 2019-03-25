@@ -5,7 +5,7 @@ void ParticleEngine::Emit()
 	switch (shape)
 	{
 	case EmitterShape::ShapeRectangle:
-		PxVec3 loc = PxVec3((-100 + rand() % 200), y, (-100 + rand() % 200));
+		PxVec3 loc = PxVec3(InRange(xLow-15, xHigh + 15), y, InRange(xLow - 170, xHigh));
 		Particle* cube = new Particle("particle", phys);
 		cube->CreateDynamic(loc, PxVec3(0.2f, 0.2f, 0.2f), mat);
 		cube->SetColor(PxVec3(0.0f, 0.0f, 204.0f));
@@ -30,6 +30,11 @@ void ParticleEngine::Update()
 		}
 	}
 
+}
+
+int ParticleEngine::InRange(int min, int max)
+{
+	return min + rand() % ((max + 1) - min);
 }
 
 

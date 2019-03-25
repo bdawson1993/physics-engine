@@ -58,7 +58,9 @@ private:
 	PxPhysics* phys;
 	PxMaterial* mat;
 	vector<Particle*> particles;
-	int life = 150;
+	int life = 280;
+
+	int InRange(int min, int max);
 	
 	
 
