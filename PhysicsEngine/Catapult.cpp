@@ -6,18 +6,19 @@ Catapult::Catapult()
 
 }
 
-Catapult::Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos, PxMaterial* mat,bool _hasBall)
+Catapult::Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos, PxMaterial* mat, PxMaterial* ballMat, bool _hasBall)
 {
 	hasBall = _hasBall;
+	this->ballMat = ballMat;
 	base = new CatapultBase(name, phy);
-	base->CreateDynamic(pos);
+	base->CreateDynamic(pos, PxVec3(0, 0, 0), mat);
 	base->SetName();
 	base->SetHasBall(_hasBall);
 
 
 
 	arm = new CatapultArm("arm", phy);
-	arm->CreateDynamic(pos);
+	arm->CreateDynamic(pos, PxVec3(0,0,0), mat);
 	arm->SetName();
 	float rad = 2.8f;
 
@@ -55,9 +56,9 @@ Catapult::Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos, P
 		CreateBall();
 }
 
-Projectile Catapult::GetBall()
+Projectile* Catapult::GetBall()
 {
-	return *ball;
+	return ball;
 }
 
 int Catapult::GetLaunchForce()
@@ -132,6 +133,13 @@ void Catapult::KeyHold(char key)
 			int val = 10 * bod->getMass();
 			bod->setAngularVelocity(PxVec3(0, 1, 0));
 		}
+
+		if (key == ',')
+		{
+
+			CreateBall();
+		}
+			
 	}
 }
 
@@ -140,15 +148,18 @@ void Catapult::CreateBall()
 	if (ballJoint != NULL)
 	{
 		ballJoint->release();
+		ball->Delete();
 	}
+	
 
 	PxRigidBody* pos = (PxRigidBody*)this->base->GetActor();
 	ball = new Projectile("ball", phys);
 	ball->CreateDynamic(PxVec3(1, 1, 0), PxVec3(1, 1, 1), ballMat);
 	ball->SetupFiltering(FilterGroup::ACTOR1, FilterGroup::ACTOR0);
 	ball->SetName();
+	ball->SetColor(PxVec3(0.0f, 5.0f, 255.0f));
 
-	PxRigidBody* bod = (PxRigidBody*)ball->GetActor();
+	
 
 
 

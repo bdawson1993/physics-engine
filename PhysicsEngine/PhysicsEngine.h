@@ -18,6 +18,7 @@ class PhysicsEngine
 private:
 	bool InitPhysics();
 	bool pause = false;
+	
 
 public:
 	PhysicsEngine();
@@ -27,7 +28,7 @@ public:
 	Scene* GetScene();
 	bool Pause();
 	void Pause(bool value);
-
+	int GetScore();
 	
 
 protected:
@@ -42,6 +43,9 @@ protected:
 	PxMaterial* default_material;
 	Materials mat; 
 	virtual void KeyPress(char key);
+	
+	int score;
+	
 
 	
 	

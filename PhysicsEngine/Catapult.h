@@ -22,9 +22,8 @@ public:
 		
 	};
 
-	void CreateDynamic(PxVec3 pos)
+	void CreateDynamic(PxVec3 pos, PxVec3 size, PxMaterial* mat)
 	{
-			PxMaterial* mat = physics->createMaterial(1, 1, 1);
 			actor = (PxRigidDynamic*)physics->createRigidDynamic(PxTransform(pos));
 
 			//sides
@@ -75,9 +74,8 @@ public:
 
 	};
 
-	void CreateDynamic(PxVec3 pos)
+	void CreateDynamic(PxVec3 pos, PxVec3 size, PxMaterial* mat)
 	{
-		PxMaterial* mat = physics->createMaterial(1, 1, 1);
 		actor = (PxRigidDynamic*)physics->createRigidDynamic(PxTransform(pos));
 
 		CreateShape(PxBoxGeometry(1.5f, 0.5f, 0.5f), *mat, 100, PxVec3(0.0f, 1.0f, 0.0f));
@@ -101,8 +99,8 @@ public:
 	PxRevoluteJoint* rightJoint;
 
 	Catapult();
-	Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos, PxMaterial* mat, bool _hasBall = false);
-	Projectile GetBall();
+	Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos, PxMaterial* mat, PxMaterial* ballMat, bool _hasBall = false);
+	Projectile* GetBall();
 
 	int GetLaunchForce();
 	void Update();

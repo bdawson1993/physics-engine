@@ -3,6 +3,7 @@
 #include "Extras\Camera.h"
 #include "Extras\Renderer.h"
 #include "Extras\HUD.h"
+#include "SZ_HighResTimer.h"
 
 namespace VisualDebugger
 {
@@ -47,6 +48,8 @@ namespace VisualDebugger
 	bool hud_show = false;
 	HUD hud;
 	float updateRate = 0.0f;
+	int frameCount = 0;
+	
 
 	//Init the debugger
 	void Init(const char *window_name, int width, int height)
@@ -95,6 +98,7 @@ namespace VisualDebugger
 		hud.AddLine(EMPTY, "");
 		hud.AddLine(EMPTY, "Launch Force: " + to_string(eng->GetCatForce()));
 		hud.AddLine(EMPTY, "Update Rate: " + to_string(updateRate));
+		hud.AddLine(EMPTY, "Score: " + to_string(eng->GetScore()));
 
 		//add a help screen
 		hud.AddLine(HELP, "");
@@ -132,6 +136,7 @@ namespace VisualDebugger
 	//Render the scene and perform a single simulation step
 	void RenderScene()
 	{
+		
 		HUDInit();
 		//handle pressed keys
 		KeyHold();
@@ -172,6 +177,7 @@ namespace VisualDebugger
 		//perform a single simulation step
 		updateRate = eng->Update(delta_time);
 		hud.Clear();
+		
 	}
 
 	//user defined keyboard handlers

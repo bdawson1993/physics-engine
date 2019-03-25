@@ -44,6 +44,11 @@ void PhysicsEngine::Pause(bool value)
 	pause = value;
 }
 
+int PhysicsEngine::GetScore()
+{
+	return score;
+}
+
 void PhysicsEngine::SceneSetup()
 {
 }
