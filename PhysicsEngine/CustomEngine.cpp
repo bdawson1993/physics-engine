@@ -4,9 +4,38 @@
 
 void CustomEngine::SceneSetup()
 {
+	mat.AddMaterial("water", physics->createMaterial(0.5f, 0.5f, 0.5f));
+
 	
-	cat = new Catapult("player", physics, &scene, PxVec3(0, 1, 0), true);
+	cat = new Catapult("player", physics, &scene, PxVec3(0, 1, 0), mat.GetMaterial("default"), true);
 	//cat2 = new Catapult("player1", physics, &scene, PxVec3(35, 1, 10));
+
+	//create left wall
+	leftWall = new Cube("left wall", physics);
+	leftWall->CreateStatic(PxVec3(-30.0f, 10.0f, -110.0f), PxVec3(1.0f, 30.0f, 150.0f), mat.GetMaterial("default"));
+	leftWall->SetColor(PxVec3(0, 0, 0));
+	scene.AddActor(*leftWall);
+
+	//create right wall
+	rightWall = new Cube("right wall", physics);
+	rightWall->CreateStatic(PxVec3(30.0f, 10.0f, -110.0f), PxVec3(1.0f, 30.0f, 150.0f), mat.GetMaterial("default"));
+	rightWall->SetColor(PxVec3(0, 0, 0));
+	scene.AddActor(*rightWall);
+
+	//create rear wall
+	rearWall = new Cube("rear wall", physics);
+	rearWall->CreateStatic(PxVec3(0.0f, 10.0f, 40.0f), PxVec3(30.0f, 30.0f, 1.0f), mat.GetMaterial("default"));
+	rearWall->SetColor(PxVec3(0, 0, 0));
+	scene.AddActor(*rearWall);
+
+	//create front wall
+	frontWall = new Cube("rear wall", physics);
+	frontWall->CreateStatic(PxVec3(0.0f, 10.0f, -260.0f), PxVec3(30.0f, 30.0f, 1.0f), mat.GetMaterial("default"));
+	frontWall->SetColor(PxVec3(0, 0, 0));
+	scene.AddActor(*frontWall);
+
+
+
 
 
 	goal = new Goal("goal", physics);
@@ -21,7 +50,8 @@ void CustomEngine::SceneSetup()
 	cat->base->SetupFiltering(FilterGroup::ACTOR0, FilterGroup::ACTOR1);
 	//cat2->base->SetupFiltering(FilterGroup::ACTOR0, FilterGroup::ACTOR1);
 
-	
+	partEngine = ParticleEngine(&scene, physics, EmitterShape::ShapeRectangle, mat.GetMaterial("water"),
+		PxVec3(-40, 100, 200), -20, 20);
 }
 
 void CustomEngine::CustomUpdate()
@@ -35,6 +65,10 @@ void CustomEngine::CustomUpdate()
 
 	
 	scene.CheckActors();
+
+	//particle system update
+	partEngine.Emit();
+	partEngine.Update();
 }
 
 void CustomEngine::KeyPress(char key)

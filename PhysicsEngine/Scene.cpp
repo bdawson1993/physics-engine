@@ -136,11 +136,14 @@ void Scene::onContact(const PxContactPairHeader & pairHeader, const PxContactPai
 		//check eNOTIFY_TOUCH_FOUND
 		if (pairs[i].events & PxPairFlag::eNOTIFY_TOUCH_FOUND)
 		{ 
-			triggerActor = GetActor(pairHeader.actors[i]->getName());
-			otherActor = GetActor(pairHeader.actors[i + 1]->getName());
+			if ((pairHeader.actors[i] != NULL) && (pairHeader.actors[i + 1] != NULL))
+			{
+				triggerActor = GetActor(pairHeader.actors[i]->getName());
+				otherActor = GetActor(pairHeader.actors[i + 1]->getName());
 
-			triggerActor->OnContact(otherActor);
-			otherActor->OnContact(triggerActor);
+				triggerActor->OnContact(otherActor);
+				otherActor->OnContact(triggerActor);
+			}
 			
 
 		}

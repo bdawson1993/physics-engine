@@ -47,11 +47,14 @@ public:
 	PxShape* GetShape(PxU32 index);
 	void SetColor(PxVec3 color);
 	bool GetDelete();
+	void Delete();
 	
 	//collsion messages
 	virtual void OnTriggerEnter(Actor* collidedObject);
 	virtual void OnTriggerLeave(Actor* collidedObject);
 	virtual void OnContact(Actor* collidedObject);
+
+	//shape
 	
 
 protected:

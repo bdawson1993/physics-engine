@@ -5,6 +5,7 @@
 #include <Windows.h>
 #include "BasicShapes.h"
 #include <iostream>
+#include "Materials.h"
 
 
 using namespace std;
@@ -43,10 +44,10 @@ public:
 
 		scene = physics->createScene(scenceDesc);
 		scene->setGravity(PxVec3(0.f, -9.81f, 0.f));
-
+		
 		scene->setVisualizationParameter(PxVisualizationParameter::eJOINT_LOCAL_FRAMES, true);
 		scene->setVisualizationParameter(PxVisualizationParameter::eJOINT_LIMITS, true);
-	
+		
 	};
 	
 	void CheckActors();
@@ -71,7 +72,5 @@ public:
 private:
 	PxScene* scene;
 	PxSimulationFilterShader filter_shader;
-
-
 };
 

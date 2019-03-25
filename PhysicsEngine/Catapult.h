@@ -45,8 +45,8 @@ public:
 			CreateShape(PxBoxGeometry(0.5f, 1.0f, 0.5f), *mat, 1000,  PxVec3(-1.0f, -0.5f, -3.5f)); //left
 
 			//pass trigger box
-			CreateShape(PxBoxGeometry(5.0f, 12.0f, 6.5f), *mat, -1, PxVec3(3.0f, 10.0f, 0.0f));
-			SetTrigger(true, 8);
+			//CreateShape(PxBoxGeometry(5.0f, 12.0f, 6.5f), *mat, -1, PxVec3(3.0f, 10.0f, 0.0f));
+			//SetTrigger(true, 8);
 			
 
 
@@ -101,7 +101,7 @@ public:
 	PxRevoluteJoint* rightJoint;
 
 	Catapult();
-	Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos, bool _hasBall = false);
+	Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos, PxMaterial* mat, bool _hasBall = false);
 	Projectile GetBall();
 
 	int GetLaunchForce();
@@ -115,6 +115,8 @@ private:
 	void CreateBall();
 	int launchForce = 5;
 	Projectile* ball;
+	PxMaterial* ballMat;
+	
 	
 };
 

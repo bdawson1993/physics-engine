@@ -6,7 +6,7 @@ Catapult::Catapult()
 
 }
 
-Catapult::Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos,bool _hasBall)
+Catapult::Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos, PxMaterial* mat,bool _hasBall)
 {
 	hasBall = _hasBall;
 	base = new CatapultBase(name, phy);
@@ -42,7 +42,7 @@ Catapult::Catapult(const char* name, PxPhysics* phy, Scene* scene, PxVec3 pos,bo
 	rightJoint->setRevoluteJointFlag(PxRevoluteJointFlag::eLIMIT_ENABLED, true);
 	rightJoint->setRevoluteJointFlag(PxRevoluteJointFlag::eDRIVE_ENABLED, true);
 	rightJoint->setDriveVelocity(PxReal(-10));
-
+	ballMat = mat;
 
 	this->phys = phy;
 	this->scene = scene;
@@ -144,16 +144,17 @@ void Catapult::CreateBall()
 
 	PxRigidBody* pos = (PxRigidBody*)this->base->GetActor();
 	ball = new Projectile("ball", phys);
+	ball->CreateDynamic(PxVec3(1, 1, 0), PxVec3(1, 1, 1), ballMat);
 	ball->SetupFiltering(FilterGroup::ACTOR1, FilterGroup::ACTOR0);
-
+	ball->SetName();
 
 	PxRigidBody* bod = (PxRigidBody*)ball->GetActor();
 
 
 
 	//ball connection
-	ballJoint = PxFixedJointCreate(*phys, (PxRigidActor*)ball->GetActor(), PxTransform(PxVec3(0.0f, 0.0f, 0.0f), PxQuat(0, 1, 0, 0)),
-		(PxRigidActor*)arm->GetActor(), PxTransform(PxVec3(0.0, 6.5f, -2.0f), PxQuat(0, 1, 0, 0)));
+	ballJoint = PxFixedJointCreate(*phys, (PxRigidActor*)ball->GetActor(), PxTransform(PxVec3(0.0f, 2.0f, 0.0f), PxQuat(0, 1, 0, 0)),
+		(PxRigidActor*)arm->GetActor(), PxTransform(PxVec3(-1.0, 5.5f, -2.0f), PxQuat(0, 1, 0, 0)));
 	ballJoint->setConstraintFlag(PxConstraintFlag::eVISUALIZATION, true);
 
 	scene->AddActor(*ball);

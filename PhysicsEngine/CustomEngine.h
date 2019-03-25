@@ -4,6 +4,7 @@
 #include "Catapult.h"
 #include "Goal.h"
 #include "WindMill.h"
+#include "ParticleEngine.h"
 
 class CustomEngine : public PhysicsEngine
 {
@@ -31,13 +32,18 @@ public:
 
 private:
 	Catapult* cat;
-	Catapult* cat2;
+	//Catapult* cat2;
+	Cube* leftWall;
+	Cube* rightWall;
+	Cube* rearWall;
+	Cube* frontWall;
 
 
 	Goal* goal;
 	WindMill* mill;
 	WindMill* mill2;
 	WindMill* mill3;
+	ParticleEngine partEngine;
 
 };
 
