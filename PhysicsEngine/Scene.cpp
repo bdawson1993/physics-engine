@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Scene.h"
 
+//Check Actors for deletion
 void Scene::CheckActors()
 {
 	for (int i = 0; i < sceneObj.size(); i++)
@@ -16,6 +17,7 @@ void Scene::CheckActors()
 
 }
 
+//Add actor to scene and to scene vector
 void Scene::AddActor(Actor& actor)
 {
 	actor.SetName();
@@ -51,6 +53,7 @@ vector<PxActor*> Scene::GetActors()
 
 }
 
+//Debug Function to list all actors
 void Scene::ListAllActors()
 {
 	cout << "ACTORS: " << endl;

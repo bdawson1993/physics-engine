@@ -153,7 +153,7 @@ void Catapult::CreateBall()
 		ball->Delete();
 	}
 	
-
+	//create ball
 	PxRigidBody* pos = (PxRigidBody*)this->base->GetActor();
 	ball = new Projectile("ball", phys);
 	ball->CreateDynamic(PxVec3(1, 1, 0), PxVec3(1, 1, 1), ballMat);
@@ -171,10 +171,6 @@ void Catapult::CreateBall()
 	ballJoint->setConstraintFlag(PxConstraintFlag::eVISUALIZATION, true);
 
 	scene->AddActor(*ball);
-
-	
-
-
 }
 
 void CatapultBase::OnTriggerEnter(Actor* collidedObject)
@@ -187,6 +183,7 @@ void CatapultBase::OnTriggerEnter(Actor* collidedObject)
 	}
 }
 
+//passing stuff - unused
 void CatapultBase::SetHasBall(bool value)
 {
 	hasBall = value;

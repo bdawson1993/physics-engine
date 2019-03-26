@@ -1,5 +1,6 @@
 #include "ParticleEngine.h"
 
+//emit a single particle
 void ParticleEngine::Emit()
 {
 	switch (shape)
@@ -16,6 +17,7 @@ void ParticleEngine::Emit()
 
 }
 
+//update particle life
 void ParticleEngine::Update()
 {
 	//update all particles

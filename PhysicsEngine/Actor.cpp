@@ -71,6 +71,7 @@ bool Actor::GetDelete()
 	return flagForDeletion;
 }
 
+//Mark object for deletion
 void Actor::Delete()
 {
 	flagForDeletion = true;
