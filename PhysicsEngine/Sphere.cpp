@@ -7,5 +7,4 @@ void Sphere::CreateDynamic(PxVec3 pos, PxReal size, PxMaterial* mat)
 	actor = (PxRigidDynamic*)physics->createRigidDynamic(PxTransform(pos));
 	CreateShape(PxSphereGeometry(size), *mat);
 
-	
 }

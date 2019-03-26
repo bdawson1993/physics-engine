@@ -98,27 +98,32 @@ void Scene::onTrigger(PxTriggerPair * pairs, PxU32 count)
 
 	for (PxU32 i = 0; i < count; i++)
 	{
-		if (pairs[i].status & PxPairFlag::eNOTIFY_TOUCH_FOUND)
+		if ((pairs[i].triggerActor != NULL) && (pairs[i + 1].otherActor != NULL))
 		{
-			triggerActor = GetActor(pairs[i].triggerActor->getName());
-			otherActor = GetActor(pairs[i].otherActor->getName());
 
-			//send object that had been collided with
-			triggerActor->OnTriggerEnter(otherActor);
-			otherActor->OnTriggerEnter(triggerActor);
-			
-		}
+			if (pairs[i].status & PxPairFlag::eNOTIFY_TOUCH_FOUND)
+			{
+				triggerActor = GetActor(pairs[i].triggerActor->getName());
+				otherActor = GetActor(pairs[i].otherActor->getName());
 
-		if (pairs[i].status & PxPairFlag::eNOTIFY_TOUCH_LOST)
-		{
-			triggerActor = GetActor(pairs[i].triggerActor->getName());
-			otherActor = GetActor(pairs[i].otherActor->getName());
+				//send object that had been collided with
+				triggerActor->OnTriggerEnter(otherActor);
+				otherActor->OnTriggerEnter(triggerActor);
 
-			//send object that had been collided with
-			//triggerActor->OnTriggerLeave(*otherActor);
-			
+			}
 
-			trigger = false;
+			if (pairs[i].status & PxPairFlag::eNOTIFY_TOUCH_LOST)
+			{
+				triggerActor = GetActor(pairs[i].triggerActor->getName());
+				otherActor = GetActor(pairs[i].otherActor->getName());
+
+				//send object that had been collided with
+				triggerActor->OnTriggerLeave(otherActor);
+				otherActor->OnTriggerLeave(triggerActor);
+
+
+				trigger = false;
+			}
 		}
 	}
 

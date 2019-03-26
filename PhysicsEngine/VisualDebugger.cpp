@@ -32,6 +32,7 @@ namespace VisualDebugger
 	void motionCallback(int x, int y);
 	void mouseCallback(int button, int state, int x, int y);
 	void exitCallback(void);
+	void ToggleHUDMode();
 
 	void RenderScene();
 	void ToggleRenderMode();
@@ -45,11 +46,12 @@ namespace VisualDebugger
 	RenderMode render_mode = BOTH;
 	const int MAX_KEYS = 256;
 	bool key_state[MAX_KEYS];
-	bool hud_show = false;
+	bool hud_show = true;
 	HUD hud;
 	float updateRate = 0.0f;
 	int frameCount = 0;
 	
+	int hudIndex = 0;
 
 	//Init the debugger
 	void Init(const char *window_name, int width, int height)
@@ -115,6 +117,7 @@ namespace VisualDebugger
 		hud.AddLine(HELP, "     I - Rotate Left");
 		hud.AddLine(HELP, "     [ - Add Force");
 		hud.AddLine(HELP, "     ] - Subtract Force");
+		hud.AddLine(HELP, "     , - Add Balls");
 		
 		//add a pause screen
 		hud.AddLine(PAUSE, "");
@@ -163,7 +166,7 @@ namespace VisualDebugger
 			if (eng->Pause())
 				hud.ActiveScreen(PAUSE);
 			else
-				hud.ActiveScreen(HELP);
+				hud.ActiveScreen(hudIndex);
 		}
 		else
 			hud.ActiveScreen(EMPTY);
@@ -270,6 +273,9 @@ namespace VisualDebugger
 			//reset camera view
 			camera->Reset();
 			break;
+		case GLUT_KEY_F9:
+			ToggleHUDMode();
+			break;
 		
 		case GLUT_KEY_F10:
 			//toggle scene pause
@@ -349,6 +355,20 @@ namespace VisualDebugger
 			render_mode = BOTH;
 		else if (render_mode == BOTH)
 			render_mode = NORMAL;
+	}
+
+	void ToggleHUDMode()
+	{
+		if (hudIndex > 2)
+		{
+			hudIndex = 0;
+		}
+		else
+		{
+			hudIndex++;
+		}
+
+		
 	}
 
 	///exit callback

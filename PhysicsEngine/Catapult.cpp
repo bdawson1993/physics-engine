@@ -100,6 +100,16 @@ void Catapult::KeyPress(char key)
 		bod->addForce(PxVec3(0.0f, 0.0f, 0.0f));
 	}
 
+	if (key == '[')
+	{
+		launchForce++;
+	}
+
+	if (key == ']')
+	{
+		launchForce--;
+	}
+
 
 	
 
@@ -110,16 +120,6 @@ void Catapult::KeyHold(char key)
 {
 	if (hasBall == true)
 	{
-		if (key == '[')
-		{
-			launchForce++;
-		}
-
-		if (key == ']')
-		{
-			launchForce--;
-		}
-
 		if (key == 'i')
 		{
 			PxRigidBody* bod = (PxRigidBody*)base->GetActor();
@@ -138,6 +138,8 @@ void Catapult::KeyHold(char key)
 		{
 
 			CreateBall();
+
+
 		}
 			
 	}

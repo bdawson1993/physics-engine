@@ -17,6 +17,14 @@ public:
 	~CustomEngine()
 	{
 		delete cat;
+		delete leftWall;
+		delete rightWall;
+		delete rearWall;
+		delete frontWall;
+		delete goal;
+		delete mill;
+		delete mill2;
+		delete mill3;
 	}
 
 

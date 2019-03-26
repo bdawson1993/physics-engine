@@ -22,6 +22,7 @@ private:
 
 public:
 	PhysicsEngine();
+	~PhysicsEngine();
 	void PxRelease();
 	float Update(PxReal delta_time);
 	virtual void CustomUpdate();

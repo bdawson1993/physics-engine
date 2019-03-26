@@ -14,6 +14,11 @@ PhysicsEngine::PhysicsEngine()
 	}
 }
 
+PhysicsEngine::~PhysicsEngine()
+{
+	
+}
+
 float PhysicsEngine::Update(PxReal delta_time)
 {
 	timer.resetChronoTimer();
