@@ -155,7 +155,7 @@ void Scene::onContact(const PxContactPairHeader & pairHeader, const PxContactPai
 		//check eNOTIFY_TOUCH_LOST
 		if (pairs[i].events & PxPairFlag::eNOTIFY_TOUCH_LOST)
 		{
-			cerr << "onContact::eNOTIFY_TOUCH_LOST" << endl;
+			//oncontactleave
 		}
 	}
 
