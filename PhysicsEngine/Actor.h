@@ -41,10 +41,9 @@ public:
 	PxRigidActor* GetActor();
 	string GetName();
 	void SetName();
-	void SetTrigger(bool value, PxU32 shape_index=-1);
-	void SetupFiltering(PxU32 filterGroup, PxU32 filterMask, PxU32 shape_index=-1);
-	vector<PxShape*> GetShapes(PxU32 index);
-	PxShape* GetShape(PxU32 index);
+	
+	
+	
 	void SetColor(PxVec3 color);
 	bool GetDelete();
 	void Delete();
@@ -55,6 +54,10 @@ public:
 	virtual void OnContact(Actor* collidedObject);
 
 	//shape
+	PxShape* GetShape(PxU32 index);
+	vector<PxShape*> GetShapes(PxU32 index);
+	void SetTrigger(bool value, PxU32 shape_index = -1);
+	void SetupFiltering(PxU32 filterGroup, PxU32 filterMask, PxU32 shape_index = -1);
 	
 
 protected:
