@@ -4,7 +4,7 @@
 
 void CustomEngine::SceneSetup()
 {
-	mat.AddMaterial("water", physics->createMaterial(0.5f, 0.5f, 0.5f));
+	mat.AddMaterial("water", physics->createMaterial(0.5f, 0.5f, 0.4f));
 	mat.AddMaterial("wood", physics->createMaterial(0.4, 0.4, 0));
 	mat.AddMaterial("leather", physics->createMaterial(0.61, 0.61, 0));
 	
@@ -55,15 +55,25 @@ void CustomEngine::SceneSetup()
 	cat->base->SetupFiltering(FilterGroup::ACTOR0, FilterGroup::ACTOR1);
 	//cat2->base->SetupFiltering(FilterGroup::ACTOR0, FilterGroup::ACTOR1);
 
-	partEngine = ParticleEngine(&scene, physics, EmitterShape::ShapeRectangle, mat.GetMaterial("water"),
-		PxVec3(-40, 100, 200), -20, 20);
+	//create particle system settings
+	ParticleEngineSettings settings;
+	settings.life = 280;
+	settings.height = 100;
+	settings.material = mat.GetMaterial("water");
+	settings.phys = physics;
+	settings.scene = &scene;
+	settings.shape = ShapeRectangle;
+	settings.xRange = PxVec2(-30, 30);
+	settings.zRange = PxVec2(-170, 20);
+
+
+	partEngine = ParticleEngine(settings);
 }
 
 void CustomEngine::CustomUpdate()
 {
+	//game object updates
 	cat->Update();
-	//cat2->Update();
-
 	mill->Update();
 	mill2->Update();
 	mill3->Update();
@@ -72,6 +82,7 @@ void CustomEngine::CustomUpdate()
 	partEngine.Emit();
 	partEngine.Update();
 
+	//ball scoring
 	if (cat->GetBall()->HasScored() == true)
 	{
 		cout << "increase" << endl;
