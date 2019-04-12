@@ -1,11 +1,10 @@
 # physics-engine
-Physics Simulation Assignment - Due on: 28/03/2019
+Physics Simulation Assignment
+Completed as an Assignment at the University Of Lincoln
 
 <ul>
-<li> User Input &#10004; </li>
-<li> Collision Handling &#10004; </li>
-<li> Free Kick &#10004; </li>
-<li> Halfway line </li>
-<li> Traps </li>
-<li> Passing </li>
+<li> User Input </li>
+<li> Collision Handling </li>
+<li> Free Kick </li>
+<li> Particle Engine </li>
 <ul>
